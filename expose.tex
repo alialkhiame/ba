@@ -1,0 +1,138 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{graphicx}
+
+\geometry{left=3cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+
+\setstretch{1.5}
+
+\begin{document}
+
+% ----------------------
+% Deckblatt
+% ----------------------
+\begin{titlepage}
+    \centering
+    \vspace*{1cm}
+
+    \Huge\textbf{Entwicklung und Implementierung eines Modells zur Erfassung der User Experience am Beispiel der Anwendung eDok des LWV Hessen}
+
+    \vspace{1.5cm}
+
+    \Large
+    \textbf{Vorlage zur Erlangung des akademischen Grades} \\[0.5cm]
+    \textbf{Master of Science (M.Sc.)} \\[0.5cm]
+    im Studiengang Informatik \\[0.5cm]
+    an der Universität Leipzig \\
+
+    \vspace{1.5cm}
+
+    \textbf{Dein Name, B.Sc.} \\[0.5cm]
+    Betreuer: Prof. Dr. Mustermann \\[0.5cm]
+    In Zusammenarbeit mit dem LWV Hessen
+
+    \vfill
+
+    \textbf{Research Academy Leipzig} \\
+    Graduiertenzentrum Geistes- und Sozialwissenschaften \\
+    Universität Leipzig \\
+    Emil-Fuchs-Str. 1 \\
+    04105 Leipzig \\
+    Telefon: 0341 97 - 30286 \\
+    Telefax: 0341 96 - 05261 \\
+    \href{mailto:phd@uni-leipzig.de}{phd@uni-leipzig.de} \\
+    \href{https://www.unileipzig.de/ral/gchuman/}{www.unileipzig.de/ral/gchuman/} \\
+    \vspace{1cm}
+    \small{Bitte beachten Sie, dass elektronisch signierte und verschlüsselte Dokumente nicht akzeptiert werden.}
+    
+\end{titlepage}
+
+% ----------------------
+% Zusammenfassung des Forschungsvorhabens
+% ----------------------
+\newpage
+\section*{Zusammenfassung}
+\addcontentsline{toc}{section}{Zusammenfassung}
+
+\noindent
+Diese Masterarbeit widmet sich der Entwicklung und Implementierung eines spezifischen Modells zur Erfassung der User Experience (UX) anhand der Anwendung eDok, die im Auftrag des Landeswohlfahrtsverbands Hessen (LWV Hessen) entwickelt wurde. Ziel dieser Untersuchung ist es, die Benutzerfreundlichkeit, Effizienz und allgemeine Nutzerzufriedenheit durch die systematische Erfassung und Analyse von UX-Daten zu optimieren. Das entwickelte Modell basiert auf etablierten UX-Erfassungsmethoden, wie dem System Usability Scale (SUS) und dem User Experience Questionnaire (UEQ), und wird an die besonderen Anforderungen der eDok-Anwendung angepasst. Ein zentraler Bestandteil der Arbeit ist die Sicherstellung der Anonymität und der datenschutzkonformen Erfassung der erhobenen Daten.
+
+% ----------------------
+% Stand der Forschung
+% ----------------------
+\newpage
+\section*{Stand der Forschung}
+\addcontentsline{toc}{section}{Stand der Forschung}
+
+\noindent
+Die Erfassung der User Experience (UX) ist ein interdisziplinäres Forschungsfeld, das zunehmend an Bedeutung gewinnt. In der Softwareentwicklung lag der Fokus lange auf der Usability, während heute auch emotionale, ästhetische und kontextuelle Aspekte der Nutzererfahrung in den Vordergrund rücken. Standardisierte Instrumente wie der System Usability Scale (SUS) und der User Experience Questionnaire (UEQ) sind weit verbreitet, jedoch gibt es einen Bedarf an anwendungsspezifischen Anpassungen dieser Methoden. Diese Arbeit zielt darauf ab, diese Lücke zu schließen, indem sie ein Modell entwickelt, das den spezifischen Anforderungen der eDok-Anwendung des LWV Hessen gerecht wird. Neben den etablierten Erfassungsmethoden werden auch neuere Ansätze zur Erfassung von UX-Daten, wie die Nutzung von Eye-Tracking und Emotionserkennungssoftware, in die Entwicklung des Modells einbezogen.
+
+% ----------------------
+% Ziele des Forschungsvorhabens
+% ----------------------
+\newpage
+\section*{Ziele des Forschungsvorhabens}
+\addcontentsline{toc}{section}{Ziele des Forschungsvorhabens}
+
+\noindent
+Das primäre Ziel dieser Arbeit ist die Entwicklung eines maßgeschneiderten Modells zur umfassenden Erfassung der User Experience in der Anwendung eDok. Dabei wird nicht nur die Gebrauchstauglichkeit (Usability) bewertet, sondern es werden auch emotionale und ästhetische Aspekte sowie die langfristige Nutzerzufriedenheit in die Analyse einbezogen. Ein weiteres wesentliches Ziel ist die Implementierung eines Systems zur anonymisierten Datenerfassung, das strengen Datenschutzanforderungen genügt und eine rechtskonforme Verarbeitung der UX-Daten sicherstellt. Darüber hinaus sollen die Ergebnisse dieser Untersuchung zu einer signifikanten Verbesserung der eDok-Anwendung beitragen und generische Erkenntnisse für zukünftige UX-Studien im Bereich öffentlicher Verwaltungssysteme liefern.
+
+% ----------------------
+% Forschungsprogramm
+% ----------------------
+\newpage
+\section*{Forschungsprogramm}
+\addcontentsline{toc}{section}{Forschungsprogramm}
+
+\noindent
+Das Forschungsprogramm dieser Arbeit ist in mehrere methodisch aufeinander abgestimmte Phasen unterteilt:
+
+\begin{enumerate}[label=\arabic*.]
+    \item \textbf{Vorbereitung und Literaturrecherche}: Eine systematische Literaturrecherche zu bestehenden UX-Erfassungsmethoden und aktuellen Entwicklungen in diesem Bereich bildet die Grundlage für die Modellentwicklung.
+    \item \textbf{Entwicklung des Modells}: Aufbauend auf der Literaturrecherche wird ein Modell zur UX-Erfassung entworfen, das die speziellen Anforderungen der eDok-Anwendung berücksichtigt. Dabei wird eine Kombination aus qualitativen und quantitativen Erfassungsmethoden angestrebt.
+    \item \textbf{Implementierung und Integration}: Das entwickelte Modell wird in die eDok-Anwendung integriert, und ein System zur Erfassung der UX-Daten wird implementiert. Dies umfasst auch die technische Umsetzung der Anonymisierungs- und Pseudonymisierungsmethoden.
+    \item \textbf{Datenerfassung und Analyse}: Nach der Implementierung werden UX-Daten systematisch erfasst und unter Berücksichtigung der Anonymität ausgewertet. Dabei werden sowohl deskriptive als auch inferenzstatistische Methoden angewendet.
+    \item \textbf{Evaluation und Optimierung}: Die erhobenen Daten werden hinsichtlich der Effektivität des Modells analysiert. Auf Grundlage dieser Ergebnisse werden gegebenenfalls Anpassungen und Optimierungen am Modell vorgenommen.
+    \item \textbf{Dokumentation und Abschlussbericht}: Abschließend werden die Ergebnisse dokumentiert und in einem umfassenden Abschlussbericht zusammengefasst, der neben der Beschreibung des entwickelten Modells auch Empfehlungen für zukünftige Anwendungen enthält.
+\end{enumerate}
+
+% ----------------------
+% Zeitplan
+% ----------------------
+\newpage
+\section*{Zeitplan}
+\addcontentsline{toc}{section}{Zeitplan}
+
+\noindent
+Der folgende Zeitplan gibt einen Überblick über die geplanten Phasen des Projekts:
+
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Phase} & \textbf{Beschreibung} & \textbf{Dauer} \\ \hline
+Phase 1 & Vorbereitung und Literaturrecherche & 2 Monate \\ \hline
+Phase 2 & Entwicklung des Modells & 3 Monate \\ \hline
+Phase 3 & Implementierung und Integration & 2 Monate \\ \hline
+Phase 4 & Datenerfassung und Analyse & 2 Monate \\ \hline
+Phase 5 & Evaluation und Optimierung & 2 Monate \\ \hline
+Phase 6 & Dokumentation und Abschlussbericht & 1 Monat \\ \hline
+\end{tabular}
+
+% ----------------------
+% Literaturverzeichnis
+% ----------------------
+\newpage
+\section*{Literaturverzeichnis}
+\addcontentsline{toc}{section}{Literaturverzeichnis}
+
+\noindent
+Die wichtigsten in dieser Arbeit referenzierten Quellen sind:
+
+ 
+
+\end{document}
