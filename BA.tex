@@ -1,159 +1,289 @@
-\documentclass[a4paper,12pt]{report}
+\documentclass[12pt,oneside]{article}
 
-% Pakete
-\usepackage{hyperref}
-\usepackage[utf8]{inputenc} % Für UTF-8-Kodierung
-\usepackage[T1]{fontenc} % Für Schriftartkodierung
-\usepackage[ngerman]{babel} % Für deutsche Sprache
-\usepackage{graphicx} % Für das Einbinden von Grafiken
-\usepackage{amsmath} % Für mathematische Symbole 
-\usepackage{amssymb} % Für zusätzliche mathematische Symbole 
-\usepackage{csquotes} % Für Zitate
-\usepackage{setspace} % Für Zeilenabstand
-\usepackage{geometry} % Für Seitenränder
-\usepackage[backend=biber,style=alphabetic]{biblatex}
-\addbibresource{C:\\Users\\alial\\OneDrive\\Desktop\\Ba}
-
-% Abkürzung
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%   Zusaetzliche Pakete  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{acronym}
-\geometry{a4paper, left=30mm, right=30mm, top=20mm, bottom=30mm}
+\usepackage{enumerate}
+\usepackage{a4wide}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{palatino}
+\usepackage{blindtext}
+\usepackage{multirow}
+\usepackage[ruled,longend]{algorithm2e}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{tocbibind}
 
-% Titelseite
-\title{Entwicklung und Implementierung eines Modells zur Erfassung und Bewertung der User Experience am Beispiel der Anwendung eDok des LWV Hessen}
-\author{Alkhiami Ali}
-\date{\today}
+%folgende Zeile auskommentieren für englische Arbeiten
+\usepackage[ngerman]{babel}
+
+\usepackage[bookmarks]{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a-1b]{pdfx}
+\usepackage[justification=centering]{caption}
+%\usepackage[style=unsrt,natbib=true,backend=biber]{biblatex}
+\usepackage{csquotes}
+\usepackage{url}
+%\usepackage{subfigure}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+% Layout corrections (Schusterjungen)
+\clubpenalty = 10000 
+% Layout corrections (Hurenkinder) 
+\widowpenalty = 10000 
+\displaywidowpenalty = 10000
+
+% Figures
+\usepackage{caption}
+\usepackage[hypcap=true,labelformat=simple]{subcaption}
+\renewcommand{\thesubfigure}{(\alph{subfigure})}
+
+% Tables
+\usepackage{booktabs} 
+
+\usepackage[backend=biber,style=numeric]{biblatex}
+\addbibresource{literatur.bib}
+
+
+% Newcommand TODO (red in text)
+\newcommand{\todo}[1]{\textcolor{red}{TODO: #1}}
+
+% Newcommand TODOM (red at border)
+\newcommand{\todom}[1]{\marginpar{\parbox{1.5cm}{\textcolor{red}{TODO:\\ #1}}}}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Definition der Kopfzeile %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{fancy}
+\fancyhf{}
+\cfoot{\thepage}
+\setlength{\headheight}{16pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Definition des Deckblattes und der Titelseite  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\HSFTitle}[8]{
+
+  \thispagestyle{empty}
+\begin{center}
+    \includegraphics[width=0.8\textwidth]{logo.eps} \\
+    \vspace*{\stretch{1}}
+    \end{center}
+
+  %\vspace*{\stretch{1}}
+  {\parindent0cm
+  \rule{\linewidth}{.7ex}}
+  \begin{center}
+    \vspace*{\stretch{1}}
+    \sffamily\bfseries\Huge
+    #1\\
+    \vspace*{\stretch{1}}
+    \sffamily\bfseries\large
+    #3
+    \vspace*{\stretch{1}}
+  \end{center}
+  \rule{\linewidth}{.7ex}
+
+  \vspace*{\stretch{2}}
+  \begin{center}
+    \Large #2 am #5 der HAW Fulda \\
+    \vspace*{\stretch{1}}
+
+    \large Matrikelnummer:  #4 \\[1mm]
+    \large Erstbegutachtung:  #7 \\[1mm]
+    \large Zweitbegutachtung:  #8 \\[1mm]
+
+    \vspace*{\stretch{1}}
+    \large Eingereicht am #6
+  \end{center}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Beginn des Dokuments  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \begin{document}
-
-\maketitle
-\tableofcontents
-%--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
-\chapter*{Abkürzungsverzeichnis}
-\addcontentsline{toc}{chapter}{Abkürzungsverzeichnis} % Fügt das Abkürzungsverzeichnis zum Inhaltsverzeichnis hinzu
-\begin{acronym}[hyperlinks]
-    \acro{UX}{User Experience}
-    \acro{LWV}{Landeswohlfahrtsverband}
-    \acro{SUS}{System Usability Scale}
-    \acro{UEQ}{User Experience Questionnaire}
-    \acro{UI}{User Interface}
-\end{acronym}
-%--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
-\chapter{Abstract}
-Diese Arbeit widmet sich der Entwicklung und Implementierung eines Modells zur umfassenden Erfassung und Bewertung der User Experience (UX) am Beispiel der Anwendung eDok des Landeswohlfahrtsverbands Hessen (LWV Hessen). Angesichts der zunehmenden Bedeutung von UX in der Softwareentwicklung wird zunächst das Konzept der UX detailliert erläutert, gefolgt von einer kritischen Analyse gängiger Methoden zur UX-Erfassung. Im Mittelpunkt steht die Entwicklung eines Modells, das es ermöglicht, spezifische UX-Aspekte systematisch zu erfassen und zu bewerten. Das Modell zielt darauf ab, eine automatisierte und kontinuierliche Sammlung relevanter Daten sicherzustellen, um daraus fundierte Erkenntnisse über die Nutzererfahrung abzuleiten. Ein besonderer Schwerpunkt liegt dabei auf der Analyse, wie sich die UX durch fortlaufende Weiterentwicklungen und funktionale Erweiterungen der Software verändert. Zusätzlich wird die technische Umsetzung des Modells beschrieben, einschließlich der Softwarearchitektur und der Implementierung von Mechanismen zur Anonymisierung der erfassten Daten, um den Schutz der Privatsphäre der Nutzer*innen zu gewährleisten. Diese Anonymisierung ist essenziell, um ethischen Standards und datenschutzrechtlichen Vorgaben zu entsprechen. Die Arbeit schließt mit einer umfassenden Bewertung der Ergebnisse und gibt einen Ausblick auf mögliche Weiterentwicklungen des Modells. Hierbei wird insbesondere auf die Möglichkeit eingegangen, das Modell auf andere behördliche Anwendungen zu übertragen und damit eine breitere Anwendungsperspektive zu eröffnen.
-
-
-%--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
-\chapter{Einleitung}
-\section{Motivation}
-Die UX spielt eine zentrale Rolle bei der Bewertung und Verbesserung von Softwareanwendungen. Besonders in behördlichen Anwendungen wie eDok, das vom LWV Hessen und anderen Verbänden verwendet wird, ist es wichtig, die UX zu erfassen, um die Benutzerfreundlichkeit und Effizienz zu steigern. Es kann herausfordernd sein, Bereiche innerhalb der Anwendung zu identifizieren, die ein verbessertes Design benötigen, sowie die Schlüsselaspekte zu bestimmen, die an diesen Stellen optimiert werden sollten.
-
-In Web-Anwendungen wie eDok bestand stets ein grundlegendes Bedürfnis, Feedback von den Nutzer*innen einzuholen, um ihre Erfahrungen mit der Software zu verstehen und zu verbessern. Mit der Implementierung des entwickelten Modells wurde es möglich, spezifische Aspekte der UX automatisiert zu erfassen. Dadurch können nun fundierte Aussagen über die Nutzererfahrung getroffen und ein umfassender Überblick über die UX innerhalb der Anwendung gewonnen werden. Darüber hinaus führt die kontinuierliche Einführung neuer Funktionen und Implementierungen zu einer fortlaufenden Veränderung der Komplexität und der Benutzeroberfläche in verschiedenen Bereichen der Anwendung. In diesem Kontext ist es besonders nützlich, einen Überblick über die Entwicklung der UX im Laufe der Zeit zu haben. Dies ermöglicht eine proaktive Anpassung und Optimierung der UX, um sicherzustellen, dass die Anwendung trotz wachsender Komplexität benutzerfreundlich bleibt.
-
-\section{Ziel der Arbeit}
-Das Ziel dieser Arbeit ist es, zentrale Elemente der UX zu identifizieren und ein Modell zu entwickeln, das diese Elemente darstellt, um die UX innerhalb einer Anwendung erfassen und bewerten zu können. Es soll die Vorteile eines solchen Modells aufzeigen.
-
-Die gesammelten Daten sollen anonymisiert werden, und die Ergebnisse des Modells sollen darüber Auskunft geben, wie sich die UX im Verlauf der Anwendungsentwicklung verändert hat. Zudem soll das Modell die UX an verschiedenen Stellen innerhalb der Anwendung erfassen und bewerten können. Entwickler*innen erhalten die Möglichkeit, zusätzliche Stellen zu messen oder solche zu entfernen, die mit der Zeit an Relevanz verloren haben.
-\section{Fragestellung}
-	Welche spezifischen, anonymisierten Daten sind erforderlich, um die User Experience (UX) präzise und systematisch zu erfassen? Wie lassen sich diese Daten über Zeiträume hinweg analysieren, um dynamische Veränderungen zu erkennen und gezielte Optimierungsmöglichkeiten der Anwendung zu erschließen?
-%--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
-\chapter{Grundlagen der UX}
-\section{Was ist UX?}
-Die User Experience (UX) umfasst alle Aspekte der Interaktion von Nutzer*innen mit einer Anwendung. Dazu gehören nicht nur die Benutzerfreundlichkeit, sondern auch die emotionale und ästhetische Wahrnehmung während und nach der Nutzung. UX beschreibt somit das gesamte Nutzererlebnis, das von der Effizienz und Effektivität der Anwendung bis hin zu den emotionalen Reaktionen reicht, die während der Nutzung ausgelöst werden. Nach der Definition der Interaction Design Foundation bezieht sich UX auf die „Emotionen und Einstellungen einer Person bei der Nutzung eines bestimmten Produkts, Systems oder Dienstes“ und schließt sowohl praktische als auch bedeutungsvolle und affektive Aspekte der Mensch-Computer-Interaktion ein. Nielsen Norman Group beschreibt UX als „alle Aspekte der Interaktion des Endnutzers mit dem Unternehmen, seinen Dienstleistungen und seinen Produkten“. Laut Usability.gov beinhaltet UX „ein tiefes Verständnis für die Bedürfnisse, Fähigkeiten und Grenzen der Nutzer*innen sowie die Ziele des Unternehmens, das das Projekt leitet“. Durch diese ganzheitliche Betrachtung ermöglicht UX, Anwendungen zu entwickeln, die nicht nur benutzerfreundlich, sondern auch emotional ansprechend und langfristig wertvoll sind. Die umfassende Definition der ISO-Norm zeigt, dass UX durch eine Vielzahl von Faktoren geprägt ist – von den Fähigkeiten und Erwartungen der Nutzer*innen bis hin zur Qualität des Systems selbst. Ein guter UX-Ansatz muss all diese Aspekte in Betracht ziehen, um eine erfolgreiche Interaktion zu ermöglichen und langfristige Nutzerzufriedenheit zu gewährleisten (ISO 9241-11: 2018).
-
-\section{Usability und UX}
-Usability, oft ein Bestandteil der UX, bezieht sich auf die Benutzerfreundlichkeit eines Systems oder einer Anwendung. Es ist ein zentrales Element der UX, aber nicht deren einzige Komponente. Während Usability den Fokus auf die Effizienz, Erlernbarkeit und Zufriedenheit der Nutzer*innen bei der Erreichung ihrer Ziele legt, umfasst UX eine breitere Perspektive, die auch die emotionalen und ästhetischen Aspekte des Nutzererlebnisses berücksichtigt. Im Folgenden werden die wichtigsten Elemente der UX betrachtet:
+ 
  
 
+ \HSFTitle
+      {Entwicklung und Implementierung eines Modells zur Erfassung und Bewertung der User Experience am Beispiel der Anwendung eDok des LWV Hessene }        % Titel der Arbeit
+      {Bachelorarbeit} % Typ der Arbeit
+      {Ali Alkhiami}          % Vor- und Nachname des Autors
+      {844620}
+      {Fachbereich AI}  % Name des FBs
+      {05.mm.yyyy}        % Tag der Abgabe
+      {Prof. Dr. Alexander Gepperth}     % Name des Erstgutachters
+      {Prof. Dr. Dr. YYY}    % Name des Zweitgutachters
+
+  \clearpage
+
+\lhead{}
+\pagenumbering{Roman}
+    \setcounter{page}{1}
+\tableofcontents
 %--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
-\section{Wichtige Elemente der UX}
+\section{Abkürzungsverzeichnis}
+\addcontentsline{toc}{section}{Abkürzungsverzeichnis} % Fügt das Abkürzungsverzeichnis zum Inhaltsverzeichnis hinzu
+\begin{acronym}[hyperlinks]
+\acro{UX}{User Experience}
+\acro{LWV}{Landeswohlfahrtsverband}
+\acro{SUS}{System Usability Scale}
+\acro{UEQ}{User Experience Questionnaire}
+\acro{UI}{User Interface}
+\end{acronym}
+%--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
+\section{Abstract}
+Diese Arbeit widmet sich der Entwicklung und Implementierung eines Modells zur umfassenden Erfassung und Bewertung der User Experience (UX) am Beispiel der Anwendung eDok des Landeswohlfahrtsverbands Hessen (LWV Hessen). Angesichts der zunehmenden Bedeutung von UX in der Softwareentwicklung wird zunächst das Konzept der UX detailliert erläutert, gefolgt von einer kritischen Analyse gängiger Methoden zur UX-Erfassung. Im Mittelpunkt steht die Entwicklung eines Modells, das es ermöglicht, spezifische UX-Aspekte systematisch zu erfassen und zu bewerten. Das Modell zielt darauf ab, eine automatisierte und kontinuierliche Sammlung relevanter Daten sicherzustellen, um daraus fundierte Erkenntnisse über die Nutzererfahrung abzuleiten. Ein besonderer Schwerpunkt liegt dabei auf der Analyse, wie sich die UX durch fortlaufende Weiterentwicklungen und funktionale Erweiterungen der Software verändert. Zusätzlich wird die technische Umsetzung des Modells beschrieben, einschließlich der Softwarearchitektur und der Implementierung von Mechanismen zur Anonymisierung der erfassten Daten, um den Schutz der Privatsphäre der Nutzer*innen zu gewährleisten. Diese Anonymisierung ist essenziell, um ethischen Standards und datenschutzrechtlichen Vorgaben zu entsprechen. Die Arbeit schließt mit einer umfassenden Bewertung der Ergebnisse und gibt einen Ausblick auf mögliche Weiterentwicklungen des Modells. Hierbei wird insbesondere auf die Möglichkeit eingegangen, das Modell auf andere behördliche Anwendungen zu übertragen und damit eine breitere Anwendungsperspektive zu eröffnen.
+%--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
+\section{Einleitung}
+\subsection{Einführung in das Thema UX}
+UX Definition variiert sich in der Literatur. Je nach Kontext und Auter wurde das UX unterschiedlich deffeniert und benutzt.  \cite{clemen1989combining} \cite{shiny1} \cite{shiny1}
+ 
+
+
+\section{Motivation}
+Die UX spielt eine zentrale Rolle bei der Bewertung und Verbesserung von Softwareanwendungen. Besonders in behördlichen Anwendungen wie eDok, das vom LWV Hessen und anderen Verbänden verwendet wird, ist es wichtig, die UX zu erfassen, um die Benutzerfreundlichkeit und Effizienz zu steigern. Es kann herausfordernd sein, Bereiche innerhalb der Anwendung zu identifizieren, die ein verbessertes Design benötigen, sowie die Schlüsselaspekte zu bestimmen, die an diesen Stellen optimiert werden sollten.
+In Web-Anwendungen wie eDok bestand stets ein grundlegendes Bedürfnis, Feedback von den Nutzer*innen einzuholen, um ihre Erfahrungen mit der Software zu verstehen und zu verbessern. Mit der Implementierung des entwickelten Modells wurde es möglich, spezifische Aspekte der UX automatisiert zu erfassen. Dadurch können nun fundierte Aussagen über die Nutzererfahrung getroffen und ein umfassender Überblick über die UX innerhalb der Anwendung gewonnen werden. Darüber hinaus führt die kontinuierliche Einführung neuer Funktionen und Implementierungen zu einer fortlaufenden Veränderung der Komplexität und der Benutzeroberfläche in verschiedenen Bereichen der Anwendung. In diesem Kontext ist es besonders nützlich, einen Überblick über die Entwicklung der UX im Laufe der Zeit zu haben. Dies ermöglicht eine proaktive Anpassung und Optimierung der UX, um sicherzustellen, dass die Anwendung trotz wachsender Komplexität benutzerfreundlich bleibt.
+%todo auf 15 seiten bringen
+
+
+\section{Ziel der Arbeit}
+Das Ziel dieser Arbeit ist es, zentrale Elemente der UX zu identifizieren, rausfinden wir man das bemessen und bewerten kann. 
+
+Ein Modell zu entwickeln, das diese Elemente darstellt, um die UX innerhalb einer Anwendung erfassen und bewerten zu können. Es soll die Vorteile eines solchen Modells aufzeigen.
+Die gesammelten Daten sollen anonymisiert werden, und die Ergebnisse des Modells sollen darüber Auskunft geben, wie sich die UX im Verlauf der Anwendungsentwicklung verändert hat. Zudem soll das Modell die UX an verschiedenen Stellen innerhalb der Anwendung erfassen und bewerten können. Entwickler*innen erhalten die Möglichkeit, zusätzliche Stellen zu messen oder solche zu entfernen, die mit der Zeit an Relevanz verloren haben.
+\section{Fragestellung}
+Welche spezifischen, anonymisierten Daten sind erforderlich, um die User Experience (UX) präzise und systematisch zu erfassen? Wie lassen sich diese Daten über Zeiträume hinweg analysieren, um dynamische Veränderungen zu erkennen und gezielte Optimierungsmöglichkeiten der Anwendung zu erschließen?
+%--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
+\section{Grundlagen der UX}
+\section{Was ist UX?}
+Die User Experience (UX) umfasst alle Aspekte der Interaktion von Nutzer*innen mit einer Anwendung. Dazu gehören nicht nur die Benutzerfreundlichkeit, sondern auch die emotionale und ästhetische Wahrnehmung während und nach der Nutzung. UX beschreibt somit das gesamte Nutzererlebnis, das von der Effizienz und Effektivität der Anwendung bis hin zu den emotionalen Reaktionen reicht, die während der Nutzung ausgelöst werden. Nach der Definition der Interaction Design Foundation bezieht sich UX auf die „Emotionen und Einstellungen einer Person bei der Nutzung eines bestimmten Produkts, Systems oder Dienstes“ und schließt sowohl praktische als auch bedeutungsvolle und affektive Aspekte der Mensch-Computer-Interaktion ein. Nielsen Norman Group beschreibt UX als „alle Aspekte der Interaktion des Endnutzers mit dem Unternehmen, seinen Dienstleistungen und seinen Produkten“. Laut Usability.gov beinhaltet UX „ein tiefes Verständnis für die Bedürfnisse, Fähigkeiten und Grenzen der Nutzer*innen sowie die Ziele des Unternehmens, das das Projekt leitet“. Durch diese ganzheitliche Betrachtung ermöglicht UX, Anwendungen zu entwickeln, die nicht nur benutzerfreundlich, sondern auch emotional ansprechend und langfristig wertvoll sind. Die umfassende Definition der ISO-Norm zeigt, dass UX durch eine Vielzahl von Faktoren geprägt ist – von den Fähigkeiten und Erwartungen der Nutzer*innen bis hin zur Qualität des Systems selbst. Ein guter UX-Ansatz muss all diese Aspekte in Betracht ziehen, um eine erfolgreiche Interaktion zu ermöglichen und langfristige Nutzerzufriedenheit zu gewährleisten (ISO 9241-11: 2018).
+\section{Usability und UX}
+Definitions:
+Per ISO/IEC 9241-11: Extent to which a product can be used by specified users to achieve specified goals with effectiveness, efficiency, and satisfaction in a specified context of use.
+Sources:
+NIST SP 800-63-3 from ISO/IEC 9241-11
+Extent to which a product can be used by specified users to achieve specified goals with effectiveness, efficiency, and satisfaction in a specified context of use.
+Sources:
+NIST SP 800-63-3 from ISO/IEC 9241-11
+The extent to which a product can be used by specified users to achieve specified goals with effectiveness, efficiency and satisfaction in a specified context of use.
+Sources:
+NISTIR 8040 from ISO 9241-11:1998
+Da das Modell sich exclisive mit dem Benzterfreundilchkeit in eDok beschäftigen wird, wird dieser Arbeit nur das Usbality teil von UX betrachten und alle anderen sind erstmal nicht zu berücksichtigen.
+
+Definition of Usability  Nielsen Norman Group
+Usability is a quality attribute that assesses how easy user interfaces are to use. The word "usability" also refers to methods for improving ease-of-use during the design process.
+
+nach Nielsen Norman Group kann usabilty lässt sich unter 5 quality components defieneren 
+Learnability: How easy is it for users to accomplish basic tasks the first time they encounter the design?
+Efficiency: Once users have learned the design, how quickly can they perform tasks?
+Memorability: When users return to the design after a period of not using it, how easily can they reestablish proficiency?
+Errors: How many errors do users make, how severe are these errors, and how easily can they recover from the errors?
+Satisfaction: How pleasant is it to use the design?
+
+kaut Din en iso 9241 gibt es 7 leitlinien für Usabilty 
+
+
+Die aufgabe unsere Models ist die Merkamale bei verschiedene Anwendung Schreitten oder Bussnis fall zu messen und bewerten, deshalb wurde weiter rechachert um methoden zu finden die das messen und bewerten können
+
 \begin{itemize}
-    \item \textbf{Benutzerfreundlichkeit (Usability)}: Wie einfach ist es für die Nutzer*innen, die Anwendung zu bedienen?
-    \item \textbf{Zufriedenheit}: Wie angenehm und zufriedenstellend ist die Nutzung der Anwendung?
-    \item \textbf{Effizienz}: Wie schnell können Nutzer*innen ihre Ziele mit der Anwendung erreichen?
-    \item \textbf{Erlernbarkeit}: Wie schnell können neue Nutzer*innen die Bedienung der Anwendung erlernen?
+\item Aufgabenangemessenheit
+\item Selbstbeschreibungsfähigkeit
+\item Erwartungskonformität
+\item Erlernbarkeit
+\item Steuerbarkeit
+\item Fehlertoleranz
+\item Benutzerbindung
 \end{itemize}
 
+
+%--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
+ 
+
+\begin{itemize}
+\item \textbf{Benutzerfreundlichkeit (Usability)}: Wie einfach ist es für die Nutzer*innen, die Anwendung zu bedienen?
+\item \textbf{Zufriedenheit}: Wie angenehm und zufriedenstellend ist die Nutzung der Anwendung?
+\item \textbf{Effizienz}: Wie schnell können Nutzer*innen ihre Ziele mit der Anwendung erreichen?
+\item \textbf{Erlernbarkeit}: Wie schnell können neue Nutzer*innen die Bedienung der Anwendung erlernen?
+\end{itemize}
 \section{Was führt zu optimaler UX}
 UX sollte kundenorientiert sein: „Der Versuch, Ihren Internet-Auftritt ohne Input seitens der Kunden zu strukturieren, ist ein großer Fehler, der Sie Tausende bis Millionen Euro kosten kann.“ Nielsen und Loranger (2006, S. 171) „Bei der User-Experience geht es nicht um die innere Funktionalität eines Produktes oder einer Dienstleistung, sondern darum, wie es nach außen hin funktioniert“ (Garrett, 2012, S. 6). Broschart (2011, S. 332) weist darauf hin, dass „die Prozesse zur Schaffung einer optimalen User-Experience (...) unter dem Begriff ‚User-Centered Design‘ zusammengefasst werden können.
 %--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
- 
-
-\chapter{Erfassung der UX}
- 
-
-
-
-
+\section{Erfassung der UX}
 %--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
- 
-
- 
-\chapter{Anonymisierte Erfassung und Behandlung der Daten}
+\section{Anonymisierte Erfassung und Behandlung der Daten}
 \section{Bedeutung der Anonymisierung}
 Bei der Erfassung von UX-Daten ist es entscheidend, dass die Daten anonymisiert werden, um die Privatsphäre der Nutzer*innen zu schützen und ethische Standards einzuhalten.
 %--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
 \section{Methoden zur Anonymisierung}
 \begin{itemize}
-    \item \textbf{Pseudonymisierung}: Ersatz von personenbezogenen Daten durch Pseudonyme, sodass die Identität der Nutzer*innen nicht direkt ermittelt werden kann.
-    \item \textbf{Aggregation}: Zusammenfassung der Daten auf eine Ebene, die keine Rückschlüsse auf Einzelpersonen zulässt.
+\item \textbf{Pseudonymisierung}: Ersatz von personenbezogenen Daten durch Pseudonyme, sodass die Identität der Nutzer*innen nicht direkt ermittelt werden kann.
+\item \textbf{Aggregation}: Zusammenfassung der Daten auf eine Ebene, die keine Rückschlüsse auf Einzelpersonen zulässt.
 \end{itemize}
 %--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
 \section{Umsetzung der Anonymisierung bei eDok}
 Hier wird beschrieben, wie die Anonymisierung der erhobenen UX-Daten in der Anwendung eDok umgesetzt werden kann, um den Datenschutzbestimmungen zu entsprechen.
-
-\chapter{Modellarchitektur}
+\section{Modellarchitektur}
 In diesem Kapitel wird die Architektur des entwickelten Modells beschrieben.
-
-\chapter{Modellimplementierung}
+\section{Modellimplementierung}
 In diesem Kapitel wird die Implementierung des Modells erläutert.
-
-\chapter{Schlussfolgerung und Ausblick}
+\section{Schlussfolgerung und Ausblick}
 In dieser Arbeit wurde ein Modell zur Erfassung der UX für die Anwendung eDok des LWV Hessen entwickelt und implementiert. Zukünftige Arbeiten könnten sich auf die Erweiterung des Modells und die Anwendung auf andere behördliche Anwendungen konzentrieren.
 %--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
-\chapter{Fragen}
+\section{Fragen}
 \begin{itemize}
-    \item \textbf{Zeiterfassung}: Der Timer startet, wenn die Nutzer*innen Funktion X aufrufen, und endet, wenn sie eine andere Funktion Y aufrufen. Die Zeit wird erfasst, wenn die gesamte Zeit an der Aufgabe gearbeitet wird. Ist diese Information nützlich und im Umfang des Projekts?
-    \item \textbf{Timer-Timeout}: Nach welcher Zeitspanne sollte der Timer stoppen, wenn keine Aktivität festgestellt wird?
-    \item \textbf{Zweck des Projekts}: Ziel ist es, die UX zu bestimmen. Warum hat Aufgabe X so viel Zeit in Anspruch genommen? Liegt es an zu viel oder zu kompliziertem Text, komplexen Rechnungen oder einer überladenen Benutzeroberfläche? Sind die Nutzer*innen mit Informationen überfordert? Ist klar, was getan werden muss, um die Aufgabe zu erledigen? Was können wir tun, um Klarheit zu schaffen, ohne zu viel Text zu verwenden?
+\item \textbf{Zeiterfassung}: Der Timer startet, wenn die Nutzer*innen Funktion X aufrufen, und endet, wenn sie eine andere Funktion Y aufrufen. Die Zeit wird erfasst, wenn die gesamte Zeit an der Aufgabe gearbeitet wird. Ist diese Information nützlich und im Umfang des Projekts?
+\item \textbf{Timer-Timeout}: Nach welcher Zeitspanne sollte der Timer stoppen, wenn keine Aktivität festgestellt wird?
+\item \textbf{Zweck des Projekts}: Ziel ist es, die UX zu bestimmen. Warum hat Aufgabe X so viel Zeit in Anspruch genommen? Liegt es an zu viel oder zu kompliziertem Text, komplexen Rechnungen oder einer überladenen
+ \item Benutzeroberfläche? Sind die Nutzer*innen mit Informationen überfordert? Ist klar, was getan werden muss, um die Aufgabe zu erledigen? Was können wir tun, um Klarheit zu schaffen, ohne zu viel Text zu verwenden?
 \end{itemize}
-
-\chapter{Weiterführende Betrachtungen}
+\section{Weiterführende Betrachtungen}
 \begin{itemize}
-    \item \href{https://dl.gi.de/server/api/core/bitstreams/be764ccf-d6c1-45a3-9d7d-00ad897aff3b/content}{Konstruktion eines Fragebogens zur Messung der UX von eDok}
-    \item Berücksichtigung harter Usability-Kriterien sowie weicherer UX-Kriterien.
-    \item Attraktivität, Durchschaubarkeit, Effizienz, Vorhersagbarkeit, Stimulation und Originalität.
-    \item Buttons und Submit-Forms, die nicht aktivierbar sind. Dasselbe gilt für die Frage: Warum gibt es hier keinen Wizard, keine Archivierung, keine Druckausgabe usw.?
-    \item Positive Aspekte: Jede Seite (Komponente) ist selbsterklärend, d.h. jede Seite hat eine spezifische Aufgabe in eDok.
-    \item Unterschied zwischen "selbsterklärend" und "selbstevident".
+\item \href{https://dl.gi.de/server/api/core/bitstreams/be764ccf-d6c1-45a3-9d7d-00ad897aff3b/content}{Konstruktion eines Fragebogens zur Messung der UX von eDok}
+\item Berücksichtigung harter Usability-Kriterien sowie weicherer UX-Kriterien.
+\item Attraktivität, Durchschaubarkeit, Effizienz, Vorhersagbarkeit, Stimulation und Originalität.
+\item Buttons und Submit-Forms, die nicht aktivierbar sind. Dasselbe gilt für die Frage: Warum gibt es hier keinen Wizard, keine Archivierung, keine Druckausgabe usw.?
+\item Positive Aspekte: Jede Seite (Komponente) ist selbsterklärend, d.h. jede Seite hat eine spezifische Aufgabe in eDok.
+\item Unterschied zwischen "selbsterklärend" und "selbstevident".
 \end{itemize}
-
-\chapter{Ergebnisse}
+\section{Ergebnisse}
 \begin{itemize}
-    \item Hinweise auf konkrete Probleme in der Gebrauchstauglichkeit.
+\item Hinweise auf konkrete Probleme in der Gebrauchstauglichkeit.
 \end{itemize}
-
-\chapter{The 7 Factors that Influence UX According to the Book The Basics of UX Design}
+\section{The 7 Factors that Influence UX According to the Book The Basics of UX Design}
 \begin{itemize}
-    \item Useful
-    \item Usable
-    \item Findable
-    \item Credible
-    \item Desirable
-    \item Accessible
-    \item Valuable
+\item Useful
+\item Usable
+\item Findable
+\item Credible
+\item Desirable
+\item Accessible
+\item Valuable
 \end{itemize}
-
 \textbf{The 5 Characteristics of Usable Products}
 \begin{itemize}
-    \item Effectiveness
-    \item Efficiency
-    \item Engagement
-    \item Error Tolerance
-    \item Ease of Learning \parencite{Schmidt2021}
+\item Effectiveness
+\item Efficiency
+\item Engagement
+\item Error Tolerance
+ 
 \end{itemize}
-
-\textbf{UX is a multidisciplinary field that combines aspects of design, psychology, technology, and business.} \cite{Mueller2020}
-
+\textbf{UX is a multidisciplinary field that combines aspects of design, psychology, technology, and business.}  
 \printbibliography
+ 
 
 \end{document}
+
