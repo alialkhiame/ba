@@ -1,0 +1,38 @@
+Kapitel zu "Related Work" oder "Stand der Forschung":
+
+Eine Übersicht über den aktuellen Stand der Forschung im Bereich der UX-Bewertung und -Erfassung könnte hilfreich sein. Dies sollte als eigenes Kapitel nach der Einleitung platziert werden.
+Hier könntest du auf ähnliche Arbeiten und bestehende Modelle zur UX-Erfassung eingehen und deren Vor- und Nachteile besprechen.
+Kapitel zur "Methode" oder "Methodik":
+
+Ein separates Kapitel, das die Methodik beschreibt, also wie genau das Modell entwickelt, getestet und bewertet wurde. Es sollte detailliert auf die Methodenauswahl und das Vorgehen zur Evaluation der UX eingehen.
+Detaillierte Beschreibung des Modells und seiner Komponenten:
+
+Eine genauere Erläuterung der Modellarchitektur. Hier könnten beispielsweise Diagramme zur Systemarchitektur (z.B. UML-Diagramme, Datenflussdiagramme) ergänzt werden.
+Beschreibe, wie die verschiedenen Datenpunkte erfasst, verarbeitet und ausgewertet werden.
+Kapitel zur "Evaluation und Ergebnisse":
+
+Ein detailliertes Kapitel, in dem die Ergebnisse der UX-Bewertung präsentiert und diskutiert werden.
+Wie wurden die Daten ausgewertet? Gibt es statistische Analysen, Visualisierungen oder andere Resultate, die dargestellt werden können?
+Vergleich mit bestehenden UX-Bewertungsmodellen:
+
+Wie schneidet das entwickelte Modell im Vergleich zu anderen Methoden ab? Was sind die Vorteile, was sind die Einschränkungen?
+Technische Implementierung und Softwareumsetzung:
+
+Genaue Beschreibung, wie die technische Umsetzung des Modells in eDok aussieht. Eventuell ist hier eine grafische Darstellung der Softwarearchitektur sinnvoll.
+Ethik und Datenschutz:
+
+Ein gesondertes Kapitel, das detailliert auf ethische Implikationen der UX-Erfassung eingeht.
+Ist die Anonymisierung ausreichend? Welche weiteren Maßnahmen werden getroffen, um den Datenschutz zu gewährleisten?
+Zusammenfassung und Fazit:
+
+Ein umfassendes Kapitel zur Zusammenfassung der Ergebnisse, das die Kernpunkte der Arbeit hervorhebt und in den Kontext der Zielsetzung und Forschungsfragen stellt.
+Abbildungen und Tabellen:
+
+Es gibt einige Hinweise auf Abbildungen (z. B. "siehe \ref{fig:1}"), aber diese sollten überprüft und gegebenenfalls ergänzt werden.
+Falls bereits Diagramme vorhanden sind, sollten diese korrekt referenziert und beschrieben werden.
+Referenzen und Literaturverweise:
+
+Die Referenzen scheinen vorhanden zu sein, aber es fehlen einige Verweise im Text. Überprüfe, ob alle genannten Werke im Literaturverzeichnis auftauchen und alle referenzierten Quellen korrekt verlinkt sind.
+Fehlende Kapitelstrukturierung in den Methodenkapiteln:
+
+Die Kapitel "Modellarchitektur", "Modellimplementierung" und "Erfassung der UX" könnten weiter untergliedert werden, um spezifische Aspekte der Architektur, der Implementierung und der UX-Erfassung ausführlicher zu beschreiben.
