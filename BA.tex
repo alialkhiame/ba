@@ -140,27 +140,53 @@
 \acro{SUS}{System Usability Scale}
 \acro{UEQ}{User Experience Questionnaire}
 \acro{UI}{User Interface}
-\acro{UI}{eDok}{elektronische Dokumentenerstellung}
+\acro{eDok}{elektronische Dokumentenerstellung}
+\acro{HCI}{Humin Computer Interaction}
 \end{acronym}
 %--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
 \section{Abstract}
-   Diese Arbeit widmet sich der Entwicklung und Implementierung eines Modells zur umfassenden Erfassung und Bewertung der User Experience (UX) am Beispiel der Anwendung eDok des Landeswohlfahrtsverbands Hessen (LWV Hessen). Angesichts der zunehmenden Bedeutung von UX
-in der Softwareentwicklung wird zunächst das Konzept der UX detailliert erläutert, gefolgt von einer kritischen Analyse gängiger Methoden zur UX-Erfassung. Im Mittelpunkt steht die Entwicklung eines Modells, das es ermöglicht, spezifische UX-Aspekte systematisch zu erfassen und zu bewerten. 
-Das Modell zielt darauf ab, eine automatisierte und kontinuierliche Sammlung relevanter Daten sicherzustellen, um daraus fundierte Erkenntnisse über die Nutzererfahrung abzuleiten. Ein besonderer Schwerpunkt liegt dabei auf der Analyse, wie sich die UX durch fortlaufende Weiterentwicklungen und funktionale Erweiterungen der Software verändert.
- Zusätzlich wird die technische Umsetzung des Modells beschrieben, einschließlich der Softwarearchitektur und der Implementierung von Mechanismen zur Anonymisierung der erfassten Daten, um den Schutz der Privatsphäre der Nutzer*innen zu gewährleisten. Diese Anonymisierung ist essenziell, um ethischen Standards und datenschutzrechtlichen 
-Vorgaben zu entsprechen. Die Arbeit schließt mit einer umfassenden Bewertung der Ergebnisse und gibt einen Ausblick auf mögliche Weiterentwicklungen des Modells. Hierbei wird insbesondere auf die Möglichkeit eingegangen, das Modell auf andere behördliche Anwendungen zu übertragen und damit eine breitere Anwendungsperspektive zu eröffnen.
+  Diese Arbeit widmet sich der Entwicklung und Implementierung eines Modells zur umfassenden Erfassung und Bewertung der User Experience (UX) am Beispiel der Anwendung eDok des Landeswohlfahrtsverbands Hessen (LWV Hessen).
+
+Da die Bewertung von UX in der Literatur meist durch Surveys, Umfragen und Nutzerbeobachtungen erfolgt, besteht die erste Herausforderung dieser Arbeit darin, Methoden zu implementieren, die es ermöglichen, die UX anhand von Daten zu bewerten, die aus der produktiven Nutzung der Anwendung stammen.
+
+Um dies zu erreichen, werden die messbaren UX-Eigenschaften und -Dimensionen eingehend untersucht, um zu bestimmen, welche Daten sich am besten eignen, wie diese Daten gesammelt werden können und wie die gesammelten Daten zu interpretieren sind.
+
+Innerhalb der Anwendung wurden dazu ein Feedback-Loop und ein Online-Feedback-Fragebogen integriert, über die die Nutzer jederzeit ihr Feedback abgeben können. Zudem werden weitere Faktoren beobachtet, um ein umfassendes Bild der UX zu erhalten.
+
+Zu Beginn der Arbeit wird das Konzept der UX detailliert erläutert, gefolgt von einer kritischen Analyse gängiger Methoden zur UX-Erfassung. Im Mittelpunkt steht die Entwicklung eines Modells, das es ermöglicht, spezifische UX-Aspekte systematisch zu erfassen und zu bewerten.
+
+Das entwickelte Modell zielt darauf ab, eine automatisierte und kontinuierliche Sammlung relevanter Daten sicherzustellen, um daraus fundierte Erkenntnisse über die Nutzererfahrung abzuleiten. Ein besonderer Schwerpunkt liegt dabei auf der Analyse, wie sich die UX durch fortlaufende Weiterentwicklungen und funktionale Erweiterungen der Software verändert.
+
+Des Weiteren wird die technische Umsetzung des Modells beschrieben, einschließlich der Softwarearchitektur und der Implementierung von Mechanismen zur Anonymisierung der erfassten Daten, um den Schutz der Privatsphäre der Nutzer zu gewährleisten. Diese Anonymisierung ist essenziell, um ethischen Standards und datenschutzrechtlichen Vorgaben zu entsprechen.
+
+Die Arbeit schließt mit einer umfassenden Bewertung der Ergebnisse und gibt einen Ausblick auf mögliche Weiterentwicklungen des Modells. Hierbei wird insbesondere auf die Möglichkeit eingegangen, das Modell auf andere behördliche Anwendungen zu übertragen und damit eine breitere Anwendungsperspektive zu eröffnen.
+
 %--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
 \section{Einleitung}
-UX (User Experience) ist ein fortlaufendes Forschungsfeld im Bereich der Mensch-Computer-Interaktion (HCI). Es begann an Bedeutung zu gewinnen, als Anwendungen immer komplexer und anspruchsvoller wurden. Mit der zunehmenden Verbreitung und Nutzung des Internets und der digitalen Welt wird UX (User Experience) immer wichtiger. Da immer mehr Menschen digitale Produkte und Dienste nutzen, steigt die Bedeutung von Benutzerfreundlichkeit und einem positiven Nutzererlebnis. Produkte, die sich durch eine intuitive Bedienung und ein ansprechendes Design auszeichnen, setzen sich im Wettbewerb durch und steigern die Nutzerzufriedenheit nachhaltig.
+Im Bereich der Human-Computer Interaction (HCI) gibt es zwei unterschiedliche Ansätze im Bereich der User Experience (UX): das UX-Design und das User-Centered Design\cite{glanznig}. Letzteres beschäftigt sich mit der Frage, wie ein hochwertiges Produkt gestaltet werden kann, wobei dieser Aspekt jedoch nicht Teil dieser Arbeit ist. Im Fokus steht vielmehr, wie die UX erfasst und gemessen werden kann.\\
+In der Literaturrecherche Review hat sich herausgestellt, dass UX  innerhalb einer Anwendung oder sogar für Produkte und Systeme meistens durch Fragebögen oder Nutzerbefragungen bewertet wird. Dabei zeigte sich, dass sich keine der untersuchten Arbeiten mit der automatisierten Bewertung der UX beschäftigt hat.
 
-Heutzutage gibt es oft mehrere Softwarelösungen für ein digitales oder reales Problem. Aus diesem Grund spielt UX und Benutzerfreundlichkeit eine entscheidende Rolle bei der Auswahl eines Produkts. Ein gut gestaltetes Nutzererlebnis kann den Unterschied ausmachen, ob sich Benutzer für eine bestimmte Lösung entscheiden oder zu einem anderen Produkt wechseln.
+Es gibt zwar in der Praxis Dienstleistungen, die bestimmte Merkmale der Usability messen und eigenständig bewerten können, jedoch lässt sich die gesamte UX dadurch nicht vollständig erfassen. Eine besondere Herausforderung bei der Bewertung der UX ist die emotionale Ebene. Emotionen durch Zahlen auszudrücken, ohne dabei den Denkprozess der Nutzer oder ihre Mimik zu berücksichtigen, ist durch automatisierte Tools kaum umsetzbar.
 
-Die meisten Experten und wissenschaftlichen Arbeiten sind sich einig, dass UX (User Experience) noch ein relativ junges Forschungsfeld ist. Aufgrund der dynamischen und subjektiven Natur des Themas konnte bisher keine einheitliche Definition festgelegt werden. Dies bietet jedoch den Vorteil, das Thema aus verschiedenen Blickwinkeln betrachten zu können und unterschiedliche Meinungen zu berücksichtigen. Dadurch entsteht ein breiteres und tieferes Verständnis für das Konzept der UX, was der weiteren Entwicklung der Disziplin zugutekommt.
+In dieser Arbeit wurde auf die Analyse von Mimiken der Nutzer verzichtet. Stattdessen wurden den Nutzern spezifische Aufgaben zur Verfügung gestellt, die über eine Matrix gewichtet wurden, um eine automatisierte Feedback der UX zu implementieren. Da Usability ein Teil der UX ist, der eher pragmatisch ausgerichtet ist und als „Engineer UX“ bezeichnet wird, ist es in gewisser Weise einfacher, diesen Aspekt zu automatisieren.
+
+Das entwickelte Modell hat seine Stärken und Schwächen, die im Detail analysiert werden. Seine Qualität hängt stark von den gesammelten Daten und deren Auswertung ab. Die UX-Bewertung wurde ausschließlich anhand des Nutzerfeedbacks durchgeführt, wobei die Vorerfahrungen und Motivation der Nutzer eine große Rolle spielten – wie es auch bei langfristigen Feldstudien der Fall ist.
+
+Ein Vorteil dieses Modells ist, dass es einen langfristigen Überblick über die UX verschafft und den Frust der Nutzer sichtbar macht. Wenn es Probleme gibt, wissen die Verantwortlichen, wo sie eingreifen müssen. Zudem kann überprüft werden, ob Korrekturen ausreichend waren oder nicht. In diesem Sinne unterstützt das Modell ein nutzerzentriertes Design, bei dem die Wünsche und Beschwerden der Nutzer in den Entwicklungsprozess einfließen.
+
+
+
+UX ist ein fortlaufendes Forschungsfeld im Bereich der HCI. Es begann an Bedeutung zu gewinnen, als Anwendungen immer komplexer und anspruchsvoller wurden.\newline
+
+Da immer mehr Menschen digitale Produkte und Dienste nutzen, steigt die Bedeutung von Benutzerfreundlichkeit und einem positiven Nutzererlebnis. Produkte, die sich durch eine intuitive Bedienung und ein ansprechendes Design auszeichnen, setzen sich im Wettbewerb durch und steigern die Nutzerzufriedenheit nachhaltig.\newline
+
+Heutzutage gibt es oft mehrere Softwarelösungen für ein digitales oder reales Problem. Aus diesem Grund spielt UX und Usabilty eine entscheidende Rolle bei der Auswahl eines Produkts. Ein gut gestaltetes Nutzererlebnis kann den Unterschied ausmachen, ob sich Benutzer für eine bestimmte Lösung entscheiden oder zu einem anderen Produkt wechseln.\newline
+
+Die meisten Experten und wissenschaftlichen Arbeiten sind sich einig, dass UX noch ein relativ junges Forschungsfeld ist. Aufgrund der dynamischen und subjektiven Natur des Themas konnte bisher keine einheitliche Definition festgelegt werden. Dies bietet jedoch den Vorteil, das Thema aus verschiedenen Blickwinkeln betrachten zu können und unterschiedliche Meinungen zu berücksichtigen. Dadurch entsteht ein breiteres und tieferes Verständnis für das Konzept der UX, was der weiteren Entwicklung der Disziplin zugutekommt.\newline
 Auf der Kehrseite erschweren unterschiedliche Hintergründe und Fachvokabulare den Fortschritt.\cite{glanznig}
+ 
 
-UX/UI tretten in vielen Jobportalen und auf verschiedenen Social Media-Plattformen auf. Auf den ersten Blick klingt er oft nach reinen Frontend- oder Design-Aktivitäten. Doch dahinter verbirgt sich weit mehr, als man zunächst annehmen könnte. UX/UI umfasst nicht nur das visuelle Design, sondern auch umfassende Überlegungen zur Benutzerfreundlichkeit, zum Interaktionsdesign und zum gesamten Nutzererlebnis – Aspekte, die für den Erfolg eines Produkts von entscheidender Bedeutung sind.
-
-Hassenzahl und Tractinsky haben in Ihre Arbeit User experience – a research agenda UX  erlautert, dass \say{User Experience (UX) ist ein interessantes Phänomen: Es wurde von der HCI-Community schnell angenommen, aber oft kritisiert, da es vage und schwer fassbar ist. Der Begriff umfasst verschiedene Bedeutungen (Forlizzi und Battarbee 2004), von klassischer Usability bis hin zu Schönheit, hedonischen, affektiven und erfahrungsbasierten Aspekten der Technologienutzung\protect \footnote{Eigene Übersetzung}.}\cite{research}
+Hassenzahl und Tractinsky haben in Ihre Arbeit User experience – a research agenda UX  erlautert, dass \say{User Experience ist ein interessantes Phänomen: Es wurde von der HCI-Community schnell angenommen, aber oft kritisiert, da es vage und schwer fassbar ist. Der Begriff umfasst verschiedene Bedeutungen (Forlizzi und Battarbee 2004), von klassischer Usability bis hin zu Schönheit, hedonischen, affektiven und erfahrungsbasierten Aspekten der Technologienutzung\protect \footnote{Eigene Übersetzung}.}\cite{research}\newline
 
 
 
@@ -169,7 +195,7 @@ Hassenzahl und Tractinsky haben in Ihre Arbeit User experience – a research ag
 
 Die Nutzung des Internets ist in den letzten Jahren zu einem festen Bestandteil des Alltags der deutschsprachigen Bevölkerung geworden. Laut der ARD/ZDF-Onlinestudie \cite{ard} verwenden mittlerweile rund 90 Prozent der Menschen ab 14 Jahren regelmäßig das Internet, wobei die mediale Internetnutzung im Jahr 2019 besonders stark zugenommen hat.
 
-Diese Entwicklung unterstreicht die zunehmende Relevanz digitaler Medien und stellt neue Anforderungen an die Gestaltung von Nutzererlebnissen (User Experience, UX). Es wird zunehmend wichtiger, digitale Inhalte und Services so zu gestalten, dass sie den sich wandelnden Ansprüchen der Nutzer gerecht werden. UX spielt eine zentrale Rolle bei der Bewertung und Optimierung von Softwareanwendungen. Dies gilt insbesondere für behördliche Anwendungen wie eDok, das vom LWV Hessen und anderen Institutionen genutzt wird. Hier ist es entscheidend, die UX zu erfassen und zu verbessern, um die Benutzerfreundlichkeit und Effizienz der Anwendung zu steigern.
+Diese Entwicklung unterstreicht die zunehmende Relevanz digitaler Medien und stellt neue Anforderungen an die Gestaltung von Nutzererlebnissen. Es wird zunehmend wichtiger, digitale Inhalte und Services so zu gestalten, dass sie den sich wandelnden Ansprüchen der Nutzer gerecht werden. UX spielt eine zentrale Rolle bei der Bewertung und Optimierung von Softwareanwendungen. Dies gilt insbesondere für behördliche Anwendungen wie eDok, das vom LWV Hessen und anderen Institutionen genutzt wird. Hier ist es entscheidend, die UX zu erfassen und zu verbessern, um die Benutzerfreundlichkeit und Effizienz der Anwendung zu steigern.
 
 Eine besondere Herausforderung besteht darin, Bereiche innerhalb der Anwendung zu identifizieren, die ein verbessertes Design oder zusätzliche Informationen erfordern. Oft sind Nutzer unsicher, wie sie ihre Ziele innerhalb der Anwendung erreichen können oder fühlen sich von der Informationsmenge überfordert. Hier setzt das entwickelte Modell an, das die UX automatisiert erfasst und eine fundierte Analyse ermöglicht. So können gezielt Schlüsselaspekte identifiziert werden, die optimiert werden sollten, um die Nutzerzufriedenheit zu steigern.
 
@@ -191,7 +217,7 @@ Das Ziel dieser Arbeit ist es, zentrale Elemente der UX zu identifizieren, rausf
 Ein Modell zu entwickeln, das diese Elemente darstellt, um die UX innerhalb einer Anwendung erfassen und bewerten zu können. Es soll die Vorteile eines solchen Modells aufzeigen.
 Die gesammelten Daten sollen anonymisiert werden, und die Ergebnisse des Modells sollen darüber Auskunft geben, wie sich die UX im Verlauf der Anwendungsentwicklung verändert hat. Zudem soll das Modell die UX an verschiedenen Stellen innerhalb der Anwendung erfassen und bewerten können. Entwickler*innen erhalten die Möglichkeit, zusätzliche Stellen zu messen oder solche zu entfernen, die mit der Zeit an Relevanz verloren haben.
 \subsection{Fragestellung}
-Welche spezifischen, anonymisierten Daten sind erforderlich, um die User Experience (UX) präzise und systematisch zu erfassen? Wie lassen sich diese Daten über Zeiträume hinweg analysieren, um dynamische Veränderungen zu erkennen und gezielte Optimierungsmöglichkeiten der Anwendung zu erschließen?
+Welche spezifischen, anonymisierten Daten sind erforderlich, um die UX präzise und systematisch zu erfassen? Wie lassen sich diese Daten über Zeiträume hinweg analysieren, um dynamische Veränderungen zu erkennen und gezielte Optimierungsmöglichkeiten der Anwendung zu erschließen?
 
 \section{Über der Landeswohlfahrtsverband Hessen}
 Der Landeswohlfahrtsverband Hessen ist eine zentrale Organisation in Hessen, die sich für die soziale Integration und Unterstützung von Menschen mit Behinderungen einsetzt. Der Verband ist überörtlicher Träger der Eingliederungshilfe und fördert unter anderem in den Bereichen Wohnen, Bildung, Mobilität und Arbeit. Mit der Umsetzung des Bundesteilhabegesetzes und weiteren Programmen wie dem Persönlichen Budget  und dem Budget für Arbeit" unterstützt der LWV Hessen die selbstbestimmte Lebensführung und die gesellschaftliche Teilhabe der Betroffenen. Der LWV unterhält zudem Förderangebote für Kinder und Jugendliche, insbesondere für solche mit geistigen, emotionalen oder körperlichen Einschränkungen. Hierzu zählen Frühberatungsstellen, Förderschulen und Angebote zur inklusiven Beschulung. Zusätzlich ist der Verband Ansprechpartner für Menschen, die Leistungen des Sozialen Entschädigungsrechts benötigen.\subsection{Das Anlei-service GmbH}
@@ -205,55 +231,39 @@ Ziel und Vision von eDok ist es, eine universelle und generelle Schnittstelle f�
 \section{Einführung in das Thema UX}
  
 \subsection{was ist UX}
-Die User Experience wurde in verschiedenen Büchern, von unterschiedlichen Autoren und Organisationen auf unterschiedliche Weise definiert. \cite{GOISTAI}
+UX ist ein Teilbereich der HCI, der in den frühen 1990er Jahren an Bedeutung gewann \cite{glanznig}. Mit dem Aufkommen neuer Technologien und der zunehmenden Verbreitung digitaler Produkte rückte der Fokus verstärkt auf die Benutzererfahrung und deren Qualität. UX konzentriert sich auf die Interaktion zwischen Mensch und System und zielt darauf ab, Produkte und Anwendungen so zu gestalten, dass sie nicht nur funktional sind, sondern auch emotional ansprechend und benutzerfreundlich.
+Die Definition von UX  wurde in der Literatur von verschiedenen Autoren und Organisationen auf vielfältige Weise beschrieben \cite{GOISTAI}.\\
 
-In der Arbeit  User experience - a research agenda haben Hassenzahl und Tractinsky\cite{research} erlautert dass HCI  Wessenschaftlicharbeit sich haupsichlich mit Verhaltensziele in der Arbeitsumgebung beschäftig hat, das wurde aber später herausgefordert z.b.: 
 
-\say{In einem frühen Versuch, UX zu definieren, betonte Alben (1996) Schönheit (d.h. Ästhetik) als einen wichtigen Qualitätsaspekt von Technologie\protect \footnote{Eigene Übersetzung}.}\cite{research}
-, Hassenzahl (2003)   argumienteiet , dass es zwei Aspekten, die für ein interaktiven Produkt betrachtet sein können, ein sind Instromintale Aspekte(Z.B Usabilty Testing) und nicht-instrumntale(hedonisch)  Aspekte.
-Die Forsching in der Bereich hat in den Neunzige begonnen innerhalb der Gebiet HCI, da es noch nicht für UX ein Defintion gibt, wo alle Forschern sich einigen konnten, können wir 
-verschieden sichtweisen und meinungen finden\cite{glanznig}.
+In ihrer Arbeit User Experience – A Research Agenda erläutern Hassenzahl und Tractinsky \cite{research}, dass sich die frühe Forsdchung im Bereich der HCI hauptsächlich auf Verhaltensziele\footnote{Ziele, die Nutzer durch ihr Verhalten erreichen, z.B. die erfolgreiche Bedienung eines Systems in einem Arbeitskontext.} in Arbeitsumgebungen konzentrierte. Dieser Fokus wurde jedoch später durch alternative Ansätze infrage gestellt.\\
+In einem frühen Versuch  UX zu definieren, betonte Alben (1996) die Bedeutung von Ästhetik als wesentlichem Qualitätsaspekt von Technologie\footnote{Eigene Übersetzung}\cite{research}.
 
-Die Nielsen Norman Group definiert User Experience (UX) als die Gesamtheit aller Aspekte der Interaktion des Endnutzers mit dem Unternehmen, seinen Dienstleistungen und Produkten. Sie betonen, dass eine herausragende User Experience nicht nur die genauen Bedürfnisse des Kunden erfüllt, 
-sondern auch Einfachheit und Eleganz bietet, die das Produkt angenehm in der Nutzung und im Besitz machen. Außerdem wird hervorgehoben, dass eine qualitativ hochwertige UX eine nahtlose Integration mehrerer Disziplinen erfordert, darunter Ingenieurwesen, Marketing, Grafik- und Industriedesign sowie Interface-Design \cite{nngroup}.
-ISO 9241-210:2019 UX-Definition: „Die User Experience umfasst sämtliche Wahrnehmungen und Reaktionen von Nutzern, die durch die tatsächliche oder erwartete Nutzung eines Systems, Produkts oder einer Dienstleistung hervorgerufen werden.“
-\cite{ISO}
+Hassenzahl  argumentierte, dass interaktive Produkte aus zwei Perspektiven betrachtet werden können: den instrumentellen Aspekten (z.,B. Usability Testing) und den nicht-instrumentellen (hedonischen) Aspekten, die sich auf das emotionale und ästhetische Erleben der Nutzer beziehen \cite{hassenzahl2003}.
 
-Alle Definitionen stimmen darin überein, dass die UX das ganzheitliche Erleben eines Nutzers mit einem Produkt, einer Dienstleistung oder einem System umfasst und Faktoren wie Benutzerfreundlichkeit, Emotionen und Zufriedenheit berücksichtigt.
-Die Literatur ist sich weitgehend einig darüber, dass die User Experience (UX) aus verschiedenen Dimensionen besteht. Häufig werden dabei insbesondere die Benutzerfreundlichkeit (Usability), die inhaltliche Relevanz, die ästhetische Wahrnehmung sowie das Vertrauen der Nutzer hervorgehoben \cite{toolbox}.
- Diese Dimensionen spielen eine zentrale Rolle bei der Gestaltung positiver Nutzererlebnisse und sind entscheidend dafür, wie effektiv und zufriedenstellend eine Anwendung wahrgenommen wird.
+ 
 
-in dem Paper "Towards Practical User Experience Evaluation Methods" \cite{evaluationmethods} wurde rausgestellt, dass die Forschung im Bereich User Experience (UX) in der akademischen Gemeinschaft eine Vielzahl an Modellen und Frameworks hervorgebracht hat. 
-Und diese Modelle adressieren die zentralen Herausforderungen von UX: ihre subjektive, stark kontextabhängige und dynamische Natur sowie die Berücksichtigung sowohl pragmatischer als auch hedonischer Faktoren, die das Nutzererlebnis beeinflussen. Gleichzeitig wird der Begriff UX auch zunehmend in der Industrie übernommen,
- jedoch beruhen die Praktiken in der Produktentwicklung nach wie vor weitgehend auf traditionellen Methoden der Usability. In diesem Beitrag wird die Notwendigkeit praxisnaher UX-Bewertungsmethoden und deren Anwendung in der Produktentwicklung in der Industrie diskutiert. Wir kommen zu dem Schluss, dass trotz der Tatsache,
- dass die Definition von UX noch weiter ausgearbeitet werden muss, viele Methoden aus der Mensch-Computer-Interaktion (HCI) und anderen Disziplinen an die spezifischen Aspekte der UX-Bewertung angepasst werden können.  \cite{evaluationmethods}
+Die Nielsen Norman Group definiert UX als die Gesamtheit aller Aspekte der Interaktion eines Endnutzers mit einem Unternehmen, seinen Dienstleistungen und Produkten. Hervorgehoben wird, dass herausragende UX nicht nur die spezifischen Bedürfnisse des Nutzers erfüllt, sondern auch durch Einfachheit und Eleganz überzeugt, sodass die Nutzung und der Besitz des Produkts als angenehm empfunden werden. Zudem wird betont, dass eine qualitativ hochwertige UX eine nahtlose Integration verschiedener Disziplinen erfordert, darunter Ingenieurwesen, Marketing, Grafik- und Industriedesign sowie Interface-Design \cite{nngroup}.
 
-laut \cite{GOISTAI} kann man UX mit verschiedene Prespektiven sehen sieh \ref{fig:1}
-\begin{figure}[b!]
-\centering
- \includegraphics[width=15cm]{UXprespektiven.png}
-		\caption{UX prespektiven laut \cite{GOISTAI}}
-		\label{fig:1}
-\end{figure}
+Die ISO 9241-210:2019 beschreibt UX als „sämtliche Wahrnehmungen und Reaktionen von Nutzern, die durch die tatsächliche oder erwartete Nutzung eines Systems, Produkts oder einer Dienstleistung hervorgerufen werden“ \cite{ISO}.
+
+Ungeachtet der unterschiedlichen Definitionen herrscht Einigkeit darüber, dass UX das ganzheitliche Erlebnis eines Nutzers mit einem Produkt, einer Dienstleistung oder einem System umfasst. Dabei spielen Faktoren wie Benutzerfreundlichkeit, Emotionen und Zufriedenheit eine zentrale Rolle. In der Literatur werden häufig mehrere Dimensionen von UX hervorgehoben, insbesondere Usability, ästhetische Wahrnehmung, inhaltliche Relevanz und das Vertrauen der Nutzer \cite{toolbox}. Diese Dimensionen sind entscheidend dafür, wie effektiv und zufriedenstellend eine Anwendung wahrgenommen wird und tragen wesentlich zur Gestaltung positiver Nutzererlebnisse bei.
+
+In dem Paper Towards Practical User Experience Evaluation Methods \cite{evaluationmethods} wird darauf hingewiesen, dass die UX-Forschung eine Vielzahl von Modellen und Frameworks entwickelt hat. Diese Modelle adressieren die zentralen Herausforderungen der UX, wie ihre subjektive, kontextabhängige und dynamische Natur sowie die Balance zwischen pragmatischen und hedonischen Aspekten des Nutzererlebnisses. Gleichzeitig wird betont, dass UX zunehmend in der Industrie übernommen wird, die Produktentwicklung jedoch noch immer stark auf traditionellen Usability-Methoden basiert. Die Arbeit unterstreicht die Notwendigkeit praxisnaher UX-Bewertungsmethoden für die Produktentwicklung in der Industrie. Es wird der Schluss gezogen, dass, obwohl die Definition von UX noch weiter verfeinert werden muss, viele Methoden aus der HCI und anderen Disziplinen an die spezifischen Anforderungen der UX-Bewertung angepasst werden können \cite{evaluationmethods}.
 
 
 
-\subsection{Bewertung von User Experience (UX)}
 
-Laut \cite{GOISTAI} ist die bloße Messung der Anzahl von Fehlern, Klicks und der benötigten Zeit nicht ausreichend, um die User Experience (UX) adäquat zu bewerten. Es ist entscheidend zu verstehen, wie sich der Nutzer vor, während und nach der Verwendung der Anwendung oder des Produkts fühlt.
-durch die Entwicklung von Webanwendung und die Enwicklung von Gaming Indusrie und und der Aufstieg des allgegenwärtigen Computings ührte zu einem Paradigmenwechsel von Effizienz hin zur Zufriedenheit der Nutzer und legte den Grundstein für die Etablierung von User Experience (UX) als eigenständigem Konzept \cite{glanznig}
-\cite{Virpi} argumentiert, dass objektive Messungen wie Zeitmessung oder Fehleraufzeichnung nicht geeignet sind, um UX zu bewerten. Stattdessen sollten auch die Emotionen, Erwartungen und die Motivation des Nutzers berücksichtigt werden. UX ist zudem stark kontextabhängig und variiert je nach Einsatzgebiet und Zielgruppe.
 
-In dem genannten Papier werden die Methoden zur UX-Bewertung nach ihrer Ausführungsart kategorisiert. Die für diese Arbeit relevante Methode ist die „Field Study“, bei der UX während eines Usability-Tests erfasst wird. Hierbei äußern die Nutzer laut denkend ihre Gedanken, und ihre Mimik wird dokumentiert, was für ein Modell nicht üblich ist. Der Usability-Test wird erweitert, um einen ganzheitlicheren Überblick über die UX zu erhalten.
+Laut \cite{GOISTAI} reicht die bloße Messung von Fehlern, Klicks oder der benötigten Zeit (Usabilty) nicht aus, um die User Experience (UX) angemessen zu bewerten. Entscheidend ist es, das Erleben des Nutzers vor, während und nach der Verwendung der Anwendung oder des Produkts zu verstehen. Die Entwicklung von Webanwendungen, die Gaming-Industrie sowie der Aufstieg des allgegenwärtigen Computings führten zu einem Paradigmenwechsel, bei dem der Fokus von der reinen Effizienz hin zur Zufriedenheit der Nutzer verlagerte. Dies legte den Grundstein für die Etablierung von UX als eigenständiges Konzept \cite{glanznig}.
 
-Das vorgestellte Modell speichert zwar funktionale Daten wie Fehler- und Klickzähler, empfiehlt jedoch gemäß \cite{Virpi} zusätzlich eine Methode wie die Field Study in einer kontrollierten Umgebung. Somit wird nicht nur die Usability gemessen, sondern es wird auch ein Überblick über die emotionale Dimension der UX geschaffen.
-
-Daher wurden in dieser Arbeit Methoden und Theorien zur Bewertung der Usability implementiert, welche die Anforderungen abdecken. Ergänzend dazu wurden Feedback-Pools für Seiten und Fehlermeldungen eingeführt, die optional auch Kommentare enthalten. Diese Erweiterungen ermöglichen eine detailliertere Erfassung der UX-Schnittstellen während der Usability-Tests.
-
-Ein weiteres Ziel dieser Arbeit ist die Entwicklung eines Usability- und UX-Scores, der den Verantwortlichen eine aggregierte Übersicht bietet.
-
+\cite{Virpi} argumentiert, dass objektive Messungen, wie die Zeitmessung oder die Erfassung von Fehlern, allein nicht ausreichen, um UX umfassend zu bewerten. Vielmehr sollten auch Emotionen, Erwartungen und die Motivation der Nutzer einbezogen werden. Darüber hinaus ist UX stark kontextabhängig und variiert je nach Einsatzgebiet und Zielgruppe.\\
+Zusammenfassend lässt sich sagen, dass UX unterschiedlich interpretiert wurde, jedoch sind sich die meisten Experten einig, dass Usability ein wesentlicher Teil der UX ist. Dennoch geht UX weit über die reine Usability hinaus. Insbesondere die nicht-instrumentellen und hedonischen Aspekte der UX, wie ästhetische Gestaltung, emotionale Reaktionen und das allgemeine Wohlbefinden der Nutzer während der Interaktion, spielen eine zentrale Rolle. UX umfasst somit sowohl funktionale als auch emotionale Dimensionen der Nutzererfahrung.
 \subsection{Erweiterung der Usability-Bewertung zur UX-Analyse}
+ 
+Um geeignete Daten für die Bewertung der UX zu sammeln, müssen zunächst die relevanten Bereiche der UX genauer analysiert werden. Es gilt zu entscheiden, welche Daten sich zur Bewertung der UX eignen und welche sich während der unkontrollierten, produktiven Nutzung der Anwendung erfassen lassen.
 
+In der Literatur wird oft darauf hingewiesen, dass die Wurzeln der UX in der Usability liegen. Dies war der Ausgangspunkt, doch im Laufe der Zeit wurden weitere Faktoren als wichtig erkannt, wie etwa die ästhetische Gestaltung der Anwendung und die emotionale Ebene der Nutzererfahrung. Diese zusätzlichen Aspekte spielen ebenfalls eine wesentliche Rolle bei der umfassenden Bewertung der UX.
+ 
 Um die Usability-Bewertung zu erweitern und die UX detaillierter darzustellen, werden folgende Daten erfasst:
 
 \begin{itemize} \item Benutzerfeedback während der Nutzung (Survey). \item Feedback zu Fehlermeldungen (verständlich, nicht verständlich). \item Bewertung einzelner Prozessschritte zur Zufriedenheitsermittlung (Skala: sehr gut, gut, neutral, unzufrieden, sehr schlecht). \end{itemize}
@@ -270,6 +280,7 @@ UX-Metriken ermöglichen eine Bewertung der Interaktion zwischen Nutzer und Prod
  (good) usability is a precondition
 for (good) UX.\cite{glanznig}
 Usability bezieht sich auf die funktionalen Aspekte eines Produkts und beschreibt, wie effektiv und produktiv sich das Produkt nutzen lässt. Viele Experten sehen Usability als Teil der UX \cite{GOISTAI}. Während sich Usability auf die Fähigkeit des Nutzers konzentriert, ein System erfolgreich zu nutzen, umfasst UX auch die gesamte Nutzererfahrung und die dabei entstehenden Emotionen.
+
 Die Nielsen Norman Group definiert \cite{nngroup} Usability als ein Qualitätsmerkmal, das bewertet, wie einfach und angenehm eine Benutzeroberfläche zu nutzen ist. Sie umfasst fünf Hauptkomponenten:
 \begin{itemize}
     \item \textbf{Erlernbarkeit}: Wie leicht können Benutzer grundlegende Aufgaben beim ersten Mal ausführen?
@@ -278,7 +289,7 @@ Die Nielsen Norman Group definiert \cite{nngroup} Usability als ein Qualitätsme
     \item \textbf{Fehlerrate}: Wie viele Fehler machen Benutzer, wie schwerwiegend sind diese und wie leicht können sie sich von ihnen erholen?
     \item \textbf{Zufriedenheit}: Wie angenehm ist die Nutzung der Benutzeroberfläche?
 \end{itemize}
-Die ISO 9241-210 (2010) definiert die Benutzererfahrung (User Experience, UX) und die Gebrauchstauglichkeit (Usability) klar voneinander ab. Während UX sich auf die gesamte Erfahrung und Zufriedenheit der Nutzer bei der Nutzung eines Produkts konzentriert, liegt der Fokus von Usability auf der Effizienz, Effektivität und dem Zufriedenheitsgrad bei der Erledigung konkreter Aufgaben.
+Die ISO 9241-210 (2010) definiert die Benutzererfahrung UX und die Gebrauchstauglichkeit (Usability) klar voneinander ab. Während UX sich auf die gesamte Erfahrung und Zufriedenheit der Nutzer bei der Nutzung eines Produkts konzentriert, liegt der Fokus von Usability auf der Effizienz, Effektivität und dem Zufriedenheitsgrad bei der Erledigung konkreter Aufgaben.
 
 Im Kontext einer Webanwendung wie eDok liegt der Schwerpunkt primär auf der Dokumentenerstellung. Es ist wichtig, den Nutzern eine Möglichkeit zu bieten, schnell und effizient Dokumente mit einer gewissen Fehlertoleranz zu erstellen und zu bearbeiten. Im Anschluss daran stellt sich die Frage, wie sich die Nutzer während der Nutzung von eDok fühlen.
 
@@ -286,11 +297,24 @@ Usability kann hier als Indikator für die Emotionen der Nutzer dienen: Wenn die
 
 In diesem Arbeitskontext wird versucht, bestimmte Merkmale der Usability zu messen, zu speichern und zu bewerten. Ergänzend dazu werden weitere UX-bezogene Feedback-Services erfasst.
 
- 
 
 
- 
+\section{Messung und Bewertung von UX}
+
 \subsection{Messung und Bewertung von Usabilty}
+Prozess in eDok können in unterschiedliche Status haben, das Ziel ist das Dokument abzuschliessen, dann ist das ziel meistens erreicht, man kann quarzi das Document immer noch bearbeiten.
+Das Arbeit prozess kann aus unterschiedlich Gründen unterbrochen werden, Fehler könnten auftreten, oder  Internet störung usw.
+
+\subsection{Systematische Bewertung weiterer Aspekte der UX} Das Modell soll auch weitere Aspekte der UX bewerten. Da die Datensammlung automatisiert erfolgen soll, besteht die Herausforderung darin, herauszufinden, welche Daten Aufschluss über die UX geben, wie diese Daten gesammelt werden können und wie sie zu bewerten sind. In der Praxis wurde die UX häufig durch Nutzerinterviews und Fragebögen bewertet, wobei die Beobachtung der Nutzer und ihrer Interaktionen mit dem Produkt eine wichtige Rolle spielt.
+
+Das Ziel dieser Arbeit ist es jedoch nicht nur, die UX zu bewerten, sondern auch zu untersuchen, wie sie sich im Laufe der Zeit entwickelt. Da sich das Produkt und dessen Funktionen ständig weiterentwickeln, sind Interviews aufgrund von zeitlichen und finanziellen Einschränkungen keine praktikable Lösung.
+
+Eine mögliche Alternative besteht darin, den Nutzern die Möglichkeit oder Aufforderung zu bieten, sich nach der Implementierung neuer Features mit dem Produkt auseinanderzusetzen und Feedback durch einen im Produkt integrierten Fragebogen abzugeben. Darüber hinaus besteht die Möglichkeit, ein allgemeines Feedback über die gesamte Erfahrung mit dem Produkt abzugeben, wobei sich die Struktur der Fragebögen nicht ändert, sondern lediglich deren Umfang variiert.
+
+Die Fragen für das kurzfristige Feedback können von den Entwicklern oder den Produktverantwortlichen angepasst werden, um präzisere Informationen über die aktuelle UX zu erhalten. Diese Flexibilität ermöglicht es, gezielt Fragen zu stellen, die relevante Erkenntnisse über die kurzfristigen Benutzererfahrungen liefern.
+
+ 
+
 
 Das Buch \cite{measuring} verdeutlicht, dass UX einen breiteren Anwendungsbereich als Usability hat, da es die gesamte Nutzerinteraktion und die Emotionen berücksichtigt.
 

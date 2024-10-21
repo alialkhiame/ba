@@ -36,3 +36,19 @@ Die Referenzen scheinen vorhanden zu sein, aber es fehlen einige Verweise im Tex
 Fehlende Kapitelstrukturierung in den Methodenkapiteln:
 
 Die Kapitel "Modellarchitektur", "Modellimplementierung" und "Erfassung der UX" könnten weiter untergliedert werden, um spezifische Aspekte der Architektur, der Implementierung und der UX-Erfassung ausführlicher zu beschreiben.
+
+
+
+
+%-------------------------------------------------------%
+
+-was ist ux.
+-was ist usabilty.
+-wie wurde UX in der Praxis bewertet.
+-wie wurde Usabilty in der Praxis bewertet.
+-Daten die gesammelt sein sollen um die UX Aspekte zu bewerten.
+-Daten die gesammelt sein sollen um die Usabilty zu bewerten.
+-UX score, Usabilty Score.
+-Methoden zu Implmintierung.
+-Implimntierung.
+-Ergibnist + Abstract/Zusammenfassung.
