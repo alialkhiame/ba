@@ -20,7 +20,7 @@
 \usepackage{dirtytalk}
 %folgende Zeile auskommentieren für englische Arbeiten
 \usepackage[ngerman]{babel}
-
+ 
 \usepackage[bookmarks]{hyperref}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -254,11 +254,39 @@ In dem Paper Towards Practical User Experience Evaluation Methods \cite{evaluati
 
 
 
-Laut \cite{GOISTAI} reicht die bloße Messung von Fehlern, Klicks oder der benötigten Zeit (Usabilty) nicht aus, um die User Experience (UX) angemessen zu bewerten. Entscheidend ist es, das Erleben des Nutzers vor, während und nach der Verwendung der Anwendung oder des Produkts zu verstehen. Die Entwicklung von Webanwendungen, die Gaming-Industrie sowie der Aufstieg des allgegenwärtigen Computings führten zu einem Paradigmenwechsel, bei dem der Fokus von der reinen Effizienz hin zur Zufriedenheit der Nutzer verlagerte. Dies legte den Grundstein für die Etablierung von UX als eigenständiges Konzept \cite{glanznig}.
+Laut \cite{GOISTAI} reicht die bloße Messung von Fehlern, Klicks oder der benötigten Zeit (Usabilty \ref{sec:usability}) nicht aus, um die User Experience (UX) angemessen zu bewerten. Entscheidend ist es, das Erleben des Nutzers vor, während und nach der Verwendung der Anwendung oder des Produkts zu verstehen. Die Entwicklung von Webanwendungen, die Gaming-Industrie sowie der Aufstieg des allgegenwärtigen Computings führten zu einem Paradigmenwechsel, bei dem der Fokus von der reinen Effizienz hin zur Zufriedenheit der Nutzer verlagerte. Dies legte den Grundstein für die Etablierung von UX als eigenständiges Konzept \cite{glanznig}.
 
 \cite{Virpi} argumentiert, dass objektive Messungen, wie die Zeitmessung oder die Erfassung von Fehlern, allein nicht ausreichen, um UX umfassend zu bewerten. Vielmehr sollten auch Emotionen, Erwartungen und die Motivation der Nutzer einbezogen werden. Darüber hinaus ist UX stark kontextabhängig und variiert je nach Einsatzgebiet und Zielgruppe.\\
 Zusammenfassend lässt sich sagen, dass UX unterschiedlich interpretiert wurde, jedoch sind sich die meisten Experten einig, dass Usability ein wesentlicher Teil der UX ist. Dennoch geht UX weit über die reine Usability hinaus. Insbesondere die nicht-instrumentellen und hedonischen Aspekte der UX, wie ästhetische Gestaltung, emotionale Reaktionen und das allgemeine Wohlbefinden der Nutzer während der Interaktion, spielen eine zentrale Rolle. UX umfasst somit sowohl funktionale als auch emotionale Dimensionen der Nutzererfahrung.
-\subsection{Erweiterung der Usability-Bewertung zur UX-Analyse}
+
+
+\subsection{Usability}\label{sec:usability}
+\begin{quote} good usability is a precondition for good UX \cite{glanznig}.\end{quote}
+Usability bezieht sich auf die funktionalen Aspekte eines Produkts und beschreibt, wie effektiv und produktiv sich das Produkt nutzen lässt. Viele Experten sehen Usability als Teil der UX \cite{GOISTAI}. Während sich Usability auf die Fähigkeit des Nutzers konzentriert, ein System erfolgreich zu nutzen, umfasst UX auch die gesamte Nutzererfahrung und die dabei entstehenden Emotionen.
+
+Die Nielsen Norman Group definiert \cite{nngroup} Usability als ein Qualitätsmerkmal, das bewertet, wie einfach und angenehm eine Benutzeroberfläche zu nutzen ist. Sie umfasst fünf Hauptkomponenten:
+\begin{itemize}
+    \item \textbf{Erlernbarkeit}: Wie leicht können Benutzer grundlegende Aufgaben beim ersten Mal ausführen?
+    \item \textbf{Effizienz}: Wie schnell können Benutzer Aufgaben ausführen, nachdem sie die Schnittstelle gelernt haben?
+    \item \textbf{Merkfähigkeit}: Wie einfach können Benutzer ihre Fähigkeiten wiederherstellen, wenn sie das Design nach einer Pause erneut verwenden?
+    \item \textbf{Fehlerrate}: Wie viele Fehler machen Benutzer, wie schwerwiegend sind diese und wie leicht können sie sich von ihnen erholen?
+    \item \textbf{Zufriedenheit}: Wie angenehm ist die Nutzung der Benutzeroberfläche?
+\end{itemize}
+Die ISO 9241-210 (2010) definiert die Benutzererfahrung UX und die Gebrauchstauglichkeit (Usability) klar voneinander ab. Während UX sich auf die gesamte Erfahrung und Zufriedenheit der Nutzer bei der Nutzung eines Produkts konzentriert, liegt der Fokus von Usability auf der Effizienz, Effektivität und dem Zufriedenheitsgrad bei der Erledigung konkreter Aufgaben.
+
+Im Kontext einer Webanwendung wie eDok liegt der Schwerpunkt primär auf der Dokumentenerstellung. Es ist wichtig, den Nutzern eine Möglichkeit zu bieten, schnell und effizient Dokumente mit einer gewissen Fehlertoleranz zu erstellen und zu bearbeiten. Im Anschluss daran stellt sich die Frage, wie sich die Nutzer während der Nutzung von eDok fühlen.
+
+ 
+
+In diesem Arbeitskontext wird versucht, bestimmte Merkmale der Usability zu messen, zu speichern und zu bewerten.
+
+
+
+
+
+
+
+\subsection{ UX Bewertung}
  
 Um geeignete Daten für die Bewertung der UX zu sammeln, müssen zunächst die relevanten Bereiche der UX genauer analysiert werden. Es gilt zu entscheiden, welche Daten sich zur Bewertung der UX eignen und welche sich während der unkontrollierten, produktiven Nutzung der Anwendung erfassen lassen.
 
@@ -276,54 +304,50 @@ UX-Metriken ermöglichen eine Bewertung der Interaktion zwischen Nutzer und Prod
 
 \begin{itemize} \item Effektivität (die Fähigkeit, eine Aufgabe zu erfüllen). \item Effizienz (der erforderliche Aufwand zur Aufgabenerfüllung). \item Zufriedenheit (das Maß an Zufriedenheit des Nutzers bei der Aufgabenbewältigung). \end{itemize}
 
-\subsection{Usability}
- (good) usability is a precondition
-for (good) UX.\cite{glanznig}
-Usability bezieht sich auf die funktionalen Aspekte eines Produkts und beschreibt, wie effektiv und produktiv sich das Produkt nutzen lässt. Viele Experten sehen Usability als Teil der UX \cite{GOISTAI}. Während sich Usability auf die Fähigkeit des Nutzers konzentriert, ein System erfolgreich zu nutzen, umfasst UX auch die gesamte Nutzererfahrung und die dabei entstehenden Emotionen.
 
-Die Nielsen Norman Group definiert \cite{nngroup} Usability als ein Qualitätsmerkmal, das bewertet, wie einfach und angenehm eine Benutzeroberfläche zu nutzen ist. Sie umfasst fünf Hauptkomponenten:
-\begin{itemize}
-    \item \textbf{Erlernbarkeit}: Wie leicht können Benutzer grundlegende Aufgaben beim ersten Mal ausführen?
-    \item \textbf{Effizienz}: Wie schnell können Benutzer Aufgaben ausführen, nachdem sie die Schnittstelle gelernt haben?
-    \item \textbf{Merkfähigkeit}: Wie einfach können Benutzer ihre Fähigkeiten wiederherstellen, wenn sie das Design nach einer Pause erneut verwenden?
-    \item \textbf{Fehlerrate}: Wie viele Fehler machen Benutzer, wie schwerwiegend sind diese und wie leicht können sie sich von ihnen erholen?
-    \item \textbf{Zufriedenheit}: Wie angenehm ist die Nutzung der Benutzeroberfläche?
-\end{itemize}
-Die ISO 9241-210 (2010) definiert die Benutzererfahrung UX und die Gebrauchstauglichkeit (Usability) klar voneinander ab. Während UX sich auf die gesamte Erfahrung und Zufriedenheit der Nutzer bei der Nutzung eines Produkts konzentriert, liegt der Fokus von Usability auf der Effizienz, Effektivität und dem Zufriedenheitsgrad bei der Erledigung konkreter Aufgaben.
-
-Im Kontext einer Webanwendung wie eDok liegt der Schwerpunkt primär auf der Dokumentenerstellung. Es ist wichtig, den Nutzern eine Möglichkeit zu bieten, schnell und effizient Dokumente mit einer gewissen Fehlertoleranz zu erstellen und zu bearbeiten. Im Anschluss daran stellt sich die Frage, wie sich die Nutzer während der Nutzung von eDok fühlen.
-
-Usability kann hier als Indikator für die Emotionen der Nutzer dienen: Wenn die Effizienz der Anwendung abnimmt, könnte dies darauf hindeuten, dass die Anwender Schwierigkeiten haben, was zu einer erhöhten Unzufriedenheit führen kann. Im Gegensatz dazu zeigt eine gute Fehlertoleranz (z. B. durch hilfreiche Fehlermeldungen und die Möglichkeit, Fehler schnell zu beheben), dass die Nutzer trotz Fehlern ihre Ziele erreichen können. Dies trägt wiederum zur positiven Wahrnehmung der Anwendung bei und steigert die Zufriedenheit.
-
-In diesem Arbeitskontext wird versucht, bestimmte Merkmale der Usability zu messen, zu speichern und zu bewerten. Ergänzend dazu werden weitere UX-bezogene Feedback-Services erfasst.
-
-
-
-\section{Messung und Bewertung von UX}
+ 
 
 \subsection{Messung und Bewertung von Usabilty}
-Prozess in eDok können in unterschiedliche Status haben, das Ziel ist das Dokument abzuschliessen, dann ist das ziel meistens erreicht, man kann quarzi das Document immer noch bearbeiten.
-Das Arbeit prozess kann aus unterschiedlich Gründen unterbrochen werden, Fehler könnten auftreten, oder  Internet störung usw.
+\subsubsection{Messung von Effizienz in eDok}
+Prozesse in eDok können verschiedene Status haben, wobei das Ziel in der Regel darin besteht, ein Dokument abzuschließen. Sobald dies erreicht ist, gilt das Hauptziel als erfüllt, obwohl das Dokument auch nach Abschluss noch weiter bearbeitet werden kann.
 
-\subsection{Systematische Bewertung weiterer Aspekte der UX} Das Modell soll auch weitere Aspekte der UX bewerten. Da die Datensammlung automatisiert erfolgen soll, besteht die Herausforderung darin, herauszufinden, welche Daten Aufschluss über die UX geben, wie diese Daten gesammelt werden können und wie sie zu bewerten sind. In der Praxis wurde die UX häufig durch Nutzerinterviews und Fragebögen bewertet, wobei die Beobachtung der Nutzer und ihrer Interaktionen mit dem Produkt eine wichtige Rolle spielt.
+Der Arbeitsprozess kann jedoch aus unterschiedlichen Gründen unterbrochen werden, wie z.B. durch Fehler oder Internetstörungen. Daher ist der erste Schritt, die Benutzerfreundlichkeit (Usability) zu bewerten und ein klares Endziel der Aufgabe zu definieren. Eine Aufgabe beginnt in der Regel mit der Erstellung und endet mit dem Abschluss. Sobald sie abgeschlossen ist, kann die dafür benötigte Zeit gemessen werden.
+
+Unvollständige Aufgaben in eDok können zu einem späteren Zeitpunkt weiterbearbeitet und abgeschlossen werden. Es ist wichtig, den Zeitpunkt der Unterbrechung und die Wiederaufnahme der Arbeit zu erfassen, um den gesamten Prozessverlauf bis zum Abschluss nachvollziehen zu können.
+
+Nach Abschliessen der Prozess kann dies immernoch bearbeitet werden, dauz ist eigene bessmung für die Aufwand von Bearbeitung, um die Effizanz dazu auch bemessen zu werden.
+
+Die Messungen beschränken sich aus Leistungsgründen auf bestimmte Vorlagen und Prozesse innerhalb der Anwendung, die vom Produktentwicklungsteam festgelegt werden. Zu den erfassten Daten gehören die aufgewendete Zeit, die Häufigkeit der Unterbrechungen sowie die Dauer des gesamten Prozesses von Anfang bis Ende, sowohl mit als auch ohne Unterbrechungen.
+\subsubsection{Erfolgsrate}
+Fehlern in eDok können aufunterschiedliche Arten auftreten, es gibt Fehlern, die durch bestimmte Nutzer Aktion beseitigt sein können, undefinierte Fehlern, die für die Nutzer verständlich sind und undefinerte Fehler, wo für den Nutzer unbekannt sind, es gibt noch Fehlern die definiert sind aber in der Falsche Stelle aufgeerten sind. Folgende Graph kann die die Fehler klassfizieren.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1.00\textwidth]{FehlerMatrix.png}
+    \caption{a nice plot}
+    \label{fig:mesh1}
+\end{figure}
+
+\subsection{Systematische Bewertung weiterer Aspekte der UX}
+ Das Modell soll auch weitere Aspekte der UX bewerten. Da die Datensammlung automatisiert erfolgen soll, besteht die Herausforderung darin, herauszufinden, welche Daten Aufschluss über die UX geben, wie diese Daten gesammelt werden können und wie sie zu bewerten sind. In der Praxis wurde die UX häufig durch Nutzerinterviews und Fragebögen bewertet, wobei die Beobachtung der Nutzer und ihrer Interaktionen mit dem Produkt eine wichtige Rolle spielt.
 
 Das Ziel dieser Arbeit ist es jedoch nicht nur, die UX zu bewerten, sondern auch zu untersuchen, wie sie sich im Laufe der Zeit entwickelt. Da sich das Produkt und dessen Funktionen ständig weiterentwickeln, sind Interviews aufgrund von zeitlichen und finanziellen Einschränkungen keine praktikable Lösung.
 
 Eine mögliche Alternative besteht darin, den Nutzern die Möglichkeit oder Aufforderung zu bieten, sich nach der Implementierung neuer Features mit dem Produkt auseinanderzusetzen und Feedback durch einen im Produkt integrierten Fragebogen abzugeben. Darüber hinaus besteht die Möglichkeit, ein allgemeines Feedback über die gesamte Erfahrung mit dem Produkt abzugeben, wobei sich die Struktur der Fragebögen nicht ändert, sondern lediglich deren Umfang variiert.
 
 Die Fragen für das kurzfristige Feedback können von den Entwicklern oder den Produktverantwortlichen angepasst werden, um präzisere Informationen über die aktuelle UX zu erhalten. Diese Flexibilität ermöglicht es, gezielt Fragen zu stellen, die relevante Erkenntnisse über die kurzfristigen Benutzererfahrungen liefern.
-
  
 
+\subsection{System Usability Scale}
+Die SUS wurde von John Brooke in die 1989er erfunden und ist einfach zu nutzen und geeignet für online befragung.
+Es sagt nicht wo in der Anwendung es brent, aber es kann dadurch einen Überblick über die gesammte Usabilty innerhalb einer Anwendung sagen.
+\subsubsection{Wie sus funktioniert}
 
-Das Buch \cite{measuring} verdeutlicht, dass UX einen breiteren Anwendungsbereich als Usability hat, da es die gesamte Nutzerinteraktion und die Emotionen berücksichtigt.
-
-
-
-
-
-
-\section{Vorstellung der Funktionalitäten von eDok\protect \footnote{Die Informationen hierzu wurden teilweise von den Confluence-Seiten des LWV-Netzwerks übernommen.}}
+\subsection{Messung und Bewertung von Usabilty durch User Behavior}
+\begin{itemize}
+\item  Clickstream-Analyse: Verfolgt die Klickpfade der Benutzer innerhalb der Anwendung, um herauszufinden, welche Bereiche der Anwendung am häufigsten genutzt werden oder wo Benutzer möglicherweise Schwierigkeiten haben.
+\item  Heatmaps: Visualisiert, wo Benutzer auf dem Bildschirm klicken oder ihre Maus bewegen. So kann man sehen, welche Bereiche die meiste Aufmerksamkeit erhalten.
+\item  Session-Replay: Aufzeichnung von Benutzersitzungen, um das Verhalten der Benutzer detailliert zu analysieren, z.B. welche Schritte sie bei der Navigation durch die Anwendung unternehmen.
+\end{itemize}
 
 
 
@@ -331,14 +355,21 @@ Das Buch \cite{measuring} verdeutlicht, dass UX einen breiteren Anwendungsbereic
 
 Das Modul erfasst und stellt folgende Daten dar:
 
-\begin{itemize} \item Heatmaps zur Visualisierung von Nutzerinteraktionen. \item Klickpositionen und -häufigkeiten. \item Feedback zu Fehlermeldungen (Like/Dislike, Verständnis der Fehlermeldung). \item Emotion-Feedback in Form von Emojis (gut, zufrieden, neutral, unzufrieden, schlecht) mit optionalen Kommentaren. \item Fehlerzähler, um die häufigsten Fehler zu identifizieren. \item Erfassung der Prozessschritte, bei denen die meisten Nutzer scheitern. \item Zeitaufwand pro Prozess, Verweildauer auf einer Seite, Zeit zur Fehlerbehebung, Prozessabbruch und Wiederaufnahme. \item Analyse der Prozesse mit der längsten Bearbeitungsdauer. \item Usability-Score und UX-Zusammenfassung über einen bestimmten Zeitraum. \end{itemize}
+\begin{itemize} 
+\item Heatmaps zur Visualisierung von Nutzerinteraktionen.
+ \item Klickpositionen und -häufigkeiten.
+\item Feedback zu Fehlermeldungen (Like/Dislike, Verständnis der Fehlermeldung). 
+\item Emotion-Feedback in Form von Emojis (gut, zufrieden, neutral, unzufrieden, schlecht) mit optionalen Kommentaren.
+ \item Fehlerzähler, um die häufigsten Fehler zu identifizieren.
+ \item Erfassung der Prozessschritte, bei denen die meisten Nutzer scheitern.
+ \item Zeitaufwand pro Prozess, Verweildauer auf einer Seite, Zeit zur Fehlerbehebung, Prozessabbruch und Wiederaufnahme. 
+\item Analyse der Prozesse mit der längsten Bearbeitungsdauer.
+ \item Usability-Score und UX-Zusammenfassung über einen bestimmten Zeitraum. 
+\end{itemize}
  
 
+  
  
-\section{Was führt zu optimaler UX}
- 
-%--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
-\section{Erfassung der UX}
 %--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
 \section{Anonymisierte Erfassung und Behandlung der Daten}
 \section{Bedeutung der Anonymisierung}
