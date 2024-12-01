@@ -117,7 +117,7 @@
  
 
  \HSFTitle
-      {Entwicklung und Implementierung eines Modells zur Erfassung und Bewertung der User Experience am Beispiel der Anwendung eDok des LWV Hessene }        % Titel der Arbeit
+      {Entwicklung und Implementierung eines Modells zur Erfassung und Bewertung der User Experience am Beispiel der Anwendung eDok des LWV Hessen }        % Titel der Arbeit
       {Bachelorarbeit} % Typ der Arbeit
       {Ali Alkhiami}          % Vor- und Nachname des Autors
       {844620}
@@ -132,8 +132,9 @@
     \setcounter{page}{1}
 \tableofcontents
 %--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
-\section{Abkürzungsverzeichnis}
-\addcontentsline{toc}{section}{Abkürzungsverzeichnis} % Fügt das Abkürzungsverzeichnis zum Inhaltsverzeichnis hinzu
+\section{Kapital 1}
+ 
+\addcontentsline{toc}{subsection}{Abkürzungsverzeichnis} % Fügt das Abkürzungsverzeichnis zum Inhaltsverzeichnis hinzu
 \begin{acronym}[hyperlinks]
 \acro{UX}{User Experience}
 \acro{LWV}{Landeswohlfahrtsverband}
@@ -144,255 +145,380 @@
 \acro{HCI}{Humin Computer Interaction}
 \end{acronym}
 %--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
-\section{Abstract}
-  Diese Arbeit widmet sich der Entwicklung und Implementierung eines Modells zur umfassenden Erfassung und Bewertung der User Experience (UX) am Beispiel der Anwendung eDok des Landeswohlfahrtsverbands Hessen (LWV Hessen).
+ 
+\subsection{Abstract}
 
-Da die Bewertung von UX in der Literatur meist durch Surveys, Umfragen und Nutzerbeobachtungen erfolgt, besteht die erste Herausforderung dieser Arbeit darin, Methoden zu implementieren, die es ermöglichen, die UX anhand von Daten zu bewerten, die aus der produktiven Nutzung der Anwendung stammen.
+Diese Arbeit befasst sich mit der Entwicklung und Implementierung eines Modells zur umfassenden Erfassung und Bewertung der User Experience (UX), exemplarisch angewendet auf die Anwendung eDok des Landeswohlfahrtsverbands Hessen (LWV Hessen). Ziel des Modells ist es, einen detaillierten Überblick über die UX innerhalb der Anwendung zu schaffen, indem während der produktiven Nutzung anonymisierte Daten gesammelt werden.
 
-Um dies zu erreichen, werden die messbaren UX-Eigenschaften und -Dimensionen eingehend untersucht, um zu bestimmen, welche Daten sich am besten eignen, wie diese Daten gesammelt werden können und wie die gesammelten Daten zu interpretieren sind.
+Die gesammelten Daten sind bewusst nicht benutzerorientiert, um Datenschutzrichtlinien einzuhalten und die Privatsphäre der Nutzer zu schützen. Das Modell präsentiert diese aggregierten Daten in einem Dashboard, das ausschließlich für Nutzer mit Administratorrechten zugänglich ist. Dieses Dashboard bietet anpassbare Grafiken und Visualisierungen, die durch Filter und weitere Kriterien modifiziert werden können. Dadurch erhalten Administratoren nicht nur Einblicke in die aktuelle UX, sondern können auch Trends und Entwicklungen über einen bestimmten Zeitraum analysieren.
 
-Innerhalb der Anwendung wurden dazu ein Feedback-Loop und ein Online-Feedback-Fragebogen integriert, über die die Nutzer jederzeit ihr Feedback abgeben können. Zudem werden weitere Faktoren beobachtet, um ein umfassendes Bild der UX zu erhalten.
+Ein wesentlicher Aspekt des Modells ist die Möglichkeit für Projektverantwortliche, die Datenerfassung auf bestimmten Seiten der Anwendung gezielt an- oder auszuschalten. Dies stellt sicher, dass nur relevante Bereiche beobachtet werden, ohne die Performance auf anderen Seiten zu beeinträchtigen. Das Modell ermöglicht es, die Verweildauer der Nutzer auf spezifischen Seiten zu überwachen, häufig durchlaufene Navigationsmuster zu identifizieren und die Häufigkeit bestimmter Fehler zu erfassen, die von den Nutzern gemacht werden.
 
-Zu Beginn der Arbeit wird das Konzept der UX detailliert erläutert, gefolgt von einer kritischen Analyse gängiger Methoden zur UX-Erfassung. Im Mittelpunkt steht die Entwicklung eines Modells, das es ermöglicht, spezifische UX-Aspekte systematisch zu erfassen und zu bewerten.
-
-Das entwickelte Modell zielt darauf ab, eine automatisierte und kontinuierliche Sammlung relevanter Daten sicherzustellen, um daraus fundierte Erkenntnisse über die Nutzererfahrung abzuleiten. Ein besonderer Schwerpunkt liegt dabei auf der Analyse, wie sich die UX durch fortlaufende Weiterentwicklungen und funktionale Erweiterungen der Software verändert.
-
-Des Weiteren wird die technische Umsetzung des Modells beschrieben, einschließlich der Softwarearchitektur und der Implementierung von Mechanismen zur Anonymisierung der erfassten Daten, um den Schutz der Privatsphäre der Nutzer zu gewährleisten. Diese Anonymisierung ist essenziell, um ethischen Standards und datenschutzrechtlichen Vorgaben zu entsprechen.
-
-Die Arbeit schließt mit einer umfassenden Bewertung der Ergebnisse und gibt einen Ausblick auf mögliche Weiterentwicklungen des Modells. Hierbei wird insbesondere auf die Möglichkeit eingegangen, das Modell auf andere behördliche Anwendungen zu übertragen und damit eine breitere Anwendungsperspektive zu eröffnen.
+Die gewonnenen Erkenntnisse unterstützen die Projektverantwortlichen dabei, problematische Stellen innerhalb der Anwendung zu identifizieren und gezielte Maßnahmen zur Verbesserung der Usability zu ergreifen. Darüber hinaus ermöglicht das Modell eine nachträgliche Überprüfung der implementierten Änderungen, um deren Effektivität zu bewerten und weitere Optimierungen vorzunehmen. Durch diesen iterativen Prozess trägt das Modell wesentlich zur Steigerung der Benutzerzufriedenheit und Effizienz der Anwendung bei.
 
 %--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
-\section{Einleitung}
-Im Bereich der Human-Computer Interaction (HCI) gibt es zwei unterschiedliche Ansätze im Bereich der User Experience (UX): das UX-Design und das User-Centered Design\cite{glanznig}. Letzteres beschäftigt sich mit der Frage, wie ein hochwertiges Produkt gestaltet werden kann, wobei dieser Aspekt jedoch nicht Teil dieser Arbeit ist. Im Fokus steht vielmehr, wie die UX erfasst und gemessen werden kann.\\
-In der Literaturrecherche Review hat sich herausgestellt, dass UX  innerhalb einer Anwendung oder sogar für Produkte und Systeme meistens durch Fragebögen oder Nutzerbefragungen bewertet wird. Dabei zeigte sich, dass sich keine der untersuchten Arbeiten mit der automatisierten Bewertung der UX beschäftigt hat.
+\subsection{Einleitung}
 
-Es gibt zwar in der Praxis Dienstleistungen, die bestimmte Merkmale der Usability messen und eigenständig bewerten können, jedoch lässt sich die gesamte UX dadurch nicht vollständig erfassen. Eine besondere Herausforderung bei der Bewertung der UX ist die emotionale Ebene. Emotionen durch Zahlen auszudrücken, ohne dabei den Denkprozess der Nutzer oder ihre Mimik zu berücksichtigen, ist durch automatisierte Tools kaum umsetzbar.
+Die \textbf{Mensch-Computer-Interaktion} (Human-Computer Interaction, HCI) ist ein interdisziplinäres Forschungsfeld, das sich mit der Gestaltung, Evaluation und Implementierung interaktiver Computersysteme für die menschliche Nutzung sowie mit der Untersuchung der damit verbundenen Phänomene beschäftigt. Innerhalb dieses Feldes haben sich zwei zentrale Ansätze zur \textbf{User Experience} (UX) herausgebildet: das \textbf{UX-Design} und das \textbf{nutzerzentrierte Design} (User-Centered Design) \cite{glanznig}.
 
-In dieser Arbeit wurde auf die Analyse von Mimiken der Nutzer verzichtet. Stattdessen wurden den Nutzern spezifische Aufgaben zur Verfügung gestellt, die über eine Matrix gewichtet wurden, um eine automatisierte Feedback der UX zu implementieren. Da Usability ein Teil der UX ist, der eher pragmatisch ausgerichtet ist und als „Engineer UX“ bezeichnet wird, ist es in gewisser Weise einfacher, diesen Aspekt zu automatisieren.
+Das \textbf{UX-Design} strebt danach, ein ganzheitliches Nutzererlebnis zu schaffen, das über die reine Funktionalität eines Produkts hinausgeht. Es berücksichtigt emotionale, psychologische und ästhetische Aspekte, um Produkte zu entwickeln, die nicht nur effizient, sondern auch angenehm und zufriedenstellend in der Nutzung sind. Ziel ist es, ein positives Gesamterlebnis zu gestalten, das die Bedürfnisse und Erwartungen der Nutzer übertrifft.
 
-Das entwickelte Modell hat seine Stärken und Schwächen, die im Detail analysiert werden. Seine Qualität hängt stark von den gesammelten Daten und deren Auswertung ab. Die UX-Bewertung wurde ausschließlich anhand des Nutzerfeedbacks durchgeführt, wobei die Vorerfahrungen und Motivation der Nutzer eine große Rolle spielten – wie es auch bei langfristigen Feldstudien der Fall ist.
+Im Gegensatz dazu fokussiert das \textbf{nutzerzentrierte Design} auf die Einbindung der Endnutzer während des gesamten Entwicklungsprozesses. Durch aktive Einbindung von Nutzerfeedback wird sichergestellt, dass das Endprodukt intuitiv bedienbar ist und den Anforderungen der Zielgruppe entspricht. Dieser Ansatz betont die Bedeutung, die tatsächlichen Bedürfnisse, Ziele und Fähigkeiten der Nutzer zu verstehen und in die Gestaltung einzubeziehen.
 
-Ein Vorteil dieses Modells ist, dass es einen langfristigen Überblick über die UX verschafft und den Frust der Nutzer sichtbar macht. Wenn es Probleme gibt, wissen die Verantwortlichen, wo sie eingreifen müssen. Zudem kann überprüft werden, ob Korrekturen ausreichend waren oder nicht. In diesem Sinne unterstützt das Modell ein nutzerzentriertes Design, bei dem die Wünsche und Beschwerden der Nutzer in den Entwicklungsprozess einfließen.
-
-
-
-UX ist ein fortlaufendes Forschungsfeld im Bereich der HCI. Es begann an Bedeutung zu gewinnen, als Anwendungen immer komplexer und anspruchsvoller wurden.\newline
-
-Da immer mehr Menschen digitale Produkte und Dienste nutzen, steigt die Bedeutung von Benutzerfreundlichkeit und einem positiven Nutzererlebnis. Produkte, die sich durch eine intuitive Bedienung und ein ansprechendes Design auszeichnen, setzen sich im Wettbewerb durch und steigern die Nutzerzufriedenheit nachhaltig.\newline
-
-Heutzutage gibt es oft mehrere Softwarelösungen für ein digitales oder reales Problem. Aus diesem Grund spielt UX und Usabilty eine entscheidende Rolle bei der Auswahl eines Produkts. Ein gut gestaltetes Nutzererlebnis kann den Unterschied ausmachen, ob sich Benutzer für eine bestimmte Lösung entscheiden oder zu einem anderen Produkt wechseln.\newline
-
-Die meisten Experten und wissenschaftlichen Arbeiten sind sich einig, dass UX noch ein relativ junges Forschungsfeld ist. Aufgrund der dynamischen und subjektiven Natur des Themas konnte bisher keine einheitliche Definition festgelegt werden. Dies bietet jedoch den Vorteil, das Thema aus verschiedenen Blickwinkeln betrachten zu können und unterschiedliche Meinungen zu berücksichtigen. Dadurch entsteht ein breiteres und tieferes Verständnis für das Konzept der UX, was der weiteren Entwicklung der Disziplin zugutekommt.\newline
-Auf der Kehrseite erschweren unterschiedliche Hintergründe und Fachvokabulare den Fortschritt.\cite{glanznig}
- 
-
-Hassenzahl und Tractinsky haben in Ihre Arbeit User experience – a research agenda UX  erlautert, dass \say{User Experience ist ein interessantes Phänomen: Es wurde von der HCI-Community schnell angenommen, aber oft kritisiert, da es vage und schwer fassbar ist. Der Begriff umfasst verschiedene Bedeutungen (Forlizzi und Battarbee 2004), von klassischer Usability bis hin zu Schönheit, hedonischen, affektiven und erfahrungsbasierten Aspekten der Technologienutzung\protect \footnote{Eigene Übersetzung}.}\cite{research}\newline
-
-
-
+Obwohl beide Ansätze entscheidend für die Entwicklung qualitativ hochwertiger Produkte sind, liegt der Schwerpunkt dieser Arbeit nicht auf der Gestaltung selbst, sondern darauf, \textbf{wie UX erfasst und gemessen werden kann}. In einer zunehmend digitalisierten Welt, in der Anwendungen immer komplexer werden und die Erwartungen der Nutzer stetig steigen, ist die systematische Messung der UX von entscheidender Bedeutung. Nur durch ein tiefgehendes Verständnis des Nutzerverhaltens und der Nutzerzufriedenheit können Produkte entwickelt werden, die den hohen Ansprüchen gerecht werden.
 
 \subsection{Motivation}
 
-Die Nutzung des Internets ist in den letzten Jahren zu einem festen Bestandteil des Alltags der deutschsprachigen Bevölkerung geworden. Laut der ARD/ZDF-Onlinestudie \cite{ard} verwenden mittlerweile rund 90 Prozent der Menschen ab 14 Jahren regelmäßig das Internet, wobei die mediale Internetnutzung im Jahr 2019 besonders stark zugenommen hat.
+Die rasante technologische Entwicklung und die immer stärkere Integration des Internets in den Alltag haben die Art und Weise, wie Menschen mit digitalen Systemen interagieren, grundlegend verändert. Laut der ARD/ZDF-Onlinestudie \cite{ard} nutzen mittlerweile rund 90 Prozent der deutschsprachigen Bevölkerung ab 14 Jahren regelmäßig das Internet, wobei insbesondere die mediale Internetnutzung in den letzten Jahren signifikant zugenommen hat. Diese Entwicklung stellt neue Anforderungen an die Gestaltung von Nutzererlebnissen und unterstreicht die Bedeutung einer herausragenden UX.
 
-Diese Entwicklung unterstreicht die zunehmende Relevanz digitaler Medien und stellt neue Anforderungen an die Gestaltung von Nutzererlebnissen. Es wird zunehmend wichtiger, digitale Inhalte und Services so zu gestalten, dass sie den sich wandelnden Ansprüchen der Nutzer gerecht werden. UX spielt eine zentrale Rolle bei der Bewertung und Optimierung von Softwareanwendungen. Dies gilt insbesondere für behördliche Anwendungen wie eDok, das vom LWV Hessen und anderen Institutionen genutzt wird. Hier ist es entscheidend, die UX zu erfassen und zu verbessern, um die Benutzerfreundlichkeit und Effizienz der Anwendung zu steigern.
+In diesem Kontext wird es immer wichtiger, digitale Inhalte und Dienste so zu gestalten, dass sie den sich wandelnden Ansprüchen der Nutzer gerecht werden. Anwendungen müssen nicht nur funktional sein, sondern auch intuitiv bedienbar und ästhetisch ansprechend gestaltet sein, um im Wettbewerb bestehen zu können. Dies gilt insbesondere für komplexe Webanwendungen wie \textit{eDok}, die von Institutionen wie dem Landeswohlfahrtsverband Hessen (LWV Hessen) genutzt werden.
 
-Eine besondere Herausforderung besteht darin, Bereiche innerhalb der Anwendung zu identifizieren, die ein verbessertes Design oder zusätzliche Informationen erfordern. Oft sind Nutzer unsicher, wie sie ihre Ziele innerhalb der Anwendung erreichen können oder fühlen sich von der Informationsmenge überfordert. Hier setzt das entwickelte Modell an, das die UX automatisiert erfasst und eine fundierte Analyse ermöglicht. So können gezielt Schlüsselaspekte identifiziert werden, die optimiert werden sollten, um die Nutzerzufriedenheit zu steigern.
+Eine besondere Herausforderung besteht darin, innerhalb solcher Anwendungen Bereiche zu identifizieren, die ein verbessertes Design oder zusätzliche Informationen erfordern. Nutzer können unsicher sein, wie sie ihre Ziele innerhalb der Anwendung erreichen können, oder sich von der Informationsmenge überfordert fühlen. Hier setzt das entwickelte Modell an, das die UX automatisiert erfasst und eine fundierte Analyse ermöglicht. So können gezielt Schlüsselaspekte identifiziert werden, die optimiert werden sollten, um die Nutzerzufriedenheit zu steigern.
 
-Vor allem bei komplexen Webanwendungen wie eDok besteht ein großes Bedürfnis, kontinuierlich Feedback von den Nutzer*innen einzuholen, um deren Erfahrungen besser zu verstehen und die Anwendung kontinuierlich zu verbessern. Durch die Implementierung des entwickelten Modells wird es möglich, spezifische UX-Aspekte systematisch zu erfassen und einen umfassenden Überblick über das Nutzererlebnis zu gewinnen.
+Zudem führen die regelmäßige Einführung neuer Funktionen und Veränderungen in der Benutzeroberfläche zu einer dynamischen Komplexitätsentwicklung in verschiedenen Bereichen der Anwendung. Ein Überblick über die Entwicklung der UX im Laufe der Zeit ermöglicht eine proaktive Anpassung und Optimierung, sodass die Anwendung trotz zunehmender Komplexität benutzerfreundlich bleibt.
 
-Zusätzlich führen die regelmäßige Einführung neuer Funktionen und Veränderungen in der Benutzeroberfläche zu einer dynamischen Komplexitätsentwicklung
- in verschiedenen Bereichen der Anwendung. Ein Überblick über die Entwicklung der UX im Laufe der Zeit ermöglicht eine proaktive Anpassung und Optimierung, 
-sodass die Anwendung trotz zunehmender Komplexität benutzerfreundlich bleibt.
+Die wissenschaftliche Forschung betont die Wichtigkeit von Methoden zur UX-Messung und -Bewertung, um sicherzustellen, dass die Produktentwicklung in die richtige Richtung geht \cite{Virpi}. Die Fähigkeit, UX quantitativ und qualitativ zu erfassen, bietet Unternehmen und Entwicklern einen unschätzbaren Vorteil. Durch das Verständnis des Nutzerverhaltens und der Nutzerzufriedenheit können gezielte Verbesserungen vorgenommen werden, die nicht nur die Effizienz steigern, sondern auch die Bindung der Nutzer an das Produkt fördern.
 
-in dem Papier "User Experience Evaluation Methods in Academic and
-Industrial Contexts" wurde drauf hingewiesen, dassUx bemessung und bewertung Methoden 
- ein wichtige Rolle spielen, um sicherzustellen das die Einticklung des Produkts in die Richtige Richtung geht.\cite{Virpi}
-
-Das Modell bietet zudem Einblicke in die Effizienz bestimmter Bereiche der Anwendung und zeigt, wie sich die Komplexität im Laufe der Zeit verändert hat. Wenn eine Seite umfangreiche Änderungen erfahren hat, können die Entwickler*innen durch das Modell schnell nachvollziehen, wie sich UX- und Usability-Aspekte nach der Implementierung verändert haben und ob weitere Verbesserungen erforderlich sind.
-%todo auf 15 seiten bringen
 \subsection{Ziel der Arbeit}
-Das Ziel dieser Arbeit ist es, zentrale Elemente der UX zu identifizieren, rausfinden wir man das bemessen und bewerten kann. 
 
-Ein Modell zu entwickeln, das diese Elemente darstellt, um die UX innerhalb einer Anwendung erfassen und bewerten zu können. Es soll die Vorteile eines solchen Modells aufzeigen.
-Die gesammelten Daten sollen anonymisiert werden, und die Ergebnisse des Modells sollen darüber Auskunft geben, wie sich die UX im Verlauf der Anwendungsentwicklung verändert hat. Zudem soll das Modell die UX an verschiedenen Stellen innerhalb der Anwendung erfassen und bewerten können. Entwickler*innen erhalten die Möglichkeit, zusätzliche Stellen zu messen oder solche zu entfernen, die mit der Zeit an Relevanz verloren haben.
+Das Hauptziel dieser Arbeit ist die Entwicklung und Implementierung eines Modells, das eine umfassende Erfassung und Bewertung der UX ermöglicht. Dieses Modell soll spezifische, anonymisierte Daten sammeln, um die UX präzise und systematisch zu erfassen. Durch die Analyse dieser Daten über Zeiträume hinweg sollen dynamische Veränderungen erkannt und gezielte Optimierungsmöglichkeiten der Anwendung erschlossen werden.
+
+Exemplarisch wird dieses Modell auf die Anwendung \textit{eDok} des LWV Hessen angewendet. Dabei soll ein System geschaffen werden, das während der produktiven Nutzung Daten sammelt, ohne die Privatsphäre der Nutzer zu beeinträchtigen. Diese Daten werden in einem Dashboard visualisiert, das ausschließlich für Administratoren zugänglich ist, um fundierte Entscheidungen zur Optimierung der Anwendung treffen zu können.
+
+Ein weiterer Aspekt ist die Möglichkeit für Entwickler und Produktverantwortliche, die Datenerfassung auf spezifische Seiten der Anwendung zu beschränken oder zu erweitern. Dadurch kann sichergestellt werden, dass nur relevante Bereiche beobachtet werden, ohne die Performance auf anderen Seiten zu beeinträchtigen. Zudem ermöglicht das Modell, die Effektivität von Anpassungen zu überprüfen, indem Veränderungen im Nutzerverhalten nach Implementierung von Updates sichtbar gemacht werden.
+
 \subsection{Fragestellung}
-Welche spezifischen, anonymisierten Daten sind erforderlich, um die UX präzise und systematisch zu erfassen? Wie lassen sich diese Daten über Zeiträume hinweg analysieren, um dynamische Veränderungen zu erkennen und gezielte Optimierungsmöglichkeiten der Anwendung zu erschließen?
 
-\section{Über der Landeswohlfahrtsverband Hessen}
-Der Landeswohlfahrtsverband Hessen ist eine zentrale Organisation in Hessen, die sich für die soziale Integration und Unterstützung von Menschen mit Behinderungen einsetzt. Der Verband ist überörtlicher Träger der Eingliederungshilfe und fördert unter anderem in den Bereichen Wohnen, Bildung, Mobilität und Arbeit. Mit der Umsetzung des Bundesteilhabegesetzes und weiteren Programmen wie dem Persönlichen Budget  und dem Budget für Arbeit" unterstützt der LWV Hessen die selbstbestimmte Lebensführung und die gesellschaftliche Teilhabe der Betroffenen. Der LWV unterhält zudem Förderangebote für Kinder und Jugendliche, insbesondere für solche mit geistigen, emotionalen oder körperlichen Einschränkungen. Hierzu zählen Frühberatungsstellen, Förderschulen und Angebote zur inklusiven Beschulung. Zusätzlich ist der Verband Ansprechpartner für Menschen, die Leistungen des Sozialen Entschädigungsrechts benötigen.\subsection{Das Anlei-service GmbH}
-Die ANLEI-Service GmbH ist eine Tochtergesellschaft des LWV Hessen  und bietet IT-Dienstleistungen für die Sozialverwaltung. Sie entwickelt Systeme zur Unterstützung der Antragsbearbeitung, Leistungsgewährung und Abrechnung von Sozialleistungen, insbesondere in den Bereichen Eingliederungshilfe, Sozialhilfe und Kriegsopferfürsorge. Zu den zentralen Anwendungen zählen das Integrierte Berichtssystem (IBS) für betriebswirtschaftliche Analysen und MASS zur maschinellen Abrechnung mit Einrichtungen und Trägern
+Welche spezifischen, anonymisierten Daten sind erforderlich, um ein Modell zu entwickeln und zu implementieren, das die User Experience präzise und systematisch erfasst, dynamische Veränderungen über Zeiträume hinweg analysiert, Verantwortliche bei fundierten Entscheidungen zur Optimierung der Anwendung unterstützt und dabei auftretende Herausforderungen bewältigt?
 
-\section{Über eDok}
-   
-eDok Dient als Service für alle aufrufenden Anwendungen zur Erstellung von barrierefreien Dokumenten
-Löst das Schriftstück Erstellungssystem (SE) ab, das auf Microsoft Word und Makros basiert und integriert Doxee/Infinica als Subsystem für die Dokumentbearbeitung und Output-Generierung, sodass eine Verwendung sowohl mit Interaktiven Elementen (Bearbeitung des entstehenden Dokuments), als auch im Hintergrund (Dunkelverarbeitung) erfolgen kann
-Ziel und Vision von eDok ist es, eine universelle und generelle Schnittstelle für unsere Anwendungen zur einfachen, effizienten und performanten Erstellung von barrierefreien Dokumenten, unter Einbeziehung der Daten aus unseren Fachverfahren, zu bilden
-\section{Einführung in das Thema UX}
- 
-\subsection{was ist UX}
-UX ist ein Teilbereich der HCI, der in den frühen 1990er Jahren an Bedeutung gewann \cite{glanznig}. Mit dem Aufkommen neuer Technologien und der zunehmenden Verbreitung digitaler Produkte rückte der Fokus verstärkt auf die Benutzererfahrung und deren Qualität. UX konzentriert sich auf die Interaktion zwischen Mensch und System und zielt darauf ab, Produkte und Anwendungen so zu gestalten, dass sie nicht nur funktional sind, sondern auch emotional ansprechend und benutzerfreundlich.
-Die Definition von UX  wurde in der Literatur von verschiedenen Autoren und Organisationen auf vielfältige Weise beschrieben \cite{GOISTAI}.\\
+\subsection{Über den Landeswohlfahrtsverband Hessen}
 
+Der \textbf{Landeswohlfahrtsverband Hessen} (LWV Hessen) ist eine zentrale Organisation, die sich für die soziale Integration und Unterstützung von Menschen mit Behinderungen einsetzt. Als überörtlicher Träger der Eingliederungshilfe fördert der Verband Bereiche wie Wohnen, Bildung, Mobilität und Arbeit. Mit der Umsetzung des Bundesteilhabegesetzes und Programmen wie dem \textit{Persönlichen Budget} und dem \textit{Budget für Arbeit} unterstützt der LWV Hessen die selbstbestimmte Lebensführung und gesellschaftliche Teilhabe der Betroffenen. Zudem bietet der Verband Förderangebote für Kinder und Jugendliche mit geistigen, emotionalen oder körperlichen Einschränkungen, einschließlich Frühberatungsstellen und Förderschulen. Darüber hinaus ist der LWV Hessen Ansprechpartner für Menschen, die Leistungen des Sozialen Entschädigungsrechts benötigen.
 
-In ihrer Arbeit User Experience – A Research Agenda erläutern Hassenzahl und Tractinsky \cite{research}, dass sich die frühe Forsdchung im Bereich der HCI hauptsächlich auf Verhaltensziele\footnote{Ziele, die Nutzer durch ihr Verhalten erreichen, z.B. die erfolgreiche Bedienung eines Systems in einem Arbeitskontext.} in Arbeitsumgebungen konzentrierte. Dieser Fokus wurde jedoch später durch alternative Ansätze infrage gestellt.\\
-In einem frühen Versuch  UX zu definieren, betonte Alben (1996) die Bedeutung von Ästhetik als wesentlichem Qualitätsaspekt von Technologie\footnote{Eigene Übersetzung}\cite{research}.
+\subsection{Die ANLEI-Service GmbH}
 
-Hassenzahl  argumentierte, dass interaktive Produkte aus zwei Perspektiven betrachtet werden können: den instrumentellen Aspekten (z.,B. Usability Testing) und den nicht-instrumentellen (hedonischen) Aspekten, die sich auf das emotionale und ästhetische Erleben der Nutzer beziehen \cite{hassenzahl2003}.
+Die \textbf{ANLEI-Service GmbH} ist eine Tochtergesellschaft des LWV Hessen und bietet IT-Dienstleistungen für die Sozialverwaltung an. Sie entwickelt Systeme zur Unterstützung der Antragsbearbeitung, Leistungsgewährung und Abrechnung von Sozialleistungen, insbesondere in den Bereichen Eingliederungshilfe, Sozialhilfe und Kriegsopferfürsorge. Zu den zentralen Anwendungen zählen das \textit{Integrierte Berichtssystem} (IBS) für betriebswirtschaftliche Analysen und \textit{MASS} zur maschinellen Abrechnung mit Einrichtungen und Trägern.
 
- 
+\subsection{Über eDok}
+
+\textit{eDok} dient als Service für alle aufrufenden Anwendungen zur Erstellung von barrierefreien Dokumenten und löst das bisherige \textit{Schriftstück-Erstellungssystem} (SE) ab, das auf Microsoft Word und Makros basiert. Es integriert \textit{Doxee/Infinica} als Subsystem für die Dokumentbearbeitung und Output-Generierung, sodass eine Verwendung sowohl mit interaktiven Elementen (Bearbeitung des entstehenden Dokuments) als auch im Hintergrund (Dunkelverarbeitung) erfolgen kann. Ziel und Vision von \textit{eDok} ist es, eine universelle und generische Schnittstelle für die Anwendungen des LWV Hessen zu bieten, die eine einfache, effiziente und performante Erstellung von barrierefreien Dokumenten ermöglicht, unter Einbeziehung der Daten aus den Fachverfahren.
+
+\subsection{Einführung in das Thema UX}
+
+Die \textbf{User Experience} (UX) ist ein Teilbereich der HCI, der in den frühen 1990er Jahren an Bedeutung gewann \cite{glanznig}. Mit dem Aufkommen neuer Technologien und der zunehmenden Verbreitung digitaler Produkte rückte der Fokus verstärkt auf die Benutzererfahrung und deren Qualität. UX konzentriert sich auf die Interaktion zwischen Mensch und System und zielt darauf ab, Produkte und Anwendungen so zu gestalten, dass sie nicht nur funktional sind, sondern auch emotional ansprechend und benutzerfreundlich.
+
+\subsection{Herausforderungen und Offenheit der UX-Definition}
+
+Die Offenheit der UX-Definition erlaubt es, das Thema aus verschiedenen Perspektiven zu betrachten und unterschiedliche Meinungen einzubeziehen, was zu einem umfassenderen und tieferen Verständnis des UX-Konzepts führt und die Entwicklung der Disziplin fördert. Gleichzeitig erschweren jedoch verschiedene fachliche Hintergründe und Vokabularien den Fortschritt \cite{glanznig}.
+
+Hassenzahl und Tractinsky thematisierten in ihrer Arbeit \textit{User Experience – A Research Agenda} die Komplexität der UX und erklärten: „User Experience ist ein interessantes Phänomen: Es wurde von der HCI-Community schnell angenommen, aber oft kritisiert, da es vage und schwer fassbar ist. Der Begriff umfasst verschiedene Bedeutungen, von klassischer Usability bis hin zu Schönheit, hedonischen, affektiven und erfahrungsbasierten Aspekten der Technologienutzung“ \cite{research}.
+
+\subsection{Forschungsperspektiven: UX als vielschichtiges Phänomen}
+
+Sie erläutern weiter, dass sich die frühe Forschung im Bereich der HCI hauptsächlich auf Verhaltensziele in Arbeitsumgebungen konzentrierte. Dieser Fokus wurde jedoch später durch alternative Ansätze infrage gestellt, die die Bedeutung von Ästhetik, Emotionen und subjektiven Erfahrungen betonten \cite{research}.
+
+In einem frühen Versuch, UX zu definieren, betonte Alben (1996) die Bedeutung von Ästhetik als wesentlichem Qualitätsaspekt von Technologie \cite{research}. Hassenzahl argumentierte, dass interaktive Produkte aus zwei Perspektiven betrachtet werden können: den instrumentellen Aspekten (z.~B.\ Usability)
+ und den nicht-instrumentellen (hedonischen) Aspekten, die sich auf das emotionale und ästhetische Erleben der Nutzer beziehen \cite{hassenzahl2003}.
 
 Die Nielsen Norman Group definiert UX als die Gesamtheit aller Aspekte der Interaktion eines Endnutzers mit einem Unternehmen, seinen Dienstleistungen und Produkten. Hervorgehoben wird, dass herausragende UX nicht nur die spezifischen Bedürfnisse des Nutzers erfüllt, sondern auch durch Einfachheit und Eleganz überzeugt, sodass die Nutzung und der Besitz des Produkts als angenehm empfunden werden. Zudem wird betont, dass eine qualitativ hochwertige UX eine nahtlose Integration verschiedener Disziplinen erfordert, darunter Ingenieurwesen, Marketing, Grafik- und Industriedesign sowie Interface-Design \cite{nngroup}.
 
 Die ISO 9241-210:2019 beschreibt UX als „sämtliche Wahrnehmungen und Reaktionen von Nutzern, die durch die tatsächliche oder erwartete Nutzung eines Systems, Produkts oder einer Dienstleistung hervorgerufen werden“ \cite{ISO}.
 
-Ungeachtet der unterschiedlichen Definitionen herrscht Einigkeit darüber, dass UX das ganzheitliche Erlebnis eines Nutzers mit einem Produkt, einer Dienstleistung oder einem System umfasst. Dabei spielen Faktoren wie Benutzerfreundlichkeit, Emotionen und Zufriedenheit eine zentrale Rolle. In der Literatur werden häufig mehrere Dimensionen von UX hervorgehoben, insbesondere Usability, ästhetische Wahrnehmung, inhaltliche Relevanz und das Vertrauen der Nutzer \cite{toolbox}. Diese Dimensionen sind entscheidend dafür, wie effektiv und zufriedenstellend eine Anwendung wahrgenommen wird und tragen wesentlich zur Gestaltung positiver Nutzererlebnisse bei.
+\subsection{Zusammenfassung der UX-Definitionen}
 
-In dem Paper Towards Practical User Experience Evaluation Methods \cite{evaluationmethods} wird darauf hingewiesen, dass die UX-Forschung eine Vielzahl von Modellen und Frameworks entwickelt hat. Diese Modelle adressieren die zentralen Herausforderungen der UX, wie ihre subjektive, kontextabhängige und dynamische Natur sowie die Balance zwischen pragmatischen und hedonischen Aspekten des Nutzererlebnisses. Gleichzeitig wird betont, dass UX zunehmend in der Industrie übernommen wird, die Produktentwicklung jedoch noch immer stark auf traditionellen Usability-Methoden basiert. Die Arbeit unterstreicht die Notwendigkeit praxisnaher UX-Bewertungsmethoden für die Produktentwicklung in der Industrie. Es wird der Schluss gezogen, dass, obwohl die Definition von UX noch weiter verfeinert werden muss, viele Methoden aus der HCI und anderen Disziplinen an die spezifischen Anforderungen der UX-Bewertung angepasst werden können \cite{evaluationmethods}.
+Ungeachtet der unterschiedlichen Definitionen ist klar, dass UX sowohl funktionale als auch emotionale Dimensionen der Nutzererfahrung umfasst. Faktoren wie Usability, ästhetische Wahrnehmung, inhaltliche Relevanz und das Vertrauen der Nutzer sind entscheidend dafür, wie effektiv und zufriedenstellend eine Anwendung wahrgenommen wird und tragen wesentlich zur Gestaltung positiver Nutzererlebnisse bei \cite{toolbox}.
+
+In dem Papier \textit{Towards Practical User Experience Evaluation Methods} \cite{evaluationmethods} wird darauf hingewiesen, dass die UX-Forschung eine Vielzahl von Modellen und Frameworks entwickelt hat. Diese Modelle adressieren die zentralen Herausforderungen der UX, wie ihre subjektive, kontextabhängige und dynamische Natur sowie die Balance zwischen pragmatischen und hedonischen Aspekten des Nutzererlebnisses. Gleichzeitig wird betont, dass UX zunehmend in der Industrie übernommen wird, die Produktentwicklung jedoch noch immer stark auf traditionellen Usability-Methoden basiert. Die Arbeit unterstreicht die Notwendigkeit praxisnaher UX-Bewertungsmethoden für die Produktentwicklung in der Industrie.
+
+\subsection{Usability und ihre Bedeutung}
+
+Usability bezieht sich auf die funktionalen Aspekte eines Produkts und beschreibt, wie effektiv und effizient sich das Produkt nutzen lässt. Viele Experten sehen Usability als Teil der UX \cite{GOISTAI}. Während sich Usability auf die Fähigkeit des Nutzers konzentriert, ein System erfolgreich zu nutzen, umfasst UX auch die gesamte Nutzererfahrung und die dabei entstehenden Emotionen.
+
+Die Nielsen Norman Group definiert Usability als ein Qualitätsmerkmal, das bewertet, wie einfach und angenehm eine Benutzeroberfläche zu nutzen ist. Sie umfasst fünf Hauptkomponenten:
+
+\begin{itemize} \item \textbf{Erlernbarkeit}: Wie leicht können Benutzer grundlegende Aufgaben beim ersten Mal ausführen? \item \textbf{Effizienz}: Wie schnell können Benutzer Aufgaben ausführen, nachdem sie die Schnittstelle gelernt haben? \item \textbf{Merkfähigkeit}: Wie einfach können Benutzer ihre Fähigkeiten wiederherstellen, wenn sie das Design nach einer Pause erneut verwenden? \item \textbf{Fehlerrate}: Wie viele Fehler machen Benutzer, wie schwerwiegend sind diese und wie leicht können sie sich von ihnen erholen? \item \textbf{Zufriedenheit}: Wie angenehm ist die Nutzung der Benutzeroberfläche? \end{itemize}
+Die Nielsen Norman Group erläutert den Unterschied zwischen Usability Testing und Usability Evaluation klar und prägnant. Beim Usability Testing beobachten Usability-Experten die Nutzer, um potenzielle Usability-Probleme zu identifizieren. Im Gegensatz dazu geht die Usability Evaluation einen Schritt weiter: Sie kombiniert das Testing mit direktem Nutzerfeedback und einer Überprüfung des Systemdesigns.
+\subsection{Usability in eDok}
+
+Im Kontext von \textit{eDok} liegt der Schwerpunkt auf der effizienten und fehlerarmen Erstellung und Bearbeitung von Dokumenten. Für optimale Usability ist es entscheidend, dass Nutzer die Funktionen der Anwendung intuitiv verstehen und nutzen können. Klare Benutzerführung, schnelle Ladezeiten sowie eine übersichtliche und reduzierte Benutzeroberfläche sind dabei zentral.
+
+Ein wesentlicher Aspekt ist die Unterstützung von Fehlertoleranz, sodass auch bei Eingabefehlern ein produktiver Arbeitsfluss erhalten bleibt. Funktionen wie automatisches Speichern, leicht zugängliche Rückgängig-Optionen und verständliche Fehlermeldungen helfen, die Nutzererfahrung positiv zu gestalten.
+
+Durch die kontinuierliche Evaluation der Usability über systematisch gesammelte Daten können Schwachstellen identifiziert und gezielt Optimierungen vorgenommen werden. Ergänzende Nutzerbefragungen können zusätzliche Einblicke bieten, sind jedoch nicht direkt in das System integriert und dienen daher eher unterstützenden Zwecken.
+
+Insgesamt zielt \textit{eDok} darauf ab, eine nutzerfreundliche Anwendung zu bieten, die den Arbeitsablauf bei der Dokumentenerstellung optimiert. Diese Arbeit strebt an, bestimmte Merkmale der Usability zu messen, zu speichern und zu bewerten, um ein umfassendes Bild der Nutzererfahrung zu erhalten.
+
+\subsection{Erweiterte Ziele der UX- und Usability-Bewertung in eDok}
+
+Das Ziel der UX- und Usability-Bewertung in \textit{eDok} ist es, gezielte Einblicke in die Nutzungsmuster der Anwendung zu gewinnen und Optimierungspotenziale klar zu identifizieren. Das entwickelte Modell liefert durch systematische Erfassung und Analyse der Nutzerinteraktionen Daten, die Entwickler und Produktverantwortliche dabei unterstützen, Nutzerbedürfnisse und häufige Herausforderungen sichtbar zu machen.
+
+Die implementierte Heatmap bietet eine visuelle Übersicht der am stärksten genutzten Bereiche, sodass gezielt Verbesserungspotenziale an zentralen Interaktionspunkten erkannt werden können. Durch die Analyse der Verweildauer auf spezifischen Seiten, der häufig durchlaufenen Navigationspfade und der Häufigkeit bestimmter Fehler können gezielte Maßnahmen zur Optimierung der Anwendung abgeleitet werden.
+
+Diese Daten helfen, die Effizienz und Benutzerfreundlichkeit der Anwendung kontinuierlich zu steigern und eine datengetriebene Produktoptimierung zu ermöglichen. Darüber hinaus ermöglicht das Modell eine nachträgliche Überprüfung der implementierten Änderungen, um deren Effektivität zu bewerten und weitere Optimierungen vorzunehmen. Durch diesen iterativen Prozess trägt das Modell wesentlich zur Steigerung der Nutzerzufriedenheit und Effizienz der Anwendung bei.
+
+\subsection{Methodik}
+
+Zur Beantwortung der Forschungsfragen wird eine Kombination aus \textbf{literaturbasierter Forschung} und \textbf{praktischer Implementierung} angewendet. Zunächst werden bestehende Methoden und Werkzeuge zur UX-Messung analysiert. Darauf aufbauend wird ein eigenes Modell entwickelt, das in die \textit{eDok}-Anwendung integriert wird. Die Datenerfassung und -analyse erfolgt unter Berücksichtigung von Datenschutzbestimmungen und ethische n Richtlinien. Besonderer Wert wird auf die Anonymisierung der Daten gelegt, um die Privatsphäre der Nutzer zu schützen.
+
+\subsection{Beitrag der Arbeit}
+
+Die Ergebnisse dieser Arbeit liefern sowohl theoretische Erkenntnisse als auch praktische Anleitungen für Entwickler und UX-Designer. Das vorgestellte Modell kann als Vorlage für ähnliche Projekte dienen und dazu beitragen, die Qualität von Softwareprodukten nachhaltig zu verbessern. Durch die Anwendung auf eine reale Anwendung wie \textit{eDok} wird gezeigt, wie das Modell effektiv implementiert und genutzt werden kann.
+
+\subsection{Aufbau der Arbeit}
+
+Die vorliegende Arbeit gliedert sich wie folgt:
+
+\begin{itemize} \item \textbf{Kapitel 2} bietet einen ausführlichen Überblick über den theoretischen Hintergrund der UX-Messung, einschließlich gängiger Methoden und Techniken zur Datenerfassung und -analyse. \item In \textbf{Kapitel 3} wird das entwickelte Modell detailliert vorgestellt. Es werden die technischen Komponenten, die Datenbankstruktur sowie die Implementierungsdetails beschrieben. \item \textbf{Kapitel 4} widmet sich der Anwendung des Modells auf die \textit{eDok}-Anwendung. Es werden die Ergebnisse der Datenerfassung präsentiert und analysiert. \item In \textbf{Kapitel 5} erfolgt eine kritische Diskussion der Ergebnisse, einschließlich der Vorteile des Modells, identifizierter Schwachstellen und möglichen Verbesserungen. \item \textbf{Kapitel 6} fasst die Arbeit zusammen und gibt einen Ausblick auf zukünftige Forschungs- und Entwicklungsmöglichkeiten. \end{itemize}
+
+\subsection{Relevanz der Arbeit}
+
+Angesichts der wachsenden Bedeutung von UX in der Softwareentwicklung leistet diese Arbeit einen wichtigen Beitrag zur Praxis und Forschung. Das vorgestellte Modell ermöglicht es, UX-Daten in Echtzeit und unter realen Nutzungsbedingungen zu erfassen, ohne die Nutzererfahrung zu beeinträchtigen. Dies ist besonders relevant für Organisationen, die ihre Anwendungen kontinuierlich verbessern möchten, um den steigenden Erwartungen der Nutzer gerecht zu werden.
+
+Durch die Anwendung auf die \textit{eDok}-Anwendung des LWV Hessen wird demonstriert, wie das Modell in einer realen Umgebung implementiert werden kann. Die gewonnenen Erkenntnisse können als Grundlage für weitere Anwendungen dienen und dazu beitragen, die UX-Forschung in der Praxis voranzutreiben.
+
+\subsection{Fazit}
+
+Die systematische Erfassung und Analyse der UX ist unerlässlich, um moderne Softwareanwendungen an die Bedürfnisse und Erwartungen der Nutzer anzupassen. Durch die Entwicklung und Implementierung eines Modells zur UX-Messung in \textit{eDok} wird gezeigt, wie Daten genutzt werden können, um die Nutzererfahrung zu verbessern und die Anwendung effizienter und benutzerfreundlicher zu gestalten. Diese Arbeit leistet somit einen wertvollen Beitrag zur Verbesserung von UX-Methoden und deren Anwendung in der Praxis.
+\section{Kapitel 2}
+\subsection{Überblick über den theoretischen Hinter-
+grund der UX-Messung}
+
+\subsubsection{Abgrenzung von UX- und Usability-Evaluationsmethoden}
+Während Usability-Tests sich primär auf die Leistung bei der Aufgabenbearbeitung konzentrieren, fokussieren UX-Evaluationsmethoden auf das subjektive Erleben der Nutzenden. Objektive Metriken wie Ausführungszeit oder Klickanzahl reichen nicht aus, um die UX vollständig zu erfassen; vielmehr müssen auch Motivation, Erwartungen und Emotionen der Nutzenden berücksichtigt werden \cite{DevelopmentNeeds}.
+
+Nach eingehender Recherche und Analyse der verschiedenen UX-Evaluationsmethoden hat sich herausgestellt, dass die Anforderungen dieser Arbeit eher einem Usability-Test entsprechen als traditionellen UX-Evaluationsmethoden wie Fragebögen oder der Beobachtung von Nutzenden. Unsere Arbeit konzentriert sich auf die systematische Erfassung von Nutzungsdaten während des Produktiveinsatzes der Anwendung. Diese Herangehensweise erlaubt es, objektive Daten über die Interaktion der Nutzenden mit der Anwendung zu sammeln und spezifische Aspekte der Usability zu bewerten.
+\subsubsection{Fokussierung auf Usability in dieser Arbeit}
+Die Entscheidung, den Schwerpunkt auf Usability-Tests zu legen, basiert auf den spezifischen Anforderungen des Projekts. Da die gesammelten Daten nicht benutzerorientiert sein sollen und keine direkten Nutzerbefragungen oder Beobachtungen stattfinden, sind traditionelle UX-Evaluationsmethoden weniger geeignet. Stattdessen ermöglicht die Messung von Interaktionsdaten, wie zum Beispiel Klickpfade, Verweildauer auf bestimmten Seiten und Fehlerhäufigkeiten, eine objektive Analyse der Benutzerfreundlichkeit der Anwendung.
 
 
+Diese Daten liefern wertvolle Erkenntnisse darüber, wie effizient und effektiv die Nutzenden die Anwendung bedienen können. Sie helfen dabei, potenzielle Usability-Probleme zu identifizieren und gezielte Verbesserungen vorzunehmen. Obwohl dieser Ansatz nicht das gesamte Spektrum der UX abdeckt, trägt er wesentlich zur Optimierung der Anwendung bei und unterstützt die Nutzenden in ihrer täglichen Arbeit.
+
+Jordan (2008)\cite{jordan2008auswahl} betont die Bedeutung einer sorgfältigen Auswahl der Usability-Evaluationsmethode unter Berücksichtigung spezifischer Projektanforderungen und Kontextfaktoren. In Anlehnung an seine Kriterien hat sich herausgestellt, dass eine Methode, die auf der automatisierten Erfassung von Nutzungsdaten basiert, geeignet ist. Diese Entscheidung ermöglicht es, objektive Daten zu sammeln, ohne die Privatsphäre der Nutzenden zu beeinträchtigen, und entspricht somit den praktischen und ethischen Anforderungen des Projekts.
+
+Im Jahr 1980 führte das Xerox Palo Alto Research Center (PARC)\cite{keystroke} eine bahnbrechende Studie durch. Sie verglichen die vorhergesagten Ausführungszeiten mit den tatsächlich gemessenen Zeiten und stellten fest, dass das Keystroke-Level Model  KLM die Benutzerleistung mit einer Genauigkeit von etwa 21\% vorhersagen konnte. Damit zeigten sie, dass ihr Modell ein nützliches Werkzeug für Designer von interaktiven Systemen ist, um die Effizienz von Benutzerschnittstellen quantitativ zu bewerten und zu verbessern.
 
 
+Die von Paz und Pow-Sang durchgeführte Studie \cite{Paz2016} identifizierte die am häufigsten verwendeten Methoden zur Evaluierung der Benutzerfreundlichkeit (Usability Evaluation Methods, UEMs) in Softwareentwicklungsprozessen:
 
-Laut \cite{GOISTAI} reicht die bloße Messung von Fehlern, Klicks oder der benötigten Zeit (Usabilty \ref{sec:usability}) nicht aus, um die User Experience (UX) angemessen zu bewerten. Entscheidend ist es, das Erleben des Nutzers vor, während und nach der Verwendung der Anwendung oder des Produkts zu verstehen. Die Entwicklung von Webanwendungen, die Gaming-Industrie sowie der Aufstieg des allgegenwärtigen Computings führten zu einem Paradigmenwechsel, bei dem der Fokus von der reinen Effizienz hin zur Zufriedenheit der Nutzer verlagerte. Dies legte den Grundstein für die Etablierung von UX als eigenständiges Konzept \cite{glanznig}.
-
-\cite{Virpi} argumentiert, dass objektive Messungen, wie die Zeitmessung oder die Erfassung von Fehlern, allein nicht ausreichen, um UX umfassend zu bewerten. Vielmehr sollten auch Emotionen, Erwartungen und die Motivation der Nutzer einbezogen werden. Darüber hinaus ist UX stark kontextabhängig und variiert je nach Einsatzgebiet und Zielgruppe.\\
-Zusammenfassend lässt sich sagen, dass UX unterschiedlich interpretiert wurde, jedoch sind sich die meisten Experten einig, dass Usability ein wesentlicher Teil der UX ist. Dennoch geht UX weit über die reine Usability hinaus. Insbesondere die nicht-instrumentellen und hedonischen Aspekte der UX, wie ästhetische Gestaltung, emotionale Reaktionen und das allgemeine Wohlbefinden der Nutzer während der Interaktion, spielen eine zentrale Rolle. UX umfasst somit sowohl funktionale als auch emotionale Dimensionen der Nutzererfahrung.
-
-
-\subsection{Usability}\label{sec:usability}
-\begin{quote} good usability is a precondition for good UX \cite{glanznig}.\end{quote}
-Usability bezieht sich auf die funktionalen Aspekte eines Produkts und beschreibt, wie effektiv und produktiv sich das Produkt nutzen lässt. Viele Experten sehen Usability als Teil der UX \cite{GOISTAI}. Während sich Usability auf die Fähigkeit des Nutzers konzentriert, ein System erfolgreich zu nutzen, umfasst UX auch die gesamte Nutzererfahrung und die dabei entstehenden Emotionen.
-
-Die Nielsen Norman Group definiert \cite{nngroup} Usability als ein Qualitätsmerkmal, das bewertet, wie einfach und angenehm eine Benutzeroberfläche zu nutzen ist. Sie umfasst fünf Hauptkomponenten:
 \begin{itemize}
-    \item \textbf{Erlernbarkeit}: Wie leicht können Benutzer grundlegende Aufgaben beim ersten Mal ausführen?
-    \item \textbf{Effizienz}: Wie schnell können Benutzer Aufgaben ausführen, nachdem sie die Schnittstelle gelernt haben?
-    \item \textbf{Merkfähigkeit}: Wie einfach können Benutzer ihre Fähigkeiten wiederherstellen, wenn sie das Design nach einer Pause erneut verwenden?
-    \item \textbf{Fehlerrate}: Wie viele Fehler machen Benutzer, wie schwerwiegend sind diese und wie leicht können sie sich von ihnen erholen?
-    \item \textbf{Zufriedenheit}: Wie angenehm ist die Nutzung der Benutzeroberfläche?
+    \item \textbf{Umfragen/Fragebögen (26,26\%)} 
+    \begin{itemize}
+        \item Die am häufigsten verwendete Methode.
+        \item Geschätzt für ihre Einfachheit und Effektivität bei der Erfassung von Benutzerzufriedenheitsdaten.
+    \end{itemize}
+    \item \textbf{Benutzertests (14,14\%)}
+    \begin{itemize}
+        \item Beinhaltet die Beobachtung realer Benutzer, die mit der Software interagieren.
+        \item Ziel: Direkte Identifikation von Usability-Problemen.
+    \end{itemize}
+    \item \textbf{Heuristische Evaluation (12,63\%)}
+    \begin{itemize}
+        \item Experten bewerten die Software anhand etablierter Usability-Prinzipien.
+        \item Ziel: Potenzielle Probleme aufdecken.
+    \end{itemize}
+    \item \textbf{Interviews (10,35\%)}
+    \begin{itemize}
+        \item Direkte Gespräche mit Benutzern.
+        \item Ziel: Tiefgehende Einblicke in Usability-Bedenken und -Erfahrungen.
+    \end{itemize}
+    \item \textbf{Lautes Denken (9,60\%)}
+    \begin{itemize}
+        \item Benutzer äußern ihre Gedanken während der Nutzung der Software.
+        \item Ziel: Echtzeit-Feedback zu ihren Interaktionen liefern.
+    \end{itemize}
 \end{itemize}
-Die ISO 9241-210 (2010) definiert die Benutzererfahrung UX und die Gebrauchstauglichkeit (Usability) klar voneinander ab. Während UX sich auf die gesamte Erfahrung und Zufriedenheit der Nutzer bei der Nutzung eines Produkts konzentriert, liegt der Fokus von Usability auf der Effizienz, Effektivität und dem Zufriedenheitsgrad bei der Erledigung konkreter Aufgaben.
 
-Im Kontext einer Webanwendung wie eDok liegt der Schwerpunkt primär auf der Dokumentenerstellung. Es ist wichtig, den Nutzern eine Möglichkeit zu bieten, schnell und effizient Dokumente mit einer gewissen Fehlertoleranz zu erstellen und zu bearbeiten. Im Anschluss daran stellt sich die Frage, wie sich die Nutzer während der Nutzung von eDok fühlen.
+Im Kontext der Ergebnisse der Studie, obwohl diese Methoden nicht zu den fünf am häufigsten verwendeten zählen (diese sind Umfrage/Fragebogen, Benutzertests, heuristische Evaluation, Interview und "Thinking Aloud"-Protokoll), werden sie dennoch als anerkannte und wertvolle Techniken in der Usability-Evaluierung betrachtet.
 
- 
-
-In diesem Arbeitskontext wird versucht, bestimmte Merkmale der Usability zu messen, zu speichern und zu bewerten.
+Durch den Einsatz dieser Methoden verwenden Sie quantitative Datenanalyse, um die Benutzerfreundlichkeit zu evaluieren. Dieser Ansatz ermöglicht es, spezifische Probleme in der Benutzeroberfläche basierend auf dem tatsächlichen Nutzerverhalten zu identifizieren, was zu gezielteren und effektiveren Verbesserungen führt.
 
 
+Die Studie von Srivastava et al. (2000)\cite{srivastava2000} untersucht das Konzept des \textit{Web Usage Mining}, bei dem Data-Mining-Techniken angewendet werden, um Nutzungsmuster aus Web-Daten zu entdecken. Ziel ist es, das Verhalten von Web-Nutzern zu verstehen und daraus Erkenntnisse für die Verbesserung von Web-Anwendungen zu gewinnen.
 
+Die Autoren identifizieren verschiedene Arten von Web-Daten, darunter Inhaltsdaten, Strukturdaten, Nutzungsdaten und Benutzerprofildaten. Sie beschreiben einen dreistufigen Prozess des Web Usage Mining:
 
+\begin{enumerate}
+ \item \textbf{Datenvorverarbeitung}: Reinigung und Transformation der Rohdaten, Identifikation von Benutzern und Sessions.
+\item \textbf{Musterdetektion}: Anwendung von Data-Mining-Techniken wie Assoziationsanalyse und Clustering zur Identifikation von Nutzungsmustern.
+ \item \textbf{Musteranalyse}: Interpretation der entdeckten Muster, um nützliche Erkenntnisse zu gewinnen.
+ \end{enumerate}
 
+Die Studie zeigt, dass die Analyse von Nutzungsdaten wie Heatmaps, Fehlerzählungen, Klickanalysen und Verweildauer entscheidend ist, um das Benutzerverhalten zu verstehen und die Usability von Websites zu verbessern. Durch Web Usage Mining können spezifische Probleme in der Benutzeroberfläche identifiziert und gezielte Verbesserungen vorgenommen werden.
 
+Die Autoren fanden heraus, dass Web Usage Mining in verschiedenen Anwendungsbereichen wie Personalisierung, Systemoptimierung, Website-Modifikation und Geschäftsanalysen wertvolle Einblicke liefert. Sie betonen jedoch auch die Herausforderungen, insbesondere in Bezug auf Datenqualität und Datenschutz.
 
-\subsection{ UX Bewertung}
- 
-Um geeignete Daten für die Bewertung der UX zu sammeln, müssen zunächst die relevanten Bereiche der UX genauer analysiert werden. Es gilt zu entscheiden, welche Daten sich zur Bewertung der UX eignen und welche sich während der unkontrollierten, produktiven Nutzung der Anwendung erfassen lassen.
+Insgesamt unterstreicht die Studie die Bedeutung von Web Usage Mining als effektives Werkzeug zur Verbesserung von Web-Anwendungen durch ein besseres Verständnis des Nutzerverhaltens.\\ 
+Diese Arbeit befasste sich mit der Sammlung und Darstellung von Daten, es wurden jedoch keine Data-Mining-Techniken angewendet. Es ist jedoch üblich, solche Methoden auf die gesammelten Daten anzuwenden, was zu interessanteren Erkenntnissen führen kann, wie in der Studie erwähnt.\\
+ In dieser Arbeit wurden stattdessen statistische Operationen durchgeführt, um einige Kennzahlen wie die Fehlerquote zu veranschaulichen.
 
-In der Literatur wird oft darauf hingewiesen, dass die Wurzeln der UX in der Usability liegen. Dies war der Ausgangspunkt, doch im Laufe der Zeit wurden weitere Faktoren als wichtig erkannt, wie etwa die ästhetische Gestaltung der Anwendung und die emotionale Ebene der Nutzererfahrung. Diese zusätzlichen Aspekte spielen ebenfalls eine wesentliche Rolle bei der umfassenden Bewertung der UX.
- 
-Um die Usability-Bewertung zu erweitern und die UX detaillierter darzustellen, werden folgende Daten erfasst:
+\subsubsection{Vergleich von Nutzerinterviews, Fragebögen und der Sammlung quantitativer Daten}
 
-\begin{itemize} \item Benutzerfeedback während der Nutzung (Survey). \item Feedback zu Fehlermeldungen (verständlich, nicht verständlich). \item Bewertung einzelner Prozessschritte zur Zufriedenheitsermittlung (Skala: sehr gut, gut, neutral, unzufrieden, sehr schlecht). \end{itemize}
+In der Usability-Forschung gibt es verschiedene Methoden, um Nutzererfahrungen und -probleme zu evaluieren. Zu den häufig eingesetzten Ansätzen gehören qualitative Methoden wie Interviews und Fragebögen, die direkte Rückmeldungen der Nutzer einholen, und quantitative Ansätze wie das Logging und die Analyse von Nutzungsdaten. Nach eingehender Analyse und Berücksichtigung der Ergebnisse aus dem Papier \textit{Extracting Usability Information from User Interface Events} von Hilbert und Redmiles \cite{Hilbert2000} wurde entschieden, dass eine Kombination dieser Methoden die umfassendsten Erkenntnisse liefert.
 
-Laut \cite{GOISTAI} sind UX-Bewertungsmethoden eine Erweiterung der Usability-Messungen. Usability-Bewertung konzentriert sich auf funktionale Aspekte des Systems, während UX-Bewertung zusätzlich die emotionale Dimension und die Erwartungen der Nutzer berücksichtigt.
-
-Das Buch \cite{measuring} beschreibt verschiedene UX-Metriken \footnote{Eine Metrik ist eine Methode, um ein bestimmtes Phänomen oder eine Sache zu messen oder zu bewerten.} zur Erfassung von Nutzeraktionen. Diese Metriken können den Produktverantwortlichen helfen, fundierte Entscheidungen zu treffen.
-
-UX-Metriken ermöglichen eine Bewertung der Interaktion zwischen Nutzer und Produkt in Bezug auf:
-
-\begin{itemize} \item Effektivität (die Fähigkeit, eine Aufgabe zu erfüllen). \item Effizienz (der erforderliche Aufwand zur Aufgabenerfüllung). \item Zufriedenheit (das Maß an Zufriedenheit des Nutzers bei der Aufgabenbewältigung). \end{itemize}
-
-
- 
-
-\subsection{Messung und Bewertung von Usabilty}
-\subsubsection{Messung von Effizienz in eDok}
-Prozesse in eDok können verschiedene Status haben, wobei das Ziel in der Regel darin besteht, ein Dokument abzuschließen. Sobald dies erreicht ist, gilt das Hauptziel als erfüllt, obwohl das Dokument auch nach Abschluss noch weiter bearbeitet werden kann.
-
-Der Arbeitsprozess kann jedoch aus unterschiedlichen Gründen unterbrochen werden, wie z.B. durch Fehler oder Internetstörungen. Daher ist der erste Schritt, die Benutzerfreundlichkeit (Usability) zu bewerten und ein klares Endziel der Aufgabe zu definieren. Eine Aufgabe beginnt in der Regel mit der Erstellung und endet mit dem Abschluss. Sobald sie abgeschlossen ist, kann die dafür benötigte Zeit gemessen werden.
-
-Unvollständige Aufgaben in eDok können zu einem späteren Zeitpunkt weiterbearbeitet und abgeschlossen werden. Es ist wichtig, den Zeitpunkt der Unterbrechung und die Wiederaufnahme der Arbeit zu erfassen, um den gesamten Prozessverlauf bis zum Abschluss nachvollziehen zu können.
-
-Nach Abschliessen der Prozess kann dies immernoch bearbeitet werden, dauz ist eigene bessmung für die Aufwand von Bearbeitung, um die Effizanz dazu auch bemessen zu werden.
-
-Die Messungen beschränken sich aus Leistungsgründen auf bestimmte Vorlagen und Prozesse innerhalb der Anwendung, die vom Produktentwicklungsteam festgelegt werden. Zu den erfassten Daten gehören die aufgewendete Zeit, die Häufigkeit der Unterbrechungen sowie die Dauer des gesamten Prozesses von Anfang bis Ende, sowohl mit als auch ohne Unterbrechungen.
-\subsubsection{Erfolgsrate}
-Fehlern in eDok können aufunterschiedliche Arten auftreten, es gibt Fehlern, die durch bestimmte Nutzer Aktion beseitigt sein können, undefinierte Fehlern, die für die Nutzer verständlich sind und undefinerte Fehler, wo für den Nutzer unbekannt sind, es gibt noch Fehlern die definiert sind aber in der Falsche Stelle aufgeerten sind. Folgende Graph kann die die Fehler klassfizieren.
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=1.00\textwidth]{FehlerMatrix.png}
-    \caption{a nice plot}
-    \label{fig:mesh1}
-\end{figure}
-
-\subsection{Systematische Bewertung weiterer Aspekte der UX}
- Das Modell soll auch weitere Aspekte der UX bewerten. Da die Datensammlung automatisiert erfolgen soll, besteht die Herausforderung darin, herauszufinden, welche Daten Aufschluss über die UX geben, wie diese Daten gesammelt werden können und wie sie zu bewerten sind. In der Praxis wurde die UX häufig durch Nutzerinterviews und Fragebögen bewertet, wobei die Beobachtung der Nutzer und ihrer Interaktionen mit dem Produkt eine wichtige Rolle spielt.
-
-Das Ziel dieser Arbeit ist es jedoch nicht nur, die UX zu bewerten, sondern auch zu untersuchen, wie sie sich im Laufe der Zeit entwickelt. Da sich das Produkt und dessen Funktionen ständig weiterentwickeln, sind Interviews aufgrund von zeitlichen und finanziellen Einschränkungen keine praktikable Lösung.
-
-Eine mögliche Alternative besteht darin, den Nutzern die Möglichkeit oder Aufforderung zu bieten, sich nach der Implementierung neuer Features mit dem Produkt auseinanderzusetzen und Feedback durch einen im Produkt integrierten Fragebogen abzugeben. Darüber hinaus besteht die Möglichkeit, ein allgemeines Feedback über die gesamte Erfahrung mit dem Produkt abzugeben, wobei sich die Struktur der Fragebögen nicht ändert, sondern lediglich deren Umfang variiert.
-
-Die Fragen für das kurzfristige Feedback können von den Entwicklern oder den Produktverantwortlichen angepasst werden, um präzisere Informationen über die aktuelle UX zu erhalten. Diese Flexibilität ermöglicht es, gezielt Fragen zu stellen, die relevante Erkenntnisse über die kurzfristigen Benutzererfahrungen liefern.
- 
-
-\subsection{System Usability Scale}
-Die SUS wurde von John Brooke in die 1989er erfunden und ist einfach zu nutzen und geeignet für online befragung.
-Es sagt nicht wo in der Anwendung es brent, aber es kann dadurch einen Überblick über die gesammte Usabilty innerhalb einer Anwendung sagen.
-\subsubsection{Wie sus funktioniert}
-
-\subsection{Messung und Bewertung von Usabilty durch User Behavior}
+\subsubsection{Nutzerinterviews und Fragebögen}
+Nutzerinterviews und Fragebögen bieten eine direkte Möglichkeit, subjektive Rückmeldungen zu sammeln. Die Vorteile dieser Ansätze sind:
 \begin{itemize}
-\item  Clickstream-Analyse: Verfolgt die Klickpfade der Benutzer innerhalb der Anwendung, um herauszufinden, welche Bereiche der Anwendung am häufigsten genutzt werden oder wo Benutzer möglicherweise Schwierigkeiten haben.
-\item  Heatmaps: Visualisiert, wo Benutzer auf dem Bildschirm klicken oder ihre Maus bewegen. So kann man sehen, welche Bereiche die meiste Aufmerksamkeit erhalten.
-\item  Session-Replay: Aufzeichnung von Benutzersitzungen, um das Verhalten der Benutzer detailliert zu analysieren, z.B. welche Schritte sie bei der Navigation durch die Anwendung unternehmen.
+    \item \textbf{Qualitative Einblicke:} Diese Methoden liefern tiefgehende Informationen zu Meinungen, Zufriedenheit und Emotionen der Nutzer.
+    \item \textbf{Flexibilität:} Während der Interaktion können gezielte Fragen gestellt werden, um spezifische Probleme zu beleuchten.
+    \item \textbf{Direktes Feedback:} Nutzer äußern direkt wahrgenommene Schwächen oder Verbesserungsvorschläge.
 \end{itemize}
-
-
-
-\subsection{Was das Modul misst und darstellt}
-
-Das Modul erfasst und stellt folgende Daten dar:
-
-\begin{itemize} 
-\item Heatmaps zur Visualisierung von Nutzerinteraktionen.
- \item Klickpositionen und -häufigkeiten.
-\item Feedback zu Fehlermeldungen (Like/Dislike, Verständnis der Fehlermeldung). 
-\item Emotion-Feedback in Form von Emojis (gut, zufrieden, neutral, unzufrieden, schlecht) mit optionalen Kommentaren.
- \item Fehlerzähler, um die häufigsten Fehler zu identifizieren.
- \item Erfassung der Prozessschritte, bei denen die meisten Nutzer scheitern.
- \item Zeitaufwand pro Prozess, Verweildauer auf einer Seite, Zeit zur Fehlerbehebung, Prozessabbruch und Wiederaufnahme. 
-\item Analyse der Prozesse mit der längsten Bearbeitungsdauer.
- \item Usability-Score und UX-Zusammenfassung über einen bestimmten Zeitraum. 
-\end{itemize}
- 
-
-  
- 
-%--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
-\section{Anonymisierte Erfassung und Behandlung der Daten}
-\section{Bedeutung der Anonymisierung}
-Bei der Erfassung von UX-Daten ist es entscheidend, dass die Daten anonymisiert werden, um die Privatsphäre der Nutzer*innen zu schützen und ethische Standards einzuhalten.
-%--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
-\section{Methoden zur Anonymisierung}
+Dennoch zeigen sich auch wesentliche Nachteile:
 \begin{itemize}
-\item \textbf{Pseudonymisierung}: Ersatz von personenbezogenen Daten durch Pseudonyme, sodass die Identität der Nutzer*innen nicht direkt ermittelt werden kann.
-\item \textbf{Aggregation}: Zusammenfassung der Daten auf eine Ebene, die keine Rückschlüsse auf Einzelpersonen zulässt.
+    \item \textbf{Subjektivität:} Ergebnisse hängen stark von individuellen Meinungen und Wahrnehmungen der Nutzer ab.
+    \item \textbf{Hoher Aufwand:} Diese Methoden erfordern erheblichen Zeit- und Ressourcenaufwand.
+    \item \textbf{Begrenzte Skalierbarkeit:} Sie sind für kleine Nutzergruppen geeignet, aber schwer auf größere Stichproben anzuwenden.
+    \item \textbf{Fehlende Objektivität:} Die Erfassung tatsächlichen Nutzerverhaltens ist begrenzt.
 \end{itemize}
-%--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
-\section{Umsetzung der Anonymisierung bei eDok}
-Hier wird beschrieben, wie die Anonymisierung der erhobenen UX-Daten in der Anwendung eDok umgesetzt werden kann, um den Datenschutzbestimmungen zu entsprechen.
-\section{Modellarchitektur}
+
+\subsection{Sammlung und Analyse quantitativer Daten}
+Der Ansatz von Hilbert und Redmiles \cite{Hilbert2000} beschreibt die Vorteile der Erfassung von Nutzungsdaten, wie Mausbewegungen, Klicks und Navigationspfade, über automatisiertes Logging. Die wesentlichen Vorteile dieses Ansatzes sind:
+\begin{itemize}
+    \item \textbf{Objektivität:} Die Erfassung basiert auf realem Nutzerverhalten und eliminiert subjektive Verzerrungen.
+    \item \textbf{Automatisierung:} Daten können kontinuierlich und effizient gesammelt werden.
+    \item \textbf{Skalierbarkeit:} Die Methode eignet sich für große Nutzerzahlen und breite Analysen.
+    \item \textbf{Erkennung von Mustern:} Systematische Probleme, wie ineffiziente Workflows oder häufige Fehler, können identifiziert werden.
+\end{itemize}
+Allerdings gibt es auch Einschränkungen:
+\begin{itemize}
+    \item \textbf{Fehlende qualitative Einblicke:} Emotionen oder Zufriedenheit der Nutzer können nicht direkt erfasst werden.
+    \item \textbf{Komplexe Analyse:} Die Interpretation der Daten erfordert spezialisierte Expertise.
+    \item \textbf{Abhängigkeit von Logging-Systemen:} Eine unzureichende Erfassung kann die Ergebnisse verzerren.
+\end{itemize}
+
+\subsection{Erkenntnisse und Schlussfolgerung}
+Die Ergebnisse aus dem Papier von Hilbert und Redmiles \cite{Hilbert2000} zeigen, dass die Kombination von qualitativen und quantitativen Ansätzen essenziell ist, um umfassende Usability-Einsichten zu gewinnen. Während Interviews und Fragebögen subjektive Erlebnisse und Zufriedenheit der Nutzer erfassen, bietet die Analyse quantitativer Daten objektive und skalierbare Einblicke in tatsächliches Nutzerverhalten. Das Event-Logging ermöglichte es, systematische Probleme zu identifizieren, die bei traditionellen Methoden übersehen wurden, wie ineffiziente Navigationspfade oder wiederkehrende Fehler.
+
+Nach Prüfung der Ergebnisse wurde die Entscheidung getroffen, dass qualitative und quantitative Methoden nicht gegeneinander stehen, sondern sich ergänzen. Die Kombination beider Ansätze stellt sicher, dass sowohl die subjektiven als auch die objektiven Aspekte der Usability umfassend berücksichtigt werden können.
+
+
+\section{Kapitel 3}
+\subsection{Anforderungen}
+\begin{itemize}
+\item Ein Dashboard zur Darstellung von spezifischen UX- und Usability-Berichten, die durch das Modell erfasst wurden.
+\item Nur Benutzer mit Administratorrechten können auf das Dashboard zugreifen.
+\item Der Administrator hat die Möglichkeit, das Modell auf beliebigen Seiten ein- oder auszuschalten.
+\item Erfassung der Zeit, die Nutzer auf einer Seite verbringen, zur Analyse des Nutzeraufwands.
+\item Eine Heatmap mit Reihenfolgenverfolgung, um bestimmte Verhaltensmuster der Nutzer zu erkennen und visuell   darzustellen.
+\item Zusätzlich zur Reihenfolgen-Funktion sollen Bearbeitungs-Eingabefelder erkannt und angezeigt werden.
+\item Die Heatmap wird dem Administrator im Dashboard zur Verfügung gestellt.
+\item Fehler werden erfasst, gespeichert und im Dashboard angezeigt, wobei die Anzahl und die Position der Fehler besonders hervorgehoben werden.
+
+\end{itemize}
+\section{Spezifikation der Erfassten UX-Daten in eDok}
+
+Zur systematischen Bewertung der Usability von eDok wird die Erfassung und Analyse spezifischer Datenarten priorisiert. Im Mittelpunkt steht die Sammlung von Interaktionsdaten, die durch den Einsatz von Heatmaps visualisiert werden. Diese ermöglichen detaillierte Einblicke in Navigationsmuster, identifizieren potenzielle Stolpersteine und decken ineffiziente Seitengestaltungen sowie suboptimale Darstellungen innerhalb der Anwendung auf. Ziel ist es, Schwachstellen in der Nutzerführung zu erkennen und datenbasierte Optimierungen der Benutzeroberfläche zu ermöglichen.
+
+
+\section{Implementierung der Heatmap}
+Diese Sektion beschreibt die Gestaltung und Implementierung einer Heatmap zur Nachverfolgung und Visualisierung von Nutzerinteraktionen in der eDok-Anwendung. Die Heatmap dient dazu, häufig genutzte Bereiche, Nutzerverhaltensmuster und fehleranfällige Interaktionen zu identifizieren, indem sie Daten zu Klicks, Fehlern und zeitlichen Metriken erfasst und darstellt.
+
+\subsection{Zweck und Ziele der Heatmap}
+Die Heatmap bietet eine visuelle Darstellung des Nutzerverhaltens und unterstützt Entwickler*innen dabei, die am häufigsten verwendeten Bereiche zu erkennen und Usability-Probleme zu identifizieren. Die Anzeige der Klickreihenfolge über Linienverbindungen hilft dabei, den Navigationsfluss innerhalb der Anwendung besser zu verstehen. Fehlerpunkte werden zudem in der Heatmap hervorgehoben und in einem separaten Admin-Dashboard für umfassende Berichte angezeigt. So können schwerwiegende Fehlerquellen identifiziert und priorisiert behoben werden.
+
+\subsection{Datenerfassung und Speicherung}
+Um die Heatmap-Funktionalität zu realisieren, werden verschiedene Arten von Interaktionsdaten erfasst und in einer strukturierten Datenbank gespeichert. Das Datenbankschema wurde so gestaltet, dass es zeitbasierte Nachverfolgung, Fehleraufzeichnung und Vergleich zwischen verschiedenen Versionen ermöglicht.
+
+\subsubsection{Interaktionen-Tabelle}
+Die \textit{interaktionen}-Tabelle speichert jede Nutzerinteraktion, einschließlich der Koordinaten der Klicks, der Klickreihenfolge und der Zeit, die zwischen den aufeinanderfolgenden Klicks vergangen ist. Diese Tabelle bildet die Grundlage für die Erstellung der Heatmap und die Analyse der Klickreihenfolge. Das Schema der Tabelle ist wie folgt:
+
+\begin{table}[H]
+\centering
+\caption{Schema der Interaktionen-Tabelle}
+\begin{tabular}{|l|l|p{10cm}|}
+\hline
+\textbf{Spalte} & \textbf{Datentyp} & \textbf{Beschreibung} \\ \hline
+id & BIGINT & Primärschlüssel für die Interaktion \\ \hline
+session\_id & BIGINT & Fremdschlüssel zur Zuordnung der Sitzung, in der die Interaktion stattfand \\ \hline
+x & FLOAT & X-Koordinate des Klicks (normalisiert) \\ \hline
+y & FLOAT & Y-Koordinate des Klicks (normalisiert) \\ \hline
+click\_order & INT & Reihenfolge des Klicks innerhalb der Sitzung \\ \hline
+click\_count & INT & Anzahl der Klicks an dieser Position \\ \hline
+timestamp & TIMESTAMP & Zeitpunkt der Interaktion \\ \hline
+duration\_from\_last & INT & Zeit in Sekunden seit der vorherigen Interaktion \\ \hline
+\end{tabular}
+\end{table}
+
+Das Feld \textit{duration\_from\_last} erlaubt es, die Zeitspanne zwischen den einzelnen Klicks zu verfolgen, was hilfreich ist, um Verzögerungen oder Unsicherheiten in bestimmten Bereichen zu erkennen.
+
+\subsubsection{Fehler-Tabelle}
+Die \textit{fehler}-Tabelle erfasst auftretende Fehler in der Anwendung und zeichnet die Häufigkeit, Art des Fehlers sowie den spezifischen Ort auf. Dies ermöglicht eine historische Analyse der Fehlerpunkte und unterstützt die Identifikation kritischer Fehlerquellen. Das Schema ist in Tabelle \ref{tab:errors_table} dargestellt.
+
+\begin{table}[H]
+\centering
+\caption{Schema der Fehler-Tabelle}
+\label{tab:errors_table}
+\begin{tabular}{|l|l|p{10cm}|}
+\hline
+\textbf{Spalte} & \textbf{Datentyp} & \textbf{Beschreibung} \\ \hline
+id & BIGINT & Primärschlüssel für den Fehlerdatensatz \\ \hline
+session\_id & BIGINT & Fremdschlüssel zur Zuordnung der Sitzung, in der der Fehler auftrat \\ \hline
+error\_type & VARCHAR & Art des Fehlers (z.B. UI, Server, etc.) \\ \hline
+location & VARCHAR & Spezifischer Ort in der Anwendung (Seite oder Komponente) \\ \hline
+error\_count & INT & Anzahl der Fehler dieses Typs \\ \hline
+timestamp & TIMESTAMP & Zeitpunkt des Fehlerauftretens \\ \hline
+\end{tabular}
+\end{table}
+
+Da Fehler in der Heatmap durch markierte Punkte angezeigt werden, kann die Häufigkeit und Lage von Fehlern für Entwickler*innen unmittelbar ersichtlich gemacht werden. Außerdem werden detaillierte Berichte zu Fehlern im Admin-Dashboard zur Verfügung gestellt.
+
+\subsubsection{Sitzungen- und Versionen-Tabellen}
+Die \textit{sitzungen}-Tabelle speichert Metadaten zu jeder Sitzung, einschließlich der Start- und Endzeiten sowie der Gesamtzeit, die in der Sitzung verbracht wurde. Die \textit{versionen}-Tabelle erfasst die Details der einzelnen Anwendungs-Versionen, sodass Vergleiche des Nutzerverhaltens zwischen verschiedenen Versionen ermöglicht werden.
+
+\begin{table}[H]
+\centering
+\caption{Schema der Sitzungen-Tabelle}
+\begin{tabular}{|l|l|p{10cm}|}
+\hline
+\textbf{Spalte} & \textbf{Datentyp} & \textbf{Beschreibung} \\ \hline
+id & BIGINT & Primärschlüssel der Sitzung \\ \hline
+version\_id & BIGINT & Fremdschlüssel zur Zuordnung der Anwendungs-Version \\ \hline
+start\_time & TIMESTAMP & Startzeit der Sitzung \\ \hline
+end\_time & TIMESTAMP & Endzeit der Sitzung \\ \hline
+duration & INT & Gesamtdauer der Sitzung in Sekunden \\ \hline
+\end{tabular}
+\end{table}
+
+Mit diesen Tabellen können historische Vergleiche durchgeführt werden, die Erkenntnisse über die Entwicklung des Nutzerverhaltens im Laufe der Zeit liefern.
+
+\subsection{Visualisierung der Heatmap}
+Die Visualisierung der Heatmap wird mithilfe von JavaScript und Canvas implementiert, um Nutzerinteraktionsdaten auf der Benutzeroberfläche anzuzeigen. Jeder Klick wird als farbiger Punkt dargestellt, wobei die Farben die Intensität der Interaktionen anzeigen (z.B. wärmere Farben für häufigere Klicks). Eine Verbindungslinie zeigt die Reihenfolge der Klicks und kann mithilfe einer Umschalttaste an- oder ausgeschaltet werden.
+
+Ein Fehlerpunkt wird durch eine besondere Markierung auf der Heatmap hervorgehoben, wenn ein Klick eine Fehlermeldung ausgelöst hat. Diese Visualisierung hilft dabei, kritische Interaktionspunkte zu erkennen und zu priorisieren.
+
+\subsection{Zeitbasierte Analyse des Nutzerverhaltens}
+Zeitmetriken sind entscheidend, um die Effizienz und den Ablauf der Nutzerinteraktionen zu verstehen. Die Implementierung umfasst die Verfolgung der Zeit zwischen Klicks, der Gesamtdauer jeder Sitzung sowie der Zeit, die auf bestimmten Benutzerflüssen oder Seiten verbracht wird. Diese Metriken werden in der \textit{zeit\_metriken}-Tabelle gespeichert (siehe Tabelle \ref{tab:time_metrics}).
+
+\begin{table}[H]
+\centering
+\caption{Schema der Zeit-Metriken-Tabelle}
+\label{tab:time_metrics}
+\begin{tabular}{|l|l|p{10cm}|}
+\hline
+\textbf{Spalte} & \textbf{Datentyp} & \textbf{Beschreibung} \\ \hline
+id & BIGINT & Primärschlüssel für die Zeit-Metrik \\ \hline
+session\_id & BIGINT & Fremdschlüssel zur Zuordnung der Sitzung \\ \hline
+metric\_name & VARCHAR & Name der Metrik (z.B. zeit\_auf\_seite, flow\_time) \\ \hline
+start\_time & TIMESTAMP & Startzeit für die Metrik \\ \hline
+end\_time & TIMESTAMP & Endzeit für die Metrik \\ \hline
+duration & INT & Dauer in Sekunden \\ \hline
+\end{tabular}
+\end{table}
+
+Mit dieser Struktur ist es möglich, erweiterte Analysen durchzuführen, wie z.B. die Identifikation von langsamen Navigationsflüssen, die Messung der Zeit zur Erledigung bestimmter Aufgaben und die Verfolgung von Effizienzveränderungen über verschiedene Versionen der Anwendung hinweg.
+
+\subsection{Herausforderungen bei der Implementierung}
+Die Hauptschwierigkeiten bei der Implementierung der Heatmap und der zeitbezogenen Funktionen umfassen das Management großer Datenmengen, die Sicherstellung der Datenintegrität und die Gewährleistung der Anwendungsperformance. Zur Bewältigung dieser Herausforderungen wurden die folgenden Maßnahmen ergriffen:
+\begin{itemize}
+    \item \textbf{Datenmanagement}: Da Interaktions- und Fehlerdaten schnell anwachsen können, wurden effiziente Speicher- und Abfragemechanismen implementiert, einschließlich Indexierung und Partitionierung.
+    \item \textbf{Datenintegrität}: Die präzise Erfassung der Zeitdaten erfordert eine konsistente Sitzungsverfolgung und Synchronisation zwischen Client und Server.
+    \item \textbf{Performance-Optimierung}: Das Rendern einer Heatmap mit Echtzeitdaten-Updates kann ressourcenintensiv sein. Durch die Verwendung von Canvas-basiertem Rendering und selektiver Datenaggregation wird die Performance verbessert.
+\end{itemize}
+
+\subsection{Zusammenfassung}
+Die Heatmap und die zeitbezogenen Metriken bieten wertvolle Einblicke in das Nutzerverhalten in der eDok-Anwendung und ermöglichen kontinuierliche Verbesserungen der UX und Usability. Durch die Visualisierung der Interaktionsmuster, die Hervorhebung fehleranfälliger Bereiche und die Analyse zeitlicher Metriken stellt die Heatmap ein effektives Werkzeug zur Identifizierung und Optimierung von Nutzererlebnissen dar.
+
  
-\section{Modellimplementierung}
- 
-\section{Schlussfolgerung und Ausblick}
- 
-%--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
- 
- 
-  
+
 \printbibliography
  
 
