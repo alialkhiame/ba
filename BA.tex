@@ -203,6 +203,33 @@ Die \textbf{ANLEI-Service GmbH} ist eine Tochtergesellschaft des LWV Hessen und 
 
 \textit{eDok} dient als Service für alle aufrufenden Anwendungen zur Erstellung von barrierefreien Dokumenten und löst das bisherige \textit{Schriftstück-Erstellungssystem} (SE) ab, das auf Microsoft Word und Makros basiert. Es integriert \textit{Doxee/Infinica} als Subsystem für die Dokumentbearbeitung und Output-Generierung, sodass eine Verwendung sowohl mit interaktiven Elementen (Bearbeitung des entstehenden Dokuments) als auch im Hintergrund (Dunkelverarbeitung) erfolgen kann. Ziel und Vision von \textit{eDok} ist es, eine universelle und generische Schnittstelle für die Anwendungen des LWV Hessen zu bieten, die eine einfache, effiziente und performante Erstellung von barrierefreien Dokumenten ermöglicht, unter Einbeziehung der Daten aus den Fachverfahren.
 
+\subsection{Methodik}
+
+Zur Beantwortung der Forschungsfragen wird eine Kombination aus \textbf{literaturbasierter Forschung} und \textbf{praktischer Implementierung} angewendet. Zunächst werden bestehende Methoden und Werkzeuge zur UX-Messung analysiert. Darauf aufbauend wird ein eigenes Modell entwickelt, das in die \textit{eDok}-Anwendung integriert wird. Die Datenerfassung und -analyse erfolgt unter Berücksichtigung von Datenschutzbestimmungen und ethische n Richtlinien. Besonderer Wert wird auf die Anonymisierung der Daten gelegt, um die Privatsphäre der Nutzer zu schützen.
+
+\subsection{Beitrag der Arbeit}
+
+Die Ergebnisse dieser Arbeit liefern sowohl theoretische Erkenntnisse als auch praktische Anleitungen für Entwickler und UX-Designer. Das vorgestellte Modell kann als Vorlage für ähnliche Projekte dienen und dazu beitragen, die Qualität von Softwareprodukten nachhaltig zu verbessern. Durch die Anwendung auf eine reale Anwendung wie \textit{eDok} wird gezeigt, wie das Modell effektiv implementiert und genutzt werden kann.
+
+\subsection{Aufbau der Arbeit}
+
+Die vorliegende Arbeit gliedert sich wie folgt:
+
+\begin{itemize} \item \textbf{Kapitel 2} bietet einen ausführlichen Überblick über den theoretischen Hintergrund der UX-Messung, einschließlich gängiger Methoden und Techniken zur Datenerfassung und -analyse. \item In \textbf{Kapitel 3} wird das entwickelte Modell detailliert vorgestellt. Es werden die technischen Komponenten, die Datenbankstruktur sowie die Implementierungsdetails beschrieben. \item \textbf{Kapitel 4} widmet sich der Anwendung des Modells auf die \textit{eDok}-Anwendung. Es werden die Ergebnisse der Datenerfassung präsentiert und analysiert. \item In \textbf{Kapitel 5} erfolgt eine kritische Diskussion der Ergebnisse, einschließlich der Vorteile des Modells, identifizierter Schwachstellen und möglichen Verbesserungen. \item \textbf{Kapitel 6} fasst die Arbeit zusammen und gibt einen Ausblick auf zukünftige Forschungs- und Entwicklungsmöglichkeiten. \end{itemize}
+
+\subsection{Relevanz der Arbeit}
+
+Angesichts der wachsenden Bedeutung von UX in der Softwareentwicklung leistet diese Arbeit einen wichtigen Beitrag zur Praxis und Forschung. Das vorgestellte Modell ermöglicht es, UX-Daten in Echtzeit und unter realen Nutzungsbedingungen zu erfassen, ohne die Nutzererfahrung zu beeinträchtigen. Dies ist besonders relevant für Organisationen, die ihre Anwendungen kontinuierlich verbessern möchten, um den steigenden Erwartungen der Nutzer gerecht zu werden.
+
+Durch die Anwendung auf die \textit{eDok}-Anwendung des LWV Hessen wird demonstriert, wie das Modell in einer realen Umgebung implementiert werden kann. Die gewonnenen Erkenntnisse können als Grundlage für weitere Anwendungen dienen und dazu beitragen, die UX-Forschung in der Praxis voranzutreiben.
+
+\subsection{Fazit}
+
+Die systematische Erfassung und Analyse der UX ist unerlässlich, um moderne Softwareanwendungen an die Bedürfnisse und Erwartungen der Nutzer anzupassen. Durch die Entwicklung und Implementierung eines Modells zur UX-Messung in \textit{eDok} wird gezeigt, wie Daten genutzt werden können, um die Nutzererfahrung zu verbessern und die Anwendung effizienter und benutzerfreundlicher zu gestalten. Diese Arbeit leistet somit einen wertvollen Beitrag zur Verbesserung von UX-Methoden und deren Anwendung in der Praxis.
+\section{Kapitel 2}
+\subsection{Überblick über den theoretischen Hinter-
+grund der UX-Messung}
+
 \subsection{Einführung in das Thema UX}
 
 Die \textbf{User Experience} (UX) ist ein Teilbereich der HCI, der in den frühen 1990er Jahren an Bedeutung gewann \cite{glanznig}. Mit dem Aufkommen neuer Technologien und der zunehmenden Verbreitung digitaler Produkte rückte der Fokus verstärkt auf die Benutzererfahrung und deren Qualität. UX konzentriert sich auf die Interaktion zwischen Mensch und System und zielt darauf ab, Produkte und Anwendungen so zu gestalten, dass sie nicht nur funktional sind, sondern auch emotional ansprechend und benutzerfreundlich.
@@ -255,33 +282,6 @@ Das Ziel der UX- und Usability-Bewertung in \textit{eDok} ist es, gezielte Einbl
 Die implementierte Heatmap bietet eine visuelle Übersicht der am stärksten genutzten Bereiche, sodass gezielt Verbesserungspotenziale an zentralen Interaktionspunkten erkannt werden können. Durch die Analyse der Verweildauer auf spezifischen Seiten, der häufig durchlaufenen Navigationspfade und der Häufigkeit bestimmter Fehler können gezielte Maßnahmen zur Optimierung der Anwendung abgeleitet werden.
 
 Diese Daten helfen, die Effizienz und Benutzerfreundlichkeit der Anwendung kontinuierlich zu steigern und eine datengetriebene Produktoptimierung zu ermöglichen. Darüber hinaus ermöglicht das Modell eine nachträgliche Überprüfung der implementierten Änderungen, um deren Effektivität zu bewerten und weitere Optimierungen vorzunehmen. Durch diesen iterativen Prozess trägt das Modell wesentlich zur Steigerung der Nutzerzufriedenheit und Effizienz der Anwendung bei.
-
-\subsection{Methodik}
-
-Zur Beantwortung der Forschungsfragen wird eine Kombination aus \textbf{literaturbasierter Forschung} und \textbf{praktischer Implementierung} angewendet. Zunächst werden bestehende Methoden und Werkzeuge zur UX-Messung analysiert. Darauf aufbauend wird ein eigenes Modell entwickelt, das in die \textit{eDok}-Anwendung integriert wird. Die Datenerfassung und -analyse erfolgt unter Berücksichtigung von Datenschutzbestimmungen und ethische n Richtlinien. Besonderer Wert wird auf die Anonymisierung der Daten gelegt, um die Privatsphäre der Nutzer zu schützen.
-
-\subsection{Beitrag der Arbeit}
-
-Die Ergebnisse dieser Arbeit liefern sowohl theoretische Erkenntnisse als auch praktische Anleitungen für Entwickler und UX-Designer. Das vorgestellte Modell kann als Vorlage für ähnliche Projekte dienen und dazu beitragen, die Qualität von Softwareprodukten nachhaltig zu verbessern. Durch die Anwendung auf eine reale Anwendung wie \textit{eDok} wird gezeigt, wie das Modell effektiv implementiert und genutzt werden kann.
-
-\subsection{Aufbau der Arbeit}
-
-Die vorliegende Arbeit gliedert sich wie folgt:
-
-\begin{itemize} \item \textbf{Kapitel 2} bietet einen ausführlichen Überblick über den theoretischen Hintergrund der UX-Messung, einschließlich gängiger Methoden und Techniken zur Datenerfassung und -analyse. \item In \textbf{Kapitel 3} wird das entwickelte Modell detailliert vorgestellt. Es werden die technischen Komponenten, die Datenbankstruktur sowie die Implementierungsdetails beschrieben. \item \textbf{Kapitel 4} widmet sich der Anwendung des Modells auf die \textit{eDok}-Anwendung. Es werden die Ergebnisse der Datenerfassung präsentiert und analysiert. \item In \textbf{Kapitel 5} erfolgt eine kritische Diskussion der Ergebnisse, einschließlich der Vorteile des Modells, identifizierter Schwachstellen und möglichen Verbesserungen. \item \textbf{Kapitel 6} fasst die Arbeit zusammen und gibt einen Ausblick auf zukünftige Forschungs- und Entwicklungsmöglichkeiten. \end{itemize}
-
-\subsection{Relevanz der Arbeit}
-
-Angesichts der wachsenden Bedeutung von UX in der Softwareentwicklung leistet diese Arbeit einen wichtigen Beitrag zur Praxis und Forschung. Das vorgestellte Modell ermöglicht es, UX-Daten in Echtzeit und unter realen Nutzungsbedingungen zu erfassen, ohne die Nutzererfahrung zu beeinträchtigen. Dies ist besonders relevant für Organisationen, die ihre Anwendungen kontinuierlich verbessern möchten, um den steigenden Erwartungen der Nutzer gerecht zu werden.
-
-Durch die Anwendung auf die \textit{eDok}-Anwendung des LWV Hessen wird demonstriert, wie das Modell in einer realen Umgebung implementiert werden kann. Die gewonnenen Erkenntnisse können als Grundlage für weitere Anwendungen dienen und dazu beitragen, die UX-Forschung in der Praxis voranzutreiben.
-
-\subsection{Fazit}
-
-Die systematische Erfassung und Analyse der UX ist unerlässlich, um moderne Softwareanwendungen an die Bedürfnisse und Erwartungen der Nutzer anzupassen. Durch die Entwicklung und Implementierung eines Modells zur UX-Messung in \textit{eDok} wird gezeigt, wie Daten genutzt werden können, um die Nutzererfahrung zu verbessern und die Anwendung effizienter und benutzerfreundlicher zu gestalten. Diese Arbeit leistet somit einen wertvollen Beitrag zur Verbesserung von UX-Methoden und deren Anwendung in der Praxis.
-\section{Kapitel 2}
-\subsection{Überblick über den theoretischen Hinter-
-grund der UX-Messung}
 
 \subsubsection{Abgrenzung von UX- und Usability-Evaluationsmethoden}
 Während Usability-Tests sich primär auf die Leistung bei der Aufgabenbearbeitung konzentrieren, fokussieren UX-Evaluationsmethoden auf das subjektive Erleben der Nutzenden. Objektive Metriken wie Ausführungszeit oder Klickanzahl reichen nicht aus, um die UX vollständig zu erfassen; vielmehr müssen auch Motivation, Erwartungen und Emotionen der Nutzenden berücksichtigt werden \cite{DevelopmentNeeds}.
@@ -390,6 +390,43 @@ Die Ergebnisse aus dem Papier von Hilbert und Redmiles \cite{Hilbert2000} zeigen
 
 Nach Prüfung der Ergebnisse wurde die Entscheidung getroffen, dass qualitative und quantitative Methoden nicht gegeneinander stehen, sondern sich ergänzen. Die Kombination beider Ansätze stellt sicher, dass sowohl die subjektiven als auch die objektiven Aspekte der Usability umfassend berücksichtigt werden können.
 
+\subsection{Methodik} \label{sec:methodik}
+
+Die in dieser Arbeit entwickelte Methodik zur Erfassung, Speicherung und Analyse von UX- und Usability-Daten in der Anwendung \textit{eDok} umfasst mehrere aufeinander abgestimmte Schritte. Sie gewährleistet eine datenschutzkonforme, modulare und erweiterbare Infrastruktur, um Nutzungsinteraktionen systematisch zu sammeln, zu aggregieren und visuell darzustellen.
+
+\subsubsection{Systemarchitektur und Datenerfassung}
+
+Die Datenerfassung erfolgt clientseitig in der Frontend-Anwendung (Angular), wobei bei Nutzungsinteraktionen, wie etwa Mausklicks, Navigationsaktionen oder Fehlermeldungen, entsprechende Ereignisse (Events) abgefangen und in strukturierter Form an den Backend-Server (Spring Boot) gesendet werden. Diese Vorgehensweise ermöglicht eine kontinuierliche Erfassung von Interaktionsdaten während des Produktiveinsatzes, ohne dass Nutzer zusätzliche Handlungen vornehmen müssen.
+
+\subsubsection{Datenpersistenz und Datenbankmodell}
+
+Für die Speicherung der erfassten Daten wird eine relationale Datenbank eingesetzt, in der die zentralen Entitäten und ihre Beziehungen abgebildet sind. Hierfür kommen die Tabellen \texttt{click\_event}, \texttt{component}, \texttt{error\_event}, \texttt{network\_request}, \texttt{ui\_element} sowie \texttt{usability\_session} zum Einsatz. Dabei bilden diese Tabellen folgende Kernaspekte der Datenerfassung ab:
+
+\begin{itemize}
+    \item \texttt{usability\_session}: Enthält Sitzungsinformationen, wie etwa Start- und Endzeitpunkte sowie einen eindeutigen Session-Token. Diese Tabelle dient als Ankerpunkt für die Zuordnung sämtlicher Interaktionsdaten.
+    \item \texttt{click\_event}: Erfasst sämtliche Klickinteraktionen, inklusive Zeitstempel, betroffenen \texttt{ui\_element}-Referenzen und Sequenznummern, um Reihenfolgen nachvollziehbar zu machen.
+    \item \texttt{error\_event}: Dokumentiert aufgetretene Fehlerzustände, deren Art, Häufigkeit und Position. Diese Daten ermöglichen es, gezielt fehleranfällige Bereiche der Anwendung zu identifizieren.
+    \item \texttt{network\_request}: Speichert Informationen zu Netzwerkaufrufen (Ladezeiten und Fehlermeldungen), um mögliche Performance-Engpässe und technische Probleme sichtbar zu machen.
+    \item \texttt{component} und \texttt{ui\_element}: Beschreiben statische Strukturen der Anwendung, indem sie Komponenten und deren zugehörige UI-Elemente referenzieren. Diese Aufteilung ermöglicht eine flexible Identifikation der Interaktionspunkte.
+\end{itemize}
+
+Die in den Tabellen erfassten Daten können durch Filterung, Aggregation und Zeitreihenanalysen zu aussagekräftigen Metriken verdichtet werden. Diese Datenmodellierung gewährleistet eine klare Trennung von dynamischen Nutzungsdaten und statischen UI-Strukturen, wodurch sowohl technische als auch inhaltliche Veränderungen im Frontend flexibel abbildbar bleiben.
+
+\subsubsection{Backend-Logik und REST-Schnittstellen}
+
+Das Backend stellt REST-Schnittstellen bereit, um Nutzungsdaten entgegenzunehmen, abzufragen und für die Visualisierung aufzubereiten. Bei Eintreffen neuer Datensätze führt die Backend-Logik Validierungs- und Anreicherungsprozesse durch, bevor die Daten in die entsprechende Tabelle geschrieben werden. Zudem bietet das Backend administrativen Nutzern Endpunkte zur Konfiguration des Erfassungsmodus, um etwa die Aufzeichnung auf spezifischen Seiten ein- oder auszuschalten.
+
+\subsubsection{Anonymisierung und Datenschutz}
+
+Um den Schutz der Privatsphäre der Nutzenden sicherzustellen, werden alle erhobenen Daten strikt anonymisiert. Es werden keine personenbezogenen Merkmale gespeichert. Die Datensätze lassen keine Rückschlüsse auf einzelne Individuen zu, sondern konzentrieren sich auf aggregierte Nutzungsmuster, Fehlerhäufigkeiten und Interaktionspfade.
+
+\subsubsection{Visualisierung und Heatmap-Darstellung}
+
+Die aufbereiteten Daten werden im Admin-Dashboard visualisiert. Hierfür wurden unter anderem Heatmaps implementiert, welche die am stärksten genutzten Bereiche der Benutzeroberfläche hervorheben. Durch die Einbettung von Sequenzinformationen (Reihenfolge der Klickereignisse) können Navigationspfade und Nutzungskontexte ermittelt werden. Fehlerereignisse werden gesondert markiert und helfen dabei, potenziell problematische UI-Elemente oder Prozessschritte zu identifizieren.
+
+\subsubsection{Iterative Verbesserung und Anpassung}
+
+Die vorgestellte Methodik ist iterativ angelegt: Anhand der gewonnenen Erkenntnisse lassen sich gezielte Verbesserungsmaßnahmen im UI-Design, in den Navigationsstrukturen oder in der Performance der Anwendung ableiten. Nach erfolgten Anpassungen können erneut Daten erhoben und mit früheren Ergebnissen verglichen werden, um die Effektivität der Verbesserungen zu bewerten und den Optimierungsprozess fortlaufend zu steuern.
 
 \section{Kapitel 3}
 \subsection{Anforderungen}
@@ -404,12 +441,12 @@ Nach Prüfung der Ergebnisse wurde die Entscheidung getroffen, dass qualitative 
 \item Fehler werden erfasst, gespeichert und im Dashboard angezeigt, wobei die Anzahl und die Position der Fehler besonders hervorgehoben werden.
 
 \end{itemize}
-\section{Spezifikation der Erfassten UX-Daten in eDok}
+\subsection{Spezifikation der Erfassten UX-Daten in eDok}
 
 Zur systematischen Bewertung der Usability von eDok wird die Erfassung und Analyse spezifischer Datenarten priorisiert. Im Mittelpunkt steht die Sammlung von Interaktionsdaten, die durch den Einsatz von Heatmaps visualisiert werden. Diese ermöglichen detaillierte Einblicke in Navigationsmuster, identifizieren potenzielle Stolpersteine und decken ineffiziente Seitengestaltungen sowie suboptimale Darstellungen innerhalb der Anwendung auf. Ziel ist es, Schwachstellen in der Nutzerführung zu erkennen und datenbasierte Optimierungen der Benutzeroberfläche zu ermöglichen.
 
 
-\section{Implementierung der Heatmap}
+\subsection{Implementierung der Heatmap}
 Diese Sektion beschreibt die Gestaltung und Implementierung einer Heatmap zur Nachverfolgung und Visualisierung von Nutzerinteraktionen in der eDok-Anwendung. Die Heatmap dient dazu, häufig genutzte Bereiche, Nutzerverhaltensmuster und fehleranfällige Interaktionen zu identifizieren, indem sie Daten zu Klicks, Fehlern und zeitlichen Metriken erfasst und darstellt.
 
 \subsection{Zweck und Ziele der Heatmap}
@@ -418,104 +455,30 @@ Die Heatmap bietet eine visuelle Darstellung des Nutzerverhaltens und unterstüt
 \subsection{Datenerfassung und Speicherung}
 Um die Heatmap-Funktionalität zu realisieren, werden verschiedene Arten von Interaktionsdaten erfasst und in einer strukturierten Datenbank gespeichert. Das Datenbankschema wurde so gestaltet, dass es zeitbasierte Nachverfolgung, Fehleraufzeichnung und Vergleich zwischen verschiedenen Versionen ermöglicht.
 
-\subsubsection{Interaktionen-Tabelle}
-Die \textit{interaktionen}-Tabelle speichert jede Nutzerinteraktion, einschließlich der Koordinaten der Klicks, der Klickreihenfolge und der Zeit, die zwischen den aufeinanderfolgenden Klicks vergangen ist. Diese Tabelle bildet die Grundlage für die Erstellung der Heatmap und die Analyse der Klickreihenfolge. Das Schema der Tabelle ist wie folgt:
-
-\begin{table}[H]
-\centering
-\caption{Schema der Interaktionen-Tabelle}
-\begin{tabular}{|l|l|p{10cm}|}
-\hline
-\textbf{Spalte} & \textbf{Datentyp} & \textbf{Beschreibung} \\ \hline
-id & BIGINT & Primärschlüssel für die Interaktion \\ \hline
-session\_id & BIGINT & Fremdschlüssel zur Zuordnung der Sitzung, in der die Interaktion stattfand \\ \hline
-x & FLOAT & X-Koordinate des Klicks (normalisiert) \\ \hline
-y & FLOAT & Y-Koordinate des Klicks (normalisiert) \\ \hline
-click\_order & INT & Reihenfolge des Klicks innerhalb der Sitzung \\ \hline
-click\_count & INT & Anzahl der Klicks an dieser Position \\ \hline
-timestamp & TIMESTAMP & Zeitpunkt der Interaktion \\ \hline
-duration\_from\_last & INT & Zeit in Sekunden seit der vorherigen Interaktion \\ \hline
-\end{tabular}
-\end{table}
-
-Das Feld \textit{duration\_from\_last} erlaubt es, die Zeitspanne zwischen den einzelnen Klicks zu verfolgen, was hilfreich ist, um Verzögerungen oder Unsicherheiten in bestimmten Bereichen zu erkennen.
-
-\subsubsection{Fehler-Tabelle}
-Die \textit{fehler}-Tabelle erfasst auftretende Fehler in der Anwendung und zeichnet die Häufigkeit, Art des Fehlers sowie den spezifischen Ort auf. Dies ermöglicht eine historische Analyse der Fehlerpunkte und unterstützt die Identifikation kritischer Fehlerquellen. Das Schema ist in Tabelle \ref{tab:errors_table} dargestellt.
-
-\begin{table}[H]
-\centering
-\caption{Schema der Fehler-Tabelle}
-\label{tab:errors_table}
-\begin{tabular}{|l|l|p{10cm}|}
-\hline
-\textbf{Spalte} & \textbf{Datentyp} & \textbf{Beschreibung} \\ \hline
-id & BIGINT & Primärschlüssel für den Fehlerdatensatz \\ \hline
-session\_id & BIGINT & Fremdschlüssel zur Zuordnung der Sitzung, in der der Fehler auftrat \\ \hline
-error\_type & VARCHAR & Art des Fehlers (z.B. UI, Server, etc.) \\ \hline
-location & VARCHAR & Spezifischer Ort in der Anwendung (Seite oder Komponente) \\ \hline
-error\_count & INT & Anzahl der Fehler dieses Typs \\ \hline
-timestamp & TIMESTAMP & Zeitpunkt des Fehlerauftretens \\ \hline
-\end{tabular}
-\end{table}
-
-Da Fehler in der Heatmap durch markierte Punkte angezeigt werden, kann die Häufigkeit und Lage von Fehlern für Entwickler*innen unmittelbar ersichtlich gemacht werden. Außerdem werden detaillierte Berichte zu Fehlern im Admin-Dashboard zur Verfügung gestellt.
-
-\subsubsection{Sitzungen- und Versionen-Tabellen}
-Die \textit{sitzungen}-Tabelle speichert Metadaten zu jeder Sitzung, einschließlich der Start- und Endzeiten sowie der Gesamtzeit, die in der Sitzung verbracht wurde. Die \textit{versionen}-Tabelle erfasst die Details der einzelnen Anwendungs-Versionen, sodass Vergleiche des Nutzerverhaltens zwischen verschiedenen Versionen ermöglicht werden.
-
-\begin{table}[H]
-\centering
-\caption{Schema der Sitzungen-Tabelle}
-\begin{tabular}{|l|l|p{10cm}|}
-\hline
-\textbf{Spalte} & \textbf{Datentyp} & \textbf{Beschreibung} \\ \hline
-id & BIGINT & Primärschlüssel der Sitzung \\ \hline
-version\_id & BIGINT & Fremdschlüssel zur Zuordnung der Anwendungs-Version \\ \hline
-start\_time & TIMESTAMP & Startzeit der Sitzung \\ \hline
-end\_time & TIMESTAMP & Endzeit der Sitzung \\ \hline
-duration & INT & Gesamtdauer der Sitzung in Sekunden \\ \hline
-\end{tabular}
-\end{table}
-
-Mit diesen Tabellen können historische Vergleiche durchgeführt werden, die Erkenntnisse über die Entwicklung des Nutzerverhaltens im Laufe der Zeit liefern.
-
-\subsection{Visualisierung der Heatmap}
-Die Visualisierung der Heatmap wird mithilfe von JavaScript und Canvas implementiert, um Nutzerinteraktionsdaten auf der Benutzeroberfläche anzuzeigen. Jeder Klick wird als farbiger Punkt dargestellt, wobei die Farben die Intensität der Interaktionen anzeigen (z.B. wärmere Farben für häufigere Klicks). Eine Verbindungslinie zeigt die Reihenfolge der Klicks und kann mithilfe einer Umschalttaste an- oder ausgeschaltet werden.
-
-Ein Fehlerpunkt wird durch eine besondere Markierung auf der Heatmap hervorgehoben, wenn ein Klick eine Fehlermeldung ausgelöst hat. Diese Visualisierung hilft dabei, kritische Interaktionspunkte zu erkennen und zu priorisieren.
-
-\subsection{Zeitbasierte Analyse des Nutzerverhaltens}
-Zeitmetriken sind entscheidend, um die Effizienz und den Ablauf der Nutzerinteraktionen zu verstehen. Die Implementierung umfasst die Verfolgung der Zeit zwischen Klicks, der Gesamtdauer jeder Sitzung sowie der Zeit, die auf bestimmten Benutzerflüssen oder Seiten verbracht wird. Diese Metriken werden in der \textit{zeit\_metriken}-Tabelle gespeichert (siehe Tabelle \ref{tab:time_metrics}).
-
-\begin{table}[H]
-\centering
-\caption{Schema der Zeit-Metriken-Tabelle}
-\label{tab:time_metrics}
-\begin{tabular}{|l|l|p{10cm}|}
-\hline
-\textbf{Spalte} & \textbf{Datentyp} & \textbf{Beschreibung} \\ \hline
-id & BIGINT & Primärschlüssel für die Zeit-Metrik \\ \hline
-session\_id & BIGINT & Fremdschlüssel zur Zuordnung der Sitzung \\ \hline
-metric\_name & VARCHAR & Name der Metrik (z.B. zeit\_auf\_seite, flow\_time) \\ \hline
-start\_time & TIMESTAMP & Startzeit für die Metrik \\ \hline
-end\_time & TIMESTAMP & Endzeit für die Metrik \\ \hline
-duration & INT & Dauer in Sekunden \\ \hline
-\end{tabular}
-\end{table}
-
-Mit dieser Struktur ist es möglich, erweiterte Analysen durchzuführen, wie z.B. die Identifikation von langsamen Navigationsflüssen, die Messung der Zeit zur Erledigung bestimmter Aufgaben und die Verfolgung von Effizienzveränderungen über verschiedene Versionen der Anwendung hinweg.
-
-\subsection{Herausforderungen bei der Implementierung}
-Die Hauptschwierigkeiten bei der Implementierung der Heatmap und der zeitbezogenen Funktionen umfassen das Management großer Datenmengen, die Sicherstellung der Datenintegrität und die Gewährleistung der Anwendungsperformance. Zur Bewältigung dieser Herausforderungen wurden die folgenden Maßnahmen ergriffen:
+\subsection{Implementierung Stratgie}
+\subsection{Global Heatmap Service}
+Ein zentraler Angular-Service, der folgende Funktionen erfüllt:
 \begin{itemize}
-    \item \textbf{Datenmanagement}: Da Interaktions- und Fehlerdaten schnell anwachsen können, wurden effiziente Speicher- und Abfragemechanismen implementiert, einschließlich Indexierung und Partitionierung.
-    \item \textbf{Datenintegrität}: Die präzise Erfassung der Zeitdaten erfordert eine konsistente Sitzungsverfolgung und Synchronisation zwischen Client und Server.
-    \item \textbf{Performance-Optimierung}: Das Rendern einer Heatmap mit Echtzeitdaten-Updates kann ressourcenintensiv sein. Durch die Verwendung von Canvas-basiertem Rendering und selektiver Datenaggregation wird die Performance verbessert.
+    \item Verfolgt, ob der Heatmap-Modus aktiviert oder deaktiviert ist.
+    \item Ruft die aktuellen Klickdaten (oder andere Usability-Metriken) vom Backend ab.
+    \item Stellt eine Datenstruktur bereit, die Element-IDs auf Klickanzahlen abbildet.
+    \item Sendet Statusänderungen (an/aus) und aktualisierte Daten an abonnierten Komponenten und Direktiven weiter.
 \end{itemize}
 
-\subsection{Zusammenfassung}
-Die Heatmap und die zeitbezogenen Metriken bieten wertvolle Einblicke in das Nutzerverhalten in der eDok-Anwendung und ermöglichen kontinuierliche Verbesserungen der UX und Usability. Durch die Visualisierung der Interaktionsmuster, die Hervorhebung fehleranfälliger Bereiche und die Analyse zeitlicher Metriken stellt die Heatmap ein effektives Werkzeug zur Identifizierung und Optimierung von Nutzererlebnissen dar.
+\subsection{Overlay Directive}
+Eine Direktive, die global oder dynamisch im DOM eingefügt werden kann und folgende Aufgaben übernimmt:
+\begin{itemize}
+    \item Scannt den DOM nach IDs der Elemente.
+    \item Nutzt Daten aus dem Global Heatmap Service, um Overlays zu erstellen oder Stile anzuwenden.
+    \item Entfernt Overlays bei Deaktivierung des Heatmap-Modus.
+\end{itemize}
+
+\subsection{Admin Toggle Control}
+Ein einfacher Schalter im Admin-Panel, der:
+\begin{itemize}
+    \item Eine Methode im Global Heatmap Service aufruft, um den Heatmap-Modus zu aktivieren oder zu deaktivieren.
+    \item Statusänderungen an die verbundenen Komponenten und Direktiven weiterleitet.
+\end{itemize}
 
  
 

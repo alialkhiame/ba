@@ -1,0 +1,28 @@
+Literaturrecherche und Theorieaufbau
+
+Zeitraum: 01.11.2024 – 07.11.2024
+Aufgaben: Zügige Durchsicht der relevanten Literatur und gezielte Auswahl wichtiger Quellen zu UX-Bewertung und Heatmap-Methoden. Fokussiere dich auf Kerninhalte, die für die Arbeit essentiell sind.
+Datenidentifikation
+
+Zeitraum: 07.11.2024 – 12.11.2024
+Aufgaben: Festlegung und Bewertung der relevanten Daten für die UX-Analyse. Sicherstellen, dass alle notwendigen Daten zugänglich und qualitativ ausreichend sind.
+Methodenrecherche und Konzeption
+
+Zeitraum: 12.11.2024 – 17.11.2024
+Aufgaben: Auswahl passender Methoden (z.B. Heatmaps) zur Zielerreichung der Arbeit und Konzeptentwicklung zur Integration dieser Methoden in die neue Architektur.
+Softwarearchitektur-Entwurf
+
+Zeitraum: 17.11.2024 – 24.11.2024
+Aufgaben: Analyse der bestehenden edok-Softwarearchitektur und Erarbeitung eines neuen Architekturmodells unter Berücksichtigung der ausgewählten Methoden. Erstellen einer Dokumentation zum Architekturentwurf.
+Implementierungsphase
+
+Zeitraum: 24.11.2024 – 20.12.2024
+Aufgaben: Umsetzung des neuen Architekturmodells und Integration der UX-Methoden. Durchführung von Tests zur Funktionssicherung und Anpassungen bei Bedarf.
+Ergebnisauswertung und Schreibphase
+
+Zeitraum: 20.12.2024 – 20.01.2025
+Aufgaben: Analyse und Reflexion der Implementierungsergebnisse, Diskussion und Bewertung der UX-Verbesserungen. Schreiben des Abschlussberichts, einschließlich Ergebnisauswertung.
+Finale Überarbeitung und Abgabe
+
+Zeitraum: 20.01.2025 – 30.01.2025
+Aufgaben: Abschlussredaktion, Feinschliff und Korrekturen. Sicherstellen der Vollständigkeit und Einhaltung der Formatierungsrichtlinien für die rechtzeitige Abgabe am 30.01.2025.
