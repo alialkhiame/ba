@@ -20,7 +20,8 @@
 \usepackage{dirtytalk}
 %folgende Zeile auskommentieren für englische Arbeiten
 \usepackage[ngerman]{babel}
- 
+ \usepackage[utf8]{inputenc}
+\usepackage{enumitem}
 \usepackage[bookmarks]{hyperref}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -32,6 +33,8 @@
 %\usepackage{subfigure}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage{listings}
+\usepackage{xcolor}
 % Layout corrections (Schusterjungen)
 \clubpenalty = 10000 
 % Layout corrections (Hurenkinder) 
@@ -55,6 +58,60 @@
 
 % Newcommand TODOM (red at border)
 \newcommand{\todom}[1]{\marginpar{\parbox{1.5cm}{\textcolor{red}{TODO:\\ #1}}}}
+
+\lstdefinestyle{java}{
+    language=Java,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    stringstyle=\color{red},
+    commentstyle=\color{green},
+    numbers=left,
+    numberstyle=\tiny,
+    stepnumber=1,
+    breaklines=true,
+    frame=single,
+    tabsize=4
+}
+
+\lstdefinestyle{sql}{
+    language=SQL,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{purple},
+    stringstyle=\color{orange},
+    commentstyle=\color{green},
+    numbers=left,
+    numberstyle=\tiny,
+    stepnumber=1,
+    breaklines=true,
+    frame=single,
+    tabsize=4
+}
+
+\lstdefinelanguage{HTML}{
+    language=HTML,
+    sensitive=true,
+    alsoletter={<>=-},
+    morecomment=[s]{<!--}{-->},
+    morestring=[b]",
+    morestring=[s]{'}{'},
+    tagstyle=\color{blue},
+    stringstyle=\color{red},
+    commentstyle=\color{gray},
+}
+
+\lstdefinelanguage{TypeScript}{
+    language=JavaScript,
+    morekeywords={type,interface,implements,public,private},
+    keywordstyle=\color{blue},
+    stringstyle=\color{red},
+    commentstyle=\color{green},
+    numbers=left,
+    numberstyle=\tiny,
+    stepnumber=1,
+    breaklines=true,
+    frame=single,
+    tabsize=4
+}
 
 
 
@@ -130,6 +187,20 @@
 
 \lhead{}
     \setcounter{page}{1}
+%--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
+ 
+
+\subsection{Abstract}
+
+Diese Arbeit befasst sich mit der Entwicklung und Implementierung eines Modells zur umfassenden Erfassung und Bewertung der User Experience (UX), exemplarisch angewendet auf die Anwendung eDok des Landeswohlfahrtsverbands Hessen (LWV Hessen). Ziel des Modells ist es, einen detaillierten Überblick über die UX innerhalb der Anwendung zu schaffen, indem während der produktiven Nutzung anonymisierte Daten gesammelt werden.
+
+Die gesammelten Daten sind bewusst nicht benutzerorientiert, um Datenschutzrichtlinien einzuhalten und die Privatsphäre der Nutzer zu schützen. Das Modell präsentiert diese aggregierten Daten in einem Dashboard, das ausschließlich für Nutzer mit Administratorrechten zugänglich ist. Dieses Dashboard bietet anpassbare Grafiken und Visualisierungen, die durch Filter und weitere Kriterien modifiziert werden können. Dadurch erhalten Administratoren nicht nur Einblicke in die aktuelle UX, sondern können auch Trends und Entwicklungen über einen bestimmten Zeitraum analysieren.
+
+Ein wesentlicher Aspekt des Modells ist die Möglichkeit für Projektverantwortliche, die Datenerfassung auf bestimmten Seiten der Anwendung gezielt an- oder auszuschalten. Dies stellt sicher, dass nur relevante Bereiche beobachtet werden, ohne die Performance auf anderen Seiten zu beeinträchtigen. Das Modell ermöglicht es, die Verweildauer der Nutzer auf spezifischen Seiten zu überwachen, häufig durchlaufene Navigationsmuster zu identifizieren und die Häufigkeit bestimmter Fehler zu erfassen, die von den Nutzern gemacht werden.
+
+Die gewonnenen Erkenntnisse unterstützen die Projektverantwortlichen dabei, problematische Stellen innerhalb der Anwendung zu identifizieren und gezielte Maßnahmen zur Verbesserung der Usability zu ergreifen. Darüber hinaus ermöglicht das Modell eine nachträgliche Überprüfung der implementierten Änderungen, um deren Effektivität zu bewerten und weitere Optimierungen vorzunehmen. Durch diesen iterativen Prozess trägt das Modell wesentlich zur Steigerung der Benutzerzufriedenheit und Effizienz der Anwendung bei.
+
+%--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
 \tableofcontents
 %--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
 \section{Kapital 1}
@@ -144,19 +215,7 @@
 \acro{eDok}{elektronische Dokumentenerstellung}
 \acro{HCI}{Humin Computer Interaction}
 \end{acronym}
-%--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
- 
-\subsection{Abstract}
 
-Diese Arbeit befasst sich mit der Entwicklung und Implementierung eines Modells zur umfassenden Erfassung und Bewertung der User Experience (UX), exemplarisch angewendet auf die Anwendung eDok des Landeswohlfahrtsverbands Hessen (LWV Hessen). Ziel des Modells ist es, einen detaillierten Überblick über die UX innerhalb der Anwendung zu schaffen, indem während der produktiven Nutzung anonymisierte Daten gesammelt werden.
-
-Die gesammelten Daten sind bewusst nicht benutzerorientiert, um Datenschutzrichtlinien einzuhalten und die Privatsphäre der Nutzer zu schützen. Das Modell präsentiert diese aggregierten Daten in einem Dashboard, das ausschließlich für Nutzer mit Administratorrechten zugänglich ist. Dieses Dashboard bietet anpassbare Grafiken und Visualisierungen, die durch Filter und weitere Kriterien modifiziert werden können. Dadurch erhalten Administratoren nicht nur Einblicke in die aktuelle UX, sondern können auch Trends und Entwicklungen über einen bestimmten Zeitraum analysieren.
-
-Ein wesentlicher Aspekt des Modells ist die Möglichkeit für Projektverantwortliche, die Datenerfassung auf bestimmten Seiten der Anwendung gezielt an- oder auszuschalten. Dies stellt sicher, dass nur relevante Bereiche beobachtet werden, ohne die Performance auf anderen Seiten zu beeinträchtigen. Das Modell ermöglicht es, die Verweildauer der Nutzer auf spezifischen Seiten zu überwachen, häufig durchlaufene Navigationsmuster zu identifizieren und die Häufigkeit bestimmter Fehler zu erfassen, die von den Nutzern gemacht werden.
-
-Die gewonnenen Erkenntnisse unterstützen die Projektverantwortlichen dabei, problematische Stellen innerhalb der Anwendung zu identifizieren und gezielte Maßnahmen zur Verbesserung der Usability zu ergreifen. Darüber hinaus ermöglicht das Modell eine nachträgliche Überprüfung der implementierten Änderungen, um deren Effektivität zu bewerten und weitere Optimierungen vorzunehmen. Durch diesen iterativen Prozess trägt das Modell wesentlich zur Steigerung der Benutzerzufriedenheit und Effizienz der Anwendung bei.
-
-%--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
 \subsection{Einleitung}
 
 Die \textbf{Mensch-Computer-Interaktion} (Human-Computer Interaction, HCI) ist ein interdisziplinäres Forschungsfeld, das sich mit der Gestaltung, Evaluation und Implementierung interaktiver Computersysteme für die menschliche Nutzung sowie mit der Untersuchung der damit verbundenen Phänomene beschäftigt. Innerhalb dieses Feldes haben sich zwei zentrale Ansätze zur \textbf{User Experience} (UX) herausgebildet: das \textbf{UX-Design} und das \textbf{nutzerzentrierte Design} (User-Centered Design) \cite{glanznig}.
@@ -166,6 +225,19 @@ Das \textbf{UX-Design} strebt danach, ein ganzheitliches Nutzererlebnis zu schaf
 Im Gegensatz dazu fokussiert das \textbf{nutzerzentrierte Design} auf die Einbindung der Endnutzer während des gesamten Entwicklungsprozesses. Durch aktive Einbindung von Nutzerfeedback wird sichergestellt, dass das Endprodukt intuitiv bedienbar ist und den Anforderungen der Zielgruppe entspricht. Dieser Ansatz betont die Bedeutung, die tatsächlichen Bedürfnisse, Ziele und Fähigkeiten der Nutzer zu verstehen und in die Gestaltung einzubeziehen.
 
 Obwohl beide Ansätze entscheidend für die Entwicklung qualitativ hochwertiger Produkte sind, liegt der Schwerpunkt dieser Arbeit nicht auf der Gestaltung selbst, sondern darauf, \textbf{wie UX erfasst und gemessen werden kann}. In einer zunehmend digitalisierten Welt, in der Anwendungen immer komplexer werden und die Erwartungen der Nutzer stetig steigen, ist die systematische Messung der UX von entscheidender Bedeutung. Nur durch ein tiefgehendes Verständnis des Nutzerverhaltens und der Nutzerzufriedenheit können Produkte entwickelt werden, die den hohen Ansprüchen gerecht werden.
+\subsection{Über den Landeswohlfahrtsverband Hessen}
+
+Der \textbf{Landeswohlfahrtsverband Hessen} (LWV Hessen) ist eine zentrale Organisation, die sich für die soziale Integration und Unterstützung von Menschen mit Behinderungen einsetzt. Als überörtlicher Träger der Eingliederungshilfe fördert der Verband Bereiche wie Wohnen, Bildung, Mobilität und Arbeit. Mit der Umsetzung des Bundesteilhabegesetzes und Programmen wie dem \textit{Persönlichen Budget} und dem \textit{Budget für Arbeit} unterstützt der LWV Hessen die selbstbestimmte Lebensführung und gesellschaftliche Teilhabe der Betroffenen. Zudem bietet der Verband Förderangebote für Kinder und Jugendliche mit geistigen, emotionalen oder körperlichen Einschränkungen, einschließlich Frühberatungsstellen und Förderschulen. Darüber hinaus ist der LWV Hessen Ansprechpartner für Menschen, die Leistungen des Sozialen Entschädigungsrechts benötigen.
+
+\subsection{Die ANLEI-Service GmbH}
+
+Die \textbf{ANLEI-Service GmbH} ist eine Tochtergesellschaft des LWV Hessen und bietet IT-Dienstleistungen für die Sozialverwaltung an. Sie entwickelt Systeme zur Unterstützung der Antragsbearbeitung, Leistungsgewährung und Abrechnung von Sozialleistungen, insbesondere in den Bereichen Eingliederungshilfe, Sozialhilfe und Kriegsopferfürsorge. Zu den zentralen Anwendungen zählen das \textit{Integrierte Berichtssystem} (IBS) für betriebswirtschaftliche Analysen und \textit{MASS} zur maschinellen Abrechnung mit Einrichtungen und Trägern.
+
+\subsection{Über eDok}
+
+\textit{eDok} dient als Service für alle aufrufenden Anwendungen zur Erstellung von barrierefreien Dokumenten und löst das bisherige \textit{Schriftstück-Erstellungssystem} (SE) ab, das auf Microsoft Word und Makros basiert. Es integriert \textit{Doxee/Infinica} als Subsystem für die Dokumentbearbeitung und Output-Generierung, sodass eine Verwendung sowohl mit interaktiven Elementen (Bearbeitung des entstehenden Dokuments) als auch im Hintergrund (Dunkelverarbeitung) erfolgen kann. Ziel und Vision von \textit{eDok} ist es, eine universelle und generische Schnittstelle für die Anwendungen des LWV Hessen zu bieten, die eine einfache, effiziente und performante Erstellung von barrierefreien Dokumenten ermöglicht, unter Einbeziehung der Daten aus den Fachverfahren.
+
+
 
 \subsection{Motivation}
 
@@ -190,31 +262,107 @@ Ein weiterer Aspekt ist die Möglichkeit für Entwickler und Produktverantwortli
 \subsection{Fragestellung}
 
 Welche spezifischen, anonymisierten Daten sind erforderlich, um ein Modell zu entwickeln und zu implementieren, das die User Experience präzise und systematisch erfasst, dynamische Veränderungen über Zeiträume hinweg analysiert, Verantwortliche bei fundierten Entscheidungen zur Optimierung der Anwendung unterstützt und dabei auftretende Herausforderungen bewältigt?
+\subsection{Eigenleistung}
+Im Rahmen der vorliegenden Arbeit wurde auf keinerlei nicht-öffentliche Vorarbeiten zurückgegriffen. Sämtliche entwickelte Softwarekomponenten (Angular-Frontend, Java-Spring-Backend sowie die SQL-Datenbankstrukturen) wurden von mir selbst erstellt oder basieren ausschließlich auf frei verfügbaren bzw. quelloffenen Bibliotheken, die unter entsprechend erlaubten Lizenzen stehen ( Angular CLI, Spring Boot, SQLite).
 
-\subsection{Über den Landeswohlfahrtsverband Hessen}
+\subsection{Grundlagen und Methodik}
+In diesem Kapitel werden die methodischen und technischen Grundlagen vorgestellt, welche die Basis für die spätere Umsetzung im Rahmen dieser Arbeit bilden. Dabei wird auf bereits existierende Konzepte und Bibliotheken verwiesen, die im Projekt verwendet wurden. Zudem wird erläutert, wie die Datenbankstruktur und die zugrunde liegende Architektur gewählt wurden, um die Zielsetzungen der Arbeit (Erfassung, Analyse und Visualisierung von Nutzerinteraktionen) zu erfüllen. Auf detaillierte Implementierungsschritte wird hier verzichtet; diese finden sich in den folgenden Kapiteln und im Anhang.
 
-Der \textbf{Landeswohlfahrtsverband Hessen} (LWV Hessen) ist eine zentrale Organisation, die sich für die soziale Integration und Unterstützung von Menschen mit Behinderungen einsetzt. Als überörtlicher Träger der Eingliederungshilfe fördert der Verband Bereiche wie Wohnen, Bildung, Mobilität und Arbeit. Mit der Umsetzung des Bundesteilhabegesetzes und Programmen wie dem \textit{Persönlichen Budget} und dem \textit{Budget für Arbeit} unterstützt der LWV Hessen die selbstbestimmte Lebensführung und gesellschaftliche Teilhabe der Betroffenen. Zudem bietet der Verband Förderangebote für Kinder und Jugendliche mit geistigen, emotionalen oder körperlichen Einschränkungen, einschließlich Frühberatungsstellen und Förderschulen. Darüber hinaus ist der LWV Hessen Ansprechpartner für Menschen, die Leistungen des Sozialen Entschädigungsrechts benötigen.
+\subsubsection{Architektur und Softwarekomponenten}
 
-\subsection{Die ANLEI-Service GmbH}
+Die gewählte Systemarchitektur besteht aus einem Angular-Frontend und einem Spring-Boot-Backend, das auf einer relationalen Datenbank (z.\,B. SQLite) aufsetzt:
 
-Die \textbf{ANLEI-Service GmbH} ist eine Tochtergesellschaft des LWV Hessen und bietet IT-Dienstleistungen für die Sozialverwaltung an. Sie entwickelt Systeme zur Unterstützung der Antragsbearbeitung, Leistungsgewährung und Abrechnung von Sozialleistungen, insbesondere in den Bereichen Eingliederungshilfe, Sozialhilfe und Kriegsopferfürsorge. Zu den zentralen Anwendungen zählen das \textit{Integrierte Berichtssystem} (IBS) für betriebswirtschaftliche Analysen und \textit{MASS} zur maschinellen Abrechnung mit Einrichtungen und Trägern.
+\begin{itemize}
+    \item \textbf{Frontend (Angular)}
+    \begin{itemize}
+        \item Zuständig für die Erfassung der Nutzerinteraktionen (z.\,B. Klicks, Fehlermeldungen) und die Darstellung der Ergebnisse im Admin-Dashboard.
+        \item Setzt u.\,a. auf asynchrone Service-Aufrufe und reaktive Konzepte (RxJS), um Daten in Echtzeit oder in festgelegten Intervallen zu erfassen und an das Backend zu schicken.
+    \end{itemize}
+    \item \textbf{Backend (Spring Boot)}
+    \begin{itemize}
+        \item Stellt REST-Schnittstellen zur Verfügung, die vom Frontend konsumiert werden.
+        \item Übernimmt die Geschäftslogik, indem es eingehende Events (Klicks, Fehlermeldungen usw.) verarbeitet, validiert und in der Datenbank persistiert.
+        \item Aggregiert die Daten (z.\,B. zur Erstellung von Heatmaps oder zur Analyse von Navigationspfaden) und sendet die Ergebnisse zurück ans Frontend.
+    \end{itemize}
+    \item \textbf{Datenhaltung (relationales Modell)}
+    \begin{itemize}
+        \item Datenbanktabellen, in denen Sitzungen (Sessions), Klick-Events, Fehler-Events und Netzwerkabfragen erfasst werden.
+        \item Trennung zwischen dynamischen Nutzungsdaten (z.\,B. Klickereignissen) und statischen Entitäten (z.\,B. Komponenten-Beschreibungen), um eine klare Struktur und Erweiterbarkeit zu gewährleisten.
+    \end{itemize}
+\end{itemize}
 
-\subsection{Über eDok}
+Diese Aufteilung ermöglicht eine lose Kopplung zwischen Frontend und Backend sowie eine modulare Erweiterbarkeit der Datenerfassung und Analyse.
 
-\textit{eDok} dient als Service für alle aufrufenden Anwendungen zur Erstellung von barrierefreien Dokumenten und löst das bisherige \textit{Schriftstück-Erstellungssystem} (SE) ab, das auf Microsoft Word und Makros basiert. Es integriert \textit{Doxee/Infinica} als Subsystem für die Dokumentbearbeitung und Output-Generierung, sodass eine Verwendung sowohl mit interaktiven Elementen (Bearbeitung des entstehenden Dokuments) als auch im Hintergrund (Dunkelverarbeitung) erfolgen kann. Ziel und Vision von \textit{eDok} ist es, eine universelle und generische Schnittstelle für die Anwendungen des LWV Hessen zu bieten, die eine einfache, effiziente und performante Erstellung von barrierefreien Dokumenten ermöglicht, unter Einbeziehung der Daten aus den Fachverfahren.
+\subsubsection{Datenbankmodell}
 
-\subsection{Methodik}
+Zur Speicherung und Auswertung der erhobenen Interaktionsdaten kommt ein relationales Datenmodell zum Einsatz. Wesentliche Entitäten sind:
 
-Zur Beantwortung der Forschungsfragen wird eine Kombination aus \textbf{literaturbasierter Forschung} und \textbf{praktischer Implementierung} angewendet. Zunächst werden bestehende Methoden und Werkzeuge zur UX-Messung analysiert. Darauf aufbauend wird ein eigenes Modell entwickelt, das in die \textit{eDok}-Anwendung integriert wird. Die Datenerfassung und -analyse erfolgt unter Berücksichtigung von Datenschutzbestimmungen und ethische n Richtlinien. Besonderer Wert wird auf die Anonymisierung der Daten gelegt, um die Privatsphäre der Nutzer zu schützen.
+\begin{itemize}
+    \item \textbf{Usability Session}: Repräsentiert eine anonyme Sitzung und verknüpft diese mit einer konkreten Komponente (z.\,B. einem Modul der Anwendung). Enthält Start- und Endzeit sowie ein Session-Token als eindeutigen Bezeichner.
+    \item \textbf{Click Event}: Zeichnet jede Klick-Interaktion innerhalb einer Session auf. Wichtige Felder sind das angeklickte UI-Element (\texttt{element\_id}), eine Sequenznummer zur Rekonstruktion der Klickfolge und ein Zeitstempel.
+    \item \textbf{Error Event}: Erfasst Fehler, die während einer Session auftreten (z.\,B. Ausnahmen im Frontend oder gemeldete Fehler über ein Formular). Ermöglicht die Kategorisierung und Zählung von Fehlern, um Problembereiche zu identifizieren.
+    \item \textbf{Network Request}: Speichert Informationen zu einzelnen Netzwerkaufrufen wie Startzeit, Endzeit, HTTP-Methode und ggf. Antwortstatus. Wichtig zur Performance-Analyse und zum Auffinden von Engpässen.
+    \item \textbf{Component}: Enthält Metadaten zu einer (Sub-)Anwendung bzw. UI-Komponente, sodass Sitzungen und Events eindeutig zugeordnet werden können.
+\end{itemize}
 
-\subsection{Beitrag der Arbeit}
+Dieses Datenmodell ermöglicht eine gezielte Analyse von Nutzerwegen, Klickhäufigkeiten, Fehlerursachen und Performance-Daten, ohne dabei personenbezogene Daten zu erheben. Durch die Entkopplung zwischen „Sitzungen“ und konkreten Nutzern wird die Privatsphäre gewahrt.
 
-Die Ergebnisse dieser Arbeit liefern sowohl theoretische Erkenntnisse als auch praktische Anleitungen für Entwickler und UX-Designer. Das vorgestellte Modell kann als Vorlage für ähnliche Projekte dienen und dazu beitragen, die Qualität von Softwareprodukten nachhaltig zu verbessern. Durch die Anwendung auf eine reale Anwendung wie \textit{eDok} wird gezeigt, wie das Modell effektiv implementiert und genutzt werden kann.
+\subsubsection{Methodisches Vorgehen bei der Datenerfassung}
 
-\subsection{Aufbau der Arbeit}
+\begin{itemize}
+    \item \textbf{Event Listener im Frontend}: In Angular-Komponenten werden Klick- und Fehlerevents über globale oder lokale Listener abgefangen. Die Daten (Element-ID, Zeitstempel, Session-Token usw.) werden minimal verarbeitet (z.\,B. Ergänzung eines Sequenzzählers) und anschließend an das Backend gesendet.
+    \item \textbf{Persistierung und Anreicherung im Backend}: Das Spring-Boot-Backend nimmt die Daten entgegen, validiert sie und legt sie in den entsprechenden Tabellen ab (siehe Abschnitt \ref{sec:datenbankmodell}). Zudem können Zeitinformationen (z.\,B. \texttt{time\_since\_previous}) ergänzt oder bestehende Sessions automatisch geschlossen werden, wenn eine Inaktivität vorliegt.
+    \item \textbf{Auswertung}: Um Heatmap-Daten, häufigste Pfade oder Fehlerstatistiken zu erzeugen, werden Aggregationsfunktionen und gruppierte Abfragen verwendet. Die Ergebnisse werden entweder direkt an das Frontend geliefert (z.\,B. für Live-Analysen) oder in periodischen Abständen abgerufen, um Berichte oder Dashboards zu aktualisieren.
+    \item \textbf{Datenschutz}: Nur technische und kontextbezogene Daten werden gespeichert (z.\,B. Session-Token statt Nutzer-ID). Keine Speicherung von Klartext-Personendaten. Konzeption und Implementierung sind darauf ausgelegt, geltende Datenschutzvorgaben einzuhalten.
+\end{itemize}
 
-Die vorliegende Arbeit gliedert sich wie folgt:
+\subsubsection{SQL-Datenbankmodell}
+\lstset{style=sql}
+\begin{lstlisting}
+CREATE TABLE click_event (
+    id                   BIGINT NOT NULL PRIMARY KEY,
+    element_id           VARCHAR(255),
+    sequence_number      INTEGER NOT NULL,
+    time_since_previous  INTEGER,
+    timestamp            TIMESTAMP,
+    usability_session_id BIGINT NOT NULL
+);
 
+CREATE TABLE component (
+    id          BIGINT NOT NULL PRIMARY KEY,
+    description VARCHAR(255),
+    name        VARCHAR(255)
+);
+
+CREATE TABLE network_request (
+    id                   BIGINT NOT NULL PRIMARY KEY,
+    duration_ms          INTEGER,
+    request_end_time     TIMESTAMP,
+    request_method       VARCHAR(255),
+    request_start_time   TIMESTAMP,
+    request_url          VARCHAR(255),
+    response_payload     CLOB,
+    status_code          INTEGER,
+    usability_session_id BIGINT NOT NULL
+);
+
+CREATE TABLE usability_session (
+    session_id    INTEGER PRIMARY KEY,
+    end_time      TIMESTAMP,
+    session_token VARCHAR(255),
+    start_time    TIMESTAMP,
+    component_id  BIGINT NOT NULL
+);
+\end{lstlisting}
+
+\subsubsection{Zusammenfassung}
+
+Im Rahmen dieses Kapitels wurden die methodischen und technischen Grundlagen erläutert, welche für das Verständnis der späteren Umsetzung essenziell sind. Zentrale Punkte sind die lose gekoppelte Architektur (Angular-Frontend, Spring-Boot-Backend, relationale Datenbank), das klar strukturierte Datenmodell für Nutzungs- und Fehlerevents sowie das damit verbundene methodische Vorgehen bei der Datenerfassung und -auswertung.
+
+Aufbauend auf diesen Grundlagen werden im folgenden Kapitel die konkreten Implementierungsdetails, Ablauflogiken und ausgewählte Code-Beispiele vorgestellt, um den Praxiseinsatz des Modells zu veranschaulichen. Längere Code-Auszüge erscheinen im Anhang und werden dort ausführlicher dokumentiert.
+
+
+ 
 \begin{itemize} \item \textbf{Kapitel 2} bietet einen ausführlichen Überblick über den theoretischen Hintergrund der UX-Messung, einschließlich gängiger Methoden und Techniken zur Datenerfassung und -analyse. \item In \textbf{Kapitel 3} wird das entwickelte Modell detailliert vorgestellt. Es werden die technischen Komponenten, die Datenbankstruktur sowie die Implementierungsdetails beschrieben. \item \textbf{Kapitel 4} widmet sich der Anwendung des Modells auf die \textit{eDok}-Anwendung. Es werden die Ergebnisse der Datenerfassung präsentiert und analysiert. \item In \textbf{Kapitel 5} erfolgt eine kritische Diskussion der Ergebnisse, einschließlich der Vorteile des Modells, identifizierter Schwachstellen und möglichen Verbesserungen. \item \textbf{Kapitel 6} fasst die Arbeit zusammen und gibt einen Ausblick auf zukünftige Forschungs- und Entwicklungsmöglichkeiten. \end{itemize}
 
 \subsection{Relevanz der Arbeit}
@@ -222,13 +370,23 @@ Die vorliegende Arbeit gliedert sich wie folgt:
 Angesichts der wachsenden Bedeutung von UX in der Softwareentwicklung leistet diese Arbeit einen wichtigen Beitrag zur Praxis und Forschung. Das vorgestellte Modell ermöglicht es, UX-Daten in Echtzeit und unter realen Nutzungsbedingungen zu erfassen, ohne die Nutzererfahrung zu beeinträchtigen. Dies ist besonders relevant für Organisationen, die ihre Anwendungen kontinuierlich verbessern möchten, um den steigenden Erwartungen der Nutzer gerecht zu werden.
 
 Durch die Anwendung auf die \textit{eDok}-Anwendung des LWV Hessen wird demonstriert, wie das Modell in einer realen Umgebung implementiert werden kann. Die gewonnenen Erkenntnisse können als Grundlage für weitere Anwendungen dienen und dazu beitragen, die UX-Forschung in der Praxis voranzutreiben.
+\subsection{Datenschutz und DSGVO}
+Im Rahmen der Datenerfassung werden ausschließlich \emph{technische} und \emph{kontextbezogene} Informationen aufgezeichnet, die keine Rückschlüsse auf einzelne Personen zulassen. Die erhobenen Nutzungsdaten sind \emph{anonymisiert} bzw. \emph{pseudonymisiert}. Dazu wird jedem Nutzungsvorgang lediglich eine \texttt{session\_token} zugeordnet, statt personenbezogene Identifikationsmerkmale zu verwenden.
+
+Um die \textbf{DSGVO}-Konformität zu gewährleisten, wird zudem kein Bezug zwischen den erhobenen Daten und Nutzerprofilen hergestellt. Informationen wie IP-Adressen, Klarnamen oder E-Mail-Adressen werden nicht erfasst. Die protokollierten Daten (z.\,B.\ Klick-Ereignisse, Fehlermeldungen, Sitzungszeiten) enthalten ausschließlich Metadaten zum Nutzerverhalten. 
+
+Hinsichtlich der \textbf{Speicherdauer} existiert eine interne Aufbewahrungsrichtlinie, die eine regelmäßige Löschung oder Archivierung älterer Daten vorsieht. Auf diese Weise wird der Datenumfang kontrolliert und eine unbegrenzte Speicherung vermieden. Bei Bedarf kann das Löschkonzept an neue gesetzliche Vorgaben angepasst oder durch \emph{Privacy-by-Design}-Konzepte ergänzt werden.
+
+\subsection{Performance-Überlegungen}
+Um eine hohe \emph{Performance} zu gewährleisten, werden die erhobenen Daten nicht bei jedem Klick \emph{sofort} synchron an das Backend gesendet, sondern \emph{asynchron} verarbeitet. Konkret bedeutet dies, dass das Frontend eingehende Events zunächst lokal zwischenspeichert und in festgelegten Zeitintervallen (\emph{Batching}) an das Backend übermittelt. Dadurch wird die Anzahl der HTTP-Anfragen reduziert, was eine deutliche Entlastung des Systems zur Folge hat.
+
+Innerhalb des Backends erfolgt die \emph{Persistierung} ebenfalls in asynchronen Prozessen, sodass umfangreiche \texttt{INSERT}- und \texttt{UPDATE}-Operationen nicht blockierend wirken. Diese Architektur stellt sicher, dass die Anwendung auch bei hohem Datenaufkommen performant bleibt und keine spürbaren Verzögerungen im Nutzerfluss auftreten. Bei Bedarf können die Zeitintervalle angepasst werden, um ein Gleichgewicht zwischen Datenaktualität und Systemlast herzustellen.
 
 \subsection{Fazit}
 
 Die systematische Erfassung und Analyse der UX ist unerlässlich, um moderne Softwareanwendungen an die Bedürfnisse und Erwartungen der Nutzer anzupassen. Durch die Entwicklung und Implementierung eines Modells zur UX-Messung in \textit{eDok} wird gezeigt, wie Daten genutzt werden können, um die Nutzererfahrung zu verbessern und die Anwendung effizienter und benutzerfreundlicher zu gestalten. Diese Arbeit leistet somit einen wertvollen Beitrag zur Verbesserung von UX-Methoden und deren Anwendung in der Praxis.
 \section{Kapitel 2}
-\subsection{Überblick über den theoretischen Hinter-
-grund der UX-Messung}
+ 
 
 \subsection{Einführung in das Thema UX}
 
@@ -284,7 +442,7 @@ Die implementierte Heatmap bietet eine visuelle Übersicht der am stärksten gen
 Diese Daten helfen, die Effizienz und Benutzerfreundlichkeit der Anwendung kontinuierlich zu steigern und eine datengetriebene Produktoptimierung zu ermöglichen. Darüber hinaus ermöglicht das Modell eine nachträgliche Überprüfung der implementierten Änderungen, um deren Effektivität zu bewerten und weitere Optimierungen vorzunehmen. Durch diesen iterativen Prozess trägt das Modell wesentlich zur Steigerung der Nutzerzufriedenheit und Effizienz der Anwendung bei.
 
 \subsubsection{Abgrenzung von UX- und Usability-Evaluationsmethoden}
-Während Usability-Tests sich primär auf die Leistung bei der Aufgabenbearbeitung konzentrieren, fokussieren UX-Evaluationsmethoden auf das subjektive Erleben der Nutzenden. Objektive Metriken wie Ausführungszeit oder Klickanzahl reichen nicht aus, um die UX vollständig zu erfassen; vielmehr müssen auch Motivation, Erwartungen und Emotionen der Nutzenden berücksichtigt werden \cite{DevelopmentNeeds}.
+Während Usability-Tests sich primär auf die Leistung bei der Aufgabenbearbeitung konzentrieren, fokussieren UX-Evaluationsmethoden auf das subjektive Erleben der Nutzenden. Objektive Metriken wie Ausführungszeit oder Klickanzahl reichen nicht aus, um die UX vollständig zu erfassen; vielmehr müssen auch Motivation, Erwartungen und Emotionen der Nutzenden berücksichtigt werden \cite{dev}.
 
 Nach eingehender Recherche und Analyse der verschiedenen UX-Evaluationsmethoden hat sich herausgestellt, dass die Anforderungen dieser Arbeit eher einem Usability-Test entsprechen als traditionellen UX-Evaluationsmethoden wie Fragebögen oder der Beobachtung von Nutzenden. Unsere Arbeit konzentriert sich auf die systematische Erfassung von Nutzungsdaten während des Produktiveinsatzes der Anwendung. Diese Herangehensweise erlaubt es, objektive Daten über die Interaktion der Nutzenden mit der Anwendung zu sammeln und spezifische Aspekte der Usability zu bewerten.
 \subsubsection{Fokussierung auf Usability in dieser Arbeit}
@@ -333,7 +491,7 @@ Im Kontext der Ergebnisse der Studie, obwohl diese Methoden nicht zu den fünf a
 Durch den Einsatz dieser Methoden verwenden Sie quantitative Datenanalyse, um die Benutzerfreundlichkeit zu evaluieren. Dieser Ansatz ermöglicht es, spezifische Probleme in der Benutzeroberfläche basierend auf dem tatsächlichen Nutzerverhalten zu identifizieren, was zu gezielteren und effektiveren Verbesserungen führt.
 
 
-Die Studie von Srivastava et al. (2000)\cite{srivastava2000} untersucht das Konzept des \textit{Web Usage Mining}, bei dem Data-Mining-Techniken angewendet werden, um Nutzungsmuster aus Web-Daten zu entdecken. Ziel ist es, das Verhalten von Web-Nutzern zu verstehen und daraus Erkenntnisse für die Verbesserung von Web-Anwendungen zu gewinnen.
+Die Studie von Srivastava et al. (2000)\cite{Srivastava2000} untersucht das Konzept des \textit{Web Usage Mining}, bei dem Data-Mining-Techniken angewendet werden, um Nutzungsmuster aus Web-Daten zu entdecken. Ziel ist es, das Verhalten von Web-Nutzern zu verstehen und daraus Erkenntnisse für die Verbesserung von Web-Anwendungen zu gewinnen.
 
 Die Autoren identifizieren verschiedene Arten von Web-Daten, darunter Inhaltsdaten, Strukturdaten, Nutzungsdaten und Benutzerprofildaten. Sie beschreiben einen dreistufigen Prozess des Web Usage Mining:
 
@@ -479,8 +637,122 @@ Ein einfacher Schalter im Admin-Panel, der:
     \item Eine Methode im Global Heatmap Service aufruft, um den Heatmap-Modus zu aktivieren oder zu deaktivieren.
     \item Statusänderungen an die verbundenen Komponenten und Direktiven weiterleitet.
 \end{itemize}
+\subsection{Beispiele für Auswertungen}
+Ein zentraler Aspekt des entwickelten Modells ist die Gewinnung \emph{quantitativer Metriken}, die Aussagen über die aktuelle Nutzungsweise von \textit{eDok} erlauben und damit Potenziale zur Optimierung aufzeigen. Die folgenden Beispiele illustrieren typische Auswertungen, die sich aus den erfassten Daten (vgl.\ \lstinline|click_event|, \lstinline|error_event| usw.) ableiten lassen:
 
- 
+\begin{enumerate}
+    \item \textbf{Klickhäufigkeit pro UI-Element}\\
+    Hierbei wird gezählt, wie oft ein bestimmtes \lstinline|element_id| (z.\,B.\ ein Button oder Formularfeld) angeklickt wurde. Eine einfache SQL-Abfrage sähe so aus:
+
+    \begin{lstlisting}[style=sql,caption={Beispiel: Klickhäufigkeit pro Element}]
+SELECT element_id, COUNT(*) AS total_clicks
+FROM click_event
+GROUP BY element_id
+ORDER BY total_clicks DESC;
+    \end{lstlisting}
+
+    Diese Auswertung hilft zu erkennen, welche UI-Bereiche am häufigsten genutzt werden. Elemente mit \emph{besonders hohem} oder \emph{unerwartet niedrigem} Klickaufkommen können im Anschluss gezielt überprüft und ggf.\ neu gestaltet werden.
+
+    \item \textbf{Fehlerquote (Fehler pro Klick / Zeit)}\\
+    Um zu untersuchen, in welchem Verhältnis Klicks und Fehleraufkommen stehen, kann man beispielsweise die \emph{Anzahl der Fehlerereignisse} (\lstinline|error_event|) ins Verhältnis zu den Klick-Ereignissen setzen. Eine vereinfachte Kennzahl (Key Performance Indicator, KPI) wäre:
+
+    \[
+    \text{Fehlerquote} = \frac{\sum (\text{Fehler})}{\sum (\text{Klicks})} \times 100\,\%
+    \]
+    oder zeitbasiert:
+    \[
+    \text{Fehlerquote pro Zeiteinheit} = \frac{\sum (\text{Fehler in } t)}{\sum (\text{Klicks in } t)}.
+    \]
+
+    Eine zugehörige Abfrage könnte beispielsweise so aussehen, wenn man pro Zeiteinheit (z.\,B.\ pro Tag) die Fehler- und Klickanzahl bestimmen möchte:
+
+    \begin{lstlisting}[style=sql,caption={Beispiel: Fehler- und Klickanzahl pro Tag}]
+SELECT DATE(timestamp) AS day,
+       (SELECT COUNT(*) 
+        FROM error_event e 
+        WHERE DATE(e.timestamp) = DATE(c.timestamp)) AS total_errors,
+       COUNT(*) AS total_clicks
+FROM click_event c
+GROUP BY DATE(timestamp)
+ORDER BY day;
+    \end{lstlisting}
+
+    Hierdurch lassen sich Zeiträume oder UI-Bereiche identifizieren, in denen \emph{außergewöhnlich viele} Fehler auftreten, was ein klares Indiz für Optimierungsbedarf sein kann.
+
+    \item \textbf{Navigationspfade (Häufigste Klick-Sequenzen)}\\
+    Anhand der \lstinline|sequence_number| und der Zuordnung zu \lstinline|usability_session| kann das System bestimmen, welchen Pfad Nutzende \emph{typischerweise} innerhalb einer Sitzung durchlaufen (z.\,B.\ \texttt{Startseite -> Dokument anlegen -> Einstellungen -> Speichern}). Eine mögliche Herangehensweise ist das Gruppieren nach \lstinline|session_id| und Sortieren nach der Klick-Sequenz:
+
+    \begin{lstlisting}[style=sql,caption={Beispiel: Pfadrekonstruktion je Session}]
+SELECT session_id, element_id, sequence_number
+FROM click_event
+ORDER BY session_id, sequence_number ASC;
+    \end{lstlisting}
+
+    Anschließend können sich wiederholende \emph{Pfad-Signaturen} identifiziert werden (z.\,B.\ \enquote{Startseite->DokumentErstellen->...}), um sogenannte \emph{most common paths} zu bestimmen. Dies liefert Aufschluss darüber, ob bestimmte Navigationsrouten gewünscht sind oder ob Nutzende häufig \enquote{Umwege} gehen.
+
+    \item \textbf{Verweildauer pro Seite}\\
+    Die Analyse der \emph{Verweildauer} ist hilfreich, um \emph{Aufwände} oder \emph{eventuelle Probleme} zu erkennen (z.\,B.\ sehr lange Bearbeitungszeiten für ein Formular). Dazu werden z.\,B.\ \texttt{Page-Load}- und \texttt{Page-Unload}-Events (oder ein entsprechender \texttt{time\_since\_previous}-Wert) protokolliert. Die Differenz zwischen beiden Zeitpunkten ergibt:
+
+    \[
+    \text{Verweildauer}(Seite_i) = \text{Endzeitpunkt} - \text{Startzeitpunkt}.
+    \]
+
+    Um beispielsweise die durchschnittliche Verweildauer pro \texttt{usability\_session} zu ermitteln, kann man die \lstinline|time_since_previous| Werte summieren oder einen separaten \lstinline|page_load| / \lstinline|page_unload| Event-Ansatz verfolgen. Eine vereinfachte SQL-Abfrage (je nach Umsetzung) könnte so aussehen:
+
+    \begin{lstlisting}[style=sql,caption={Beispiel: Durchschnittliche Verweildauer je Session}]
+SELECT usability_session_id,
+       AVG(time_since_previous) AS avg_time_spent
+FROM click_event
+GROUP BY usability_session_id
+ORDER BY usability_session_id;
+    \end{lstlisting}
+
+    Seiten mit \emph{auffallend langen} Verweilzeiten könnten zu komplex oder nicht intuitiv gestaltet sein, wohingegen \emph{extrem kurze} Zeiten auf Desinteresse oder eine Fehlbedienung hinweisen können.
+\end{enumerate}
+
+\noindent
+\textbf{Ableitung von KPIs und weiterführenden Auswertungen.}\\
+In der Praxis werden diese Basisanalysen häufig zu komplexeren \emph{Key Performance Indicators (KPIs)} kombiniert, etwa \emph{Fehler pro 100 Klicks} oder \emph{durchschnittliche Navigationszeit} zwischen zwei häufig aufgerufenen Elementen. Die in den Tabellen \lstinline|click_event|, \lstinline|error_event| und \lstinline|usability_session| abgelegten Daten bieten somit eine \emph{hohe Flexibilität}, um je nach Fragestellung passende Metriken zu berechnen und daraus konkrete Handlungsempfehlungen abzuleiten.
+
+
+ \subsection{Bezug zu den Zielen (Kapitel 1)}
+In \textbf{Kapitel 1} wurde als Hauptziel dieser Arbeit definiert, die \emph{User Experience (UX)} in der Anwendung \textit{eDok} systematisch zu erfassen, zu analysieren und durch konkrete Maßnahmen zu verbessern. Dabei sollten folgende Aspekte besonders berücksichtigt werden:
+
+\begin{itemize}
+    \item \textbf{Kontinuierliche Datenerfassung ohne Mehraufwand für Nutzende:} 
+    Das automatisierte \emph{Event Logging} (z.\,B.\ in \texttt{click\_event}) ermöglicht eine lückenlose Erfassung der Interaktionen, ohne dass Benutzer zusätzliche Aktionen ausführen müssen.
+    \item \textbf{Anonymisierung und Datenschutz:} 
+    Durch die Abstraktion über die Tabelle \texttt{usability\_session} bleibt die Identität der Nutzenden geschützt, da statt personenbezogener Daten lediglich pseudonymisierte Tokens gespeichert werden.
+    \item \textbf{Übersichtliche Visualisierung und Trendanalysen:} 
+    Die in \texttt{click\_event}, \texttt{network\_request} und \texttt{error\_event} gespeicherten Daten lassen sich zu aussagekräftigen \emph{Heatmaps} und \emph{Fehlerstatistiken} zusammenführen, sodass Administratoren im Dashboard einen klaren Überblick gewinnen.
+    \item \textbf{Gezielte Optimierung von UI- und Nutzungsprozessen:} 
+    Anhand der gesammelten \texttt{sequence\_number}-Informationen kann z.\,B.\ die Reihenfolge von Klicks analysiert werden, um häufige Pfade (oder Stolpersteine) zu identifizieren und das Benutzererlebnis weiterzuentwickeln.
+\end{itemize}
+
+\noindent
+\textbf{Unterstützung durch die Tabellenstruktur.} Die Datenbanktabellen (\texttt{usability\_session}, \texttt{click\_event}, \texttt{error\_event} etc.) implementieren die oben genannten Ziele wie folgt:
+\begin{enumerate}
+    \item \texttt{click\_event} erfasst alle relevanten Interaktionen (Element-ID, Zeitstempel, Reihenfolge), die für \emph{Heatmaps} und Klickstatistiken benötigt werden.
+    \item \texttt{usability\_session} gewährleistet eine saubere \emph{Session-Verfolgung}, ohne Rückschlüsse auf konkrete Personen zuzulassen. So kann z.\,B.\ die Verweildauer oder die Anzahl der Fehler pro Session analysiert werden.
+    \item \texttt{error\_event} und \texttt{network\_request} ermöglichen eine \emph{tiefergehende Performance- und Fehleranalyse}, um systematische Probleme aufzudecken.
+\end{enumerate}
+
+\paragraph{Erreichte Ziele.} 
+Die Arbeit konnte die gesteckten Ziele im Wesentlichen erfüllen:
+\begin{itemize}
+    \item Die Datenerfassung und -speicherung funktioniert \emph{kontinuierlich und anonymisiert}, sodass \textit{eDok} unter realen Nutzungsbedingungen beobachtet werden kann, ohne datenschutzrechtliche Bedenken.
+    \item Das \emph{Dashboard} stellt die gesammelten Daten visuell dar und bietet Administrator*innen eine solide Basis, um entscheidungsrelevante Informationen (z.\,B.\ häufige Klickpfade, Fehlerhotspots) auf einen Blick zu erkennen.
+    \item \emph{Iterative Verbesserungen} lassen sich auf Grundlage der gewonnenen Erkenntnisse realisieren, indem problematische UI-Bereiche oder ineffiziente Interaktionsmuster konkret adressiert werden.
+\end{itemize}
+
+\paragraph{Nicht vollständig abgedeckte Ziele.}
+Trotz der erfolgreichen Implementierung bleiben bestimmte Bereiche \emph{unberücksichtigt}:
+\begin{itemize}
+    \item \textbf{Keine subjektiven UX-Daten:} Da keinerlei Umfragen, Interviews oder Beobachtungen einbezogen wurden, fehlen tiefergehende Einblicke in Emotionen, Motivation und Zufriedenheit der Nutzenden.
+\end{itemize}
+
+Ungeachtet dieser Einschränkungen bildet das entwickelte Modell eine solide Grundlage, um die \emph{Usability} von \textit{eDok} kontinuierlich zu überwachen und gezielt zu verbessern. Zukünftige Arbeiten könnten um qualitative Methoden oder weiterführende Analysetechniken ergänzt werden, um ein noch umfassenderes Bild der \emph{User Experience} zu gewinnen.
+
 
 \printbibliography
  
