@@ -1,0 +1,497 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global/global}
+    \entry{ISO}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=33858250a824519f89ee367eae6455ed}{%
+           family={9241-210:2019(en)},
+           familyi={9\bibinithyphendelim 2\bibinitperiod},
+           given={ISO},
+           giveni={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{33858250a824519f89ee367eae6455ed}
+      \strng{fullhash}{33858250a824519f89ee367eae6455ed}
+      \strng{fullhashraw}{33858250a824519f89ee367eae6455ed}
+      \strng{bibnamehash}{33858250a824519f89ee367eae6455ed}
+      \strng{authorbibnamehash}{33858250a824519f89ee367eae6455ed}
+      \strng{authornamehash}{33858250a824519f89ee367eae6455ed}
+      \strng{authorfullhash}{33858250a824519f89ee367eae6455ed}
+      \strng{authorfullhashraw}{33858250a824519f89ee367eae6455ed}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{\url{https://www.iso.org/obp/ui/en/#iso:std:iso:9241:-210:ed-2:v1:en}, abgerufen am 05.10.2024}
+      \field{title}{Ergonomics of human-system interaction — Part 210: Human-centred design for interactive systems}
+    \endentry
+    \entry{GOISTAI}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=1183223cf40845d592d26985cf05f7e4}{%
+           family={A.\bibnamedelimi H.\bibnamedelimi Allam},
+           familyi={A\bibinitperiod\bibinitdelim H\bibinitperiod\bibinitdelim A\bibinitperiod},
+           given={Halina\bibnamedelimb Mohamed\bibnamedelima Dahlan},
+           giveni={H\bibinitperiod\bibinitdelim M\bibinitperiod\bibinitdelim D\bibinitperiod},
+           suffix={Ab\bibnamedelima Razak\bibnamedelimb Che\bibnamedelima Hussin},
+           suffixi={A\bibinitperiod\bibinitdelim R\bibinitperiod\bibinitdelim C\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+      }
+      \strng{namehash}{1183223cf40845d592d26985cf05f7e4}
+      \strng{fullhash}{1183223cf40845d592d26985cf05f7e4}
+      \strng{fullhashraw}{1183223cf40845d592d26985cf05f7e4}
+      \strng{bibnamehash}{1183223cf40845d592d26985cf05f7e4}
+      \strng{authorbibnamehash}{1183223cf40845d592d26985cf05f7e4}
+      \strng{authornamehash}{1183223cf40845d592d26985cf05f7e4}
+      \strng{authorfullhash}{1183223cf40845d592d26985cf05f7e4}
+      \strng{authorfullhashraw}{1183223cf40845d592d26985cf05f7e4}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{\url{https://seminar.utmspace.edu.my/jisri/download/F1_FinalPublished/Pub4_UserExperienceChallenges.pdf}, abgerufen am 02.10.2024}
+      \field{title}{User Experience: Challenges and Opportunities}
+    \endentry
+    \entry{nngroup}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=eb29744f61c8554fc0f6faa14c3ebcc0}{%
+           family={Don\bibnamedelima Norman},
+           familyi={D\bibinitperiod\bibinitdelim N\bibinitperiod},
+           given={Jakob\bibnamedelima Nielsen},
+           giveni={J\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+      }
+      \strng{namehash}{eb29744f61c8554fc0f6faa14c3ebcc0}
+      \strng{fullhash}{eb29744f61c8554fc0f6faa14c3ebcc0}
+      \strng{fullhashraw}{eb29744f61c8554fc0f6faa14c3ebcc0}
+      \strng{bibnamehash}{eb29744f61c8554fc0f6faa14c3ebcc0}
+      \strng{authorbibnamehash}{eb29744f61c8554fc0f6faa14c3ebcc0}
+      \strng{authornamehash}{eb29744f61c8554fc0f6faa14c3ebcc0}
+      \strng{authorfullhash}{eb29744f61c8554fc0f6faa14c3ebcc0}
+      \strng{authorfullhashraw}{eb29744f61c8554fc0f6faa14c3ebcc0}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{\url{https://www.nngroup.com/articles/definition-user-experience/}, abgerufen am 02.10.2024}
+      \field{title}{The Definition of User Experience (UX)}
+    \endentry
+    \entry{glanznig}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=141235a42fd944e34e9c096bf51e0a01}{%
+           family={Glanznig},
+           familyi={G\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{141235a42fd944e34e9c096bf51e0a01}
+      \strng{fullhash}{141235a42fd944e34e9c096bf51e0a01}
+      \strng{fullhashraw}{141235a42fd944e34e9c096bf51e0a01}
+      \strng{bibnamehash}{141235a42fd944e34e9c096bf51e0a01}
+      \strng{authorbibnamehash}{141235a42fd944e34e9c096bf51e0a01}
+      \strng{authornamehash}{141235a42fd944e34e9c096bf51e0a01}
+      \strng{authorfullhash}{141235a42fd944e34e9c096bf51e0a01}
+      \strng{authorfullhashraw}{141235a42fd944e34e9c096bf51e0a01}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{\url{https://phaidra.univie.ac.at/detail/o:1301839.pdf}, abgerufen am 11.10.2024}
+      \field{title}{Approaching User Experience: Moving between Modelling and In-Depth}
+      \field{year}{2013}
+    \endentry
+    \entry{hassenzahl2003}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=db17d37ecdd86876546d10459c33e1a4}{%
+           family={Hassenzahl},
+           familyi={H\bibinitperiod},
+           given={Marc},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{db17d37ecdd86876546d10459c33e1a4}
+      \strng{fullhash}{db17d37ecdd86876546d10459c33e1a4}
+      \strng{fullhashraw}{db17d37ecdd86876546d10459c33e1a4}
+      \strng{bibnamehash}{db17d37ecdd86876546d10459c33e1a4}
+      \strng{authorbibnamehash}{db17d37ecdd86876546d10459c33e1a4}
+      \strng{authornamehash}{db17d37ecdd86876546d10459c33e1a4}
+      \strng{authorfullhash}{db17d37ecdd86876546d10459c33e1a4}
+      \strng{authorfullhashraw}{db17d37ecdd86876546d10459c33e1a4}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{\url{https://www.researchgate.net/publication/226420570_The_Thing_and_I_Understanding_the_Relationship_Between_User_and_Product}, abgerufen am 21.10.2024}
+      \field{title}{The Thing and I: Understanding the Relationship Between User and Product}
+      \field{year}{2006}
+    \endentry
+    \entry{Hilbert2000}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=035c73c66e8d68a25f0bf2295f024103}{%
+           family={Hilbert},
+           familyi={H\bibinitperiod},
+           given={David\bibnamedelima M.},
+           giveni={D\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=d911674eeae90d1336cf932a96575085}{%
+           family={Redmiles},
+           familyi={R\bibinitperiod},
+           given={David\bibnamedelima F.},
+           giveni={D\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{e6adf08818f443117ed5b12171468227}
+      \strng{fullhash}{e6adf08818f443117ed5b12171468227}
+      \strng{fullhashraw}{e6adf08818f443117ed5b12171468227}
+      \strng{bibnamehash}{e6adf08818f443117ed5b12171468227}
+      \strng{authorbibnamehash}{e6adf08818f443117ed5b12171468227}
+      \strng{authornamehash}{e6adf08818f443117ed5b12171468227}
+      \strng{authorfullhash}{e6adf08818f443117ed5b12171468227}
+      \strng{authorfullhashraw}{e6adf08818f443117ed5b12171468227}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{ACM Computing Surveys (CSUR)}
+      \field{number}{4}
+      \field{title}{Extracting usability information from user interface events}
+      \field{volume}{32}
+      \field{year}{2000}
+      \field{pages}{384\bibrangedash 421}
+      \range{pages}{38}
+    \endentry
+    \entry{jordan2008auswahl}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=2e2e15f53f9fce47c422eaff848c200c}{%
+           family={Jordan},
+           familyi={J\bibinitperiod},
+           given={Philipp},
+           giveni={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{2e2e15f53f9fce47c422eaff848c200c}
+      \strng{fullhash}{2e2e15f53f9fce47c422eaff848c200c}
+      \strng{fullhashraw}{2e2e15f53f9fce47c422eaff848c200c}
+      \strng{bibnamehash}{2e2e15f53f9fce47c422eaff848c200c}
+      \strng{authorbibnamehash}{2e2e15f53f9fce47c422eaff848c200c}
+      \strng{authornamehash}{2e2e15f53f9fce47c422eaff848c200c}
+      \strng{authorfullhash}{2e2e15f53f9fce47c422eaff848c200c}
+      \strng{authorfullhashraw}{2e2e15f53f9fce47c422eaff848c200c}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Studienarbeit, Institut für Konstruktionstechnik und Technisches Design, Universität Stuttgart}
+      \field{month}{6}
+      \field{note}{Betreuer: Prof. Dr.-Ing. Thomas Maier und Dr.-Ing. M. Schmid}
+      \field{title}{Auswahl einer geeigneten Methode zur Usability Evaluation}
+      \field{year}{2008}
+      \verb{urlraw}
+      \verb https://www.researchgate.net/publication/275833180_Selection_of_an_appropriate_Usability_Evaluation_Method_GERMAN_LANGUAGE
+      \endverb
+      \verb{url}
+      \verb https://www.researchgate.net/publication/275833180_Selection_of_an_appropriate_Usability_Evaluation_Method_GERMAN_LANGUAGE
+      \endverb
+    \endentry
+    \entry{evaluationmethods}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=b9948bf6f989831c7773bc9670be9f2c}{%
+           family={Kaisa\bibnamedelima Väänänen-Vainio-Mattila},
+           familyi={K\bibinitperiod\bibinitdelim V\bibinithyphendelim V\bibinithyphendelim M\bibinitperiod},
+           given={Marc\bibnamedelima Hassenzahl},
+           giveni={M\bibinitperiod\bibinitdelim H\bibinitperiod},
+           suffix={Virpi\bibnamedelima Roto},
+           suffixi={V\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \strng{namehash}{b9948bf6f989831c7773bc9670be9f2c}
+      \strng{fullhash}{b9948bf6f989831c7773bc9670be9f2c}
+      \strng{fullhashraw}{b9948bf6f989831c7773bc9670be9f2c}
+      \strng{bibnamehash}{b9948bf6f989831c7773bc9670be9f2c}
+      \strng{authorbibnamehash}{b9948bf6f989831c7773bc9670be9f2c}
+      \strng{authornamehash}{b9948bf6f989831c7773bc9670be9f2c}
+      \strng{authorfullhash}{b9948bf6f989831c7773bc9670be9f2c}
+      \strng{authorfullhashraw}{b9948bf6f989831c7773bc9670be9f2c}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{\url{https://www.researchgate.net/publication/239749277_Towards_Practical_User_Experience_Evaluation_Methods}, abgerufen am 03.10.2024}
+      \field{title}{Towards Practical User Experience Evaluation Methods}
+    \endentry
+    \entry{research}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=85856f5da38c1bda70ad42d900129033}{%
+           family={Marc\bibnamedelima Hassenzahl},
+           familyi={M\bibinitperiod\bibinitdelim H\bibinitperiod},
+           given={Noam\bibnamedelima Tractinsky},
+           giveni={N\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+      }
+      \strng{namehash}{85856f5da38c1bda70ad42d900129033}
+      \strng{fullhash}{85856f5da38c1bda70ad42d900129033}
+      \strng{fullhashraw}{85856f5da38c1bda70ad42d900129033}
+      \strng{bibnamehash}{85856f5da38c1bda70ad42d900129033}
+      \strng{authorbibnamehash}{85856f5da38c1bda70ad42d900129033}
+      \strng{authornamehash}{85856f5da38c1bda70ad42d900129033}
+      \strng{authorfullhash}{85856f5da38c1bda70ad42d900129033}
+      \strng{authorfullhashraw}{85856f5da38c1bda70ad42d900129033}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{\url{https://www.researchgate.net/publication/233864602_User_experience_-_A_research_agenda}, abgerufen am 14.10.2024}
+      \field{title}{User experience – a research agenda}
+      \field{year}{2006}
+    \endentry
+    \entry{toolbox}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=fecf097a008b7887dba29506e50ec34f}{%
+           family={Meinald\bibnamedelimb T.\bibnamedelimi Thielsch},
+           familyi={M\bibinitperiod\bibinitdelim T\bibinitperiod\bibinitdelim T\bibinitperiod},
+           given={Martin\bibnamedelima Salaschek},
+           giveni={M\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \strng{namehash}{fecf097a008b7887dba29506e50ec34f}
+      \strng{fullhash}{fecf097a008b7887dba29506e50ec34f}
+      \strng{fullhashraw}{fecf097a008b7887dba29506e50ec34f}
+      \strng{bibnamehash}{fecf097a008b7887dba29506e50ec34f}
+      \strng{authorbibnamehash}{fecf097a008b7887dba29506e50ec34f}
+      \strng{authornamehash}{fecf097a008b7887dba29506e50ec34f}
+      \strng{authorfullhash}{fecf097a008b7887dba29506e50ec34f}
+      \strng{authorfullhashraw}{fecf097a008b7887dba29506e50ec34f}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{\url{https://d-nb.info/121533060X/34}, abgerufen am 03.10.2024}
+      \field{title}{Toolbox zur Website-Evaluation:Erfassung der User Experience von Onlinegesundheitsinformationen}
+    \endentry
+    \entry{ard}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=0fc47a3e46521fcb4e8dd6be6445e724}{%
+           family={Natalie\bibnamedelima Beisch},
+           familyi={N\bibinitperiod\bibinitdelim B\bibinitperiod},
+           given={Carmen\bibnamedelima Schäfer},
+           giveni={C\bibinitperiod\bibinitdelim S\bibinitperiod},
+           suffix={Wolfgang\bibnamedelima Koch},
+           suffixi={W\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \strng{namehash}{0fc47a3e46521fcb4e8dd6be6445e724}
+      \strng{fullhash}{0fc47a3e46521fcb4e8dd6be6445e724}
+      \strng{fullhashraw}{0fc47a3e46521fcb4e8dd6be6445e724}
+      \strng{bibnamehash}{0fc47a3e46521fcb4e8dd6be6445e724}
+      \strng{authorbibnamehash}{0fc47a3e46521fcb4e8dd6be6445e724}
+      \strng{authornamehash}{0fc47a3e46521fcb4e8dd6be6445e724}
+      \strng{authorfullhash}{0fc47a3e46521fcb4e8dd6be6445e724}
+      \strng{authorfullhashraw}{0fc47a3e46521fcb4e8dd6be6445e724}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{\url{https://www.ard-zdf-onlinestudie.de/files/2019/0919_Beisch_Koch_Schaefer.pdf}, abgerufen am 03.10.2024}
+      \field{title}{ARD/ZDF-Onlinestudie 2019: Mediale Internetnutzung und Video-onDemand gewinnen weiter an Bedeutung}
+    \endentry
+    \entry{Paz2016}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=3b77de3b731f4597d2aa1f964b4b8622}{%
+           family={Paz},
+           familyi={P\bibinitperiod},
+           given={Freddy},
+           giveni={F\bibinitperiod}}}%
+        {{hash=451215bc4c5c7804ba901fa1ec2ca579}{%
+           family={Pow-Sang},
+           familyi={P\bibinithyphendelim S\bibinitperiod},
+           given={José\bibnamedelima Antonio},
+           giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{38ef17ef96efb2d04f8ced7ab69ccd6c}
+      \strng{fullhash}{38ef17ef96efb2d04f8ced7ab69ccd6c}
+      \strng{fullhashraw}{38ef17ef96efb2d04f8ced7ab69ccd6c}
+      \strng{bibnamehash}{38ef17ef96efb2d04f8ced7ab69ccd6c}
+      \strng{authorbibnamehash}{38ef17ef96efb2d04f8ced7ab69ccd6c}
+      \strng{authornamehash}{38ef17ef96efb2d04f8ced7ab69ccd6c}
+      \strng{authorfullhash}{38ef17ef96efb2d04f8ced7ab69ccd6c}
+      \strng{authorfullhashraw}{38ef17ef96efb2d04f8ced7ab69ccd6c}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{International Journal of Software Engineering and Its Applications}
+      \field{number}{1}
+      \field{title}{A Systematic Mapping Review of Usability Evaluation Methods for Software Development Process}
+      \field{volume}{10}
+      \field{year}{2016}
+      \field{pages}{165\bibrangedash 178}
+      \range{pages}{14}
+    \endentry
+    \entry{Virpi}{misc}{}{}
+      \name{author}{3}{}{%
+        {{hash=19fe1ca2b731f81a82216e07cb5581d2}{%
+           family={Roto},
+           familyi={R\bibinitperiod},
+           given={Virpi},
+           giveni={V\bibinitperiod}}}%
+        {{hash=d7a7b0a16062f8d00180684ec073e33c}{%
+           family={Obrist},
+           familyi={O\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=ed485888232f2c9f8189d2c610fa135e}{%
+           family={Väänänen-Vainio-Mattila},
+           familyi={V\bibinithyphendelim V\bibinithyphendelim M\bibinitperiod},
+           given={Kaisa},
+           giveni={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{cfd80dcfd4ffca0c93fc3338f5b6398e}
+      \strng{fullhash}{cfd80dcfd4ffca0c93fc3338f5b6398e}
+      \strng{fullhashraw}{cfd80dcfd4ffca0c93fc3338f5b6398e}
+      \strng{bibnamehash}{cfd80dcfd4ffca0c93fc3338f5b6398e}
+      \strng{authorbibnamehash}{cfd80dcfd4ffca0c93fc3338f5b6398e}
+      \strng{authornamehash}{cfd80dcfd4ffca0c93fc3338f5b6398e}
+      \strng{authorfullhash}{cfd80dcfd4ffca0c93fc3338f5b6398e}
+      \strng{authorfullhashraw}{cfd80dcfd4ffca0c93fc3338f5b6398e}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{\url{https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/37660.pdf}, abgerufen am 06.10.2024}
+      \field{title}{User experience evaluation methods in academic and industrial contexts}
+      \field{year}{2009}
+    \endentry
+    \entry{keystroke}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=a02a652cc1e7cdaf9a5c0fc038a1b443}{%
+           family={Smart\bibnamedelimb K.\bibnamedelimi Card},
+           familyi={S\bibinitperiod\bibinitdelim K\bibinitperiod\bibinitdelim C\bibinitperiod},
+           given={Thomas\bibnamedelimb P.\bibnamedelimi Moran},
+           giveni={T\bibinitperiod\bibinitdelim P\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{a02a652cc1e7cdaf9a5c0fc038a1b443}
+      \strng{fullhash}{a02a652cc1e7cdaf9a5c0fc038a1b443}
+      \strng{fullhashraw}{a02a652cc1e7cdaf9a5c0fc038a1b443}
+      \strng{bibnamehash}{a02a652cc1e7cdaf9a5c0fc038a1b443}
+      \strng{authorbibnamehash}{a02a652cc1e7cdaf9a5c0fc038a1b443}
+      \strng{authornamehash}{a02a652cc1e7cdaf9a5c0fc038a1b443}
+      \strng{authorfullhash}{a02a652cc1e7cdaf9a5c0fc038a1b443}
+      \strng{authorfullhashraw}{a02a652cc1e7cdaf9a5c0fc038a1b443}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{The Keystroke-Level Model for User Perrmance Time with Interactwe Systems}
+      \field{year}{1980}
+      \verb{urlraw}
+      \verb https://www.researchgate.net/publication/220426122_The_Keystroke-Level_Model_for_User_Performance_Time_with_Interactive_Systems/citations
+      \endverb
+      \verb{url}
+      \verb https://www.researchgate.net/publication/220426122_The_Keystroke-Level_Model_for_User_Performance_Time_with_Interactive_Systems/citations
+      \endverb
+    \endentry
+    \entry{Srivastava2000}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=0a4a1b0b097ed3dcbf57e7327d808d9d}{%
+           family={Srivastava},
+           familyi={S\bibinitperiod},
+           given={Jaideep},
+           giveni={J\bibinitperiod}}}%
+        {{hash=6895fa84dd214a8c248811a9badc2e01}{%
+           family={Cooley},
+           familyi={C\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod}}}%
+        {{hash=78c8e4b11379616b27c91d6e54df431c}{%
+           family={Deshpande},
+           familyi={D\bibinitperiod},
+           given={Mukund},
+           giveni={M\bibinitperiod}}}%
+        {{hash=86a8d7a88b3690035ad60e47af41a2af}{%
+           family={Tan},
+           familyi={T\bibinitperiod},
+           given={Pang-Ning},
+           giveni={P\bibinithyphendelim N\bibinitperiod}}}%
+      }
+      \strng{namehash}{7b7e4b49cd520c1961662627c01b1a13}
+      \strng{fullhash}{c03790941bd477db762629dc3c367ea1}
+      \strng{fullhashraw}{c03790941bd477db762629dc3c367ea1}
+      \strng{bibnamehash}{7b7e4b49cd520c1961662627c01b1a13}
+      \strng{authorbibnamehash}{7b7e4b49cd520c1961662627c01b1a13}
+      \strng{authornamehash}{7b7e4b49cd520c1961662627c01b1a13}
+      \strng{authorfullhash}{c03790941bd477db762629dc3c367ea1}
+      \strng{authorfullhashraw}{c03790941bd477db762629dc3c367ea1}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{ACM SIGKDD Explorations Newsletter}
+      \field{number}{2}
+      \field{title}{Web Usage Mining: Discovery and Applications of Usage Patterns from Web Data}
+      \field{volume}{1}
+      \field{year}{2000}
+      \field{pages}{12\bibrangedash 23}
+      \range{pages}{12}
+    \endentry
+    \entry{dev}{misc}{}{}
+      \name{author}{6}{}{%
+        {{hash=c5c8bbb48f74195d245d4c230d90f5dd}{%
+           family={Vermeeren},
+           familyi={V\bibinitperiod},
+           given={Arnold\bibnamedelima P.O.S.},
+           giveni={A\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=7e687458110db964b1821c91d613ff6c}{%
+           family={Law},
+           familyi={L\bibinitperiod},
+           given={Effie\bibnamedelima Lai-Chong},
+           giveni={E\bibinitperiod\bibinitdelim L\bibinithyphendelim C\bibinitperiod}}}%
+        {{hash=19fe1ca2b731f81a82216e07cb5581d2}{%
+           family={Roto},
+           familyi={R\bibinitperiod},
+           given={Virpi},
+           giveni={V\bibinitperiod}}}%
+        {{hash=9b5e718631fe4d7958a517e8c6499197}{%
+           family={Obrist},
+           familyi={O\bibinitperiod},
+           given={Marianna},
+           giveni={M\bibinitperiod}}}%
+        {{hash=feb2bd01660937887396d77c77c2176c}{%
+           family={Hoonhout},
+           familyi={H\bibinitperiod},
+           given={Jettie},
+           giveni={J\bibinitperiod}}}%
+        {{hash=ed485888232f2c9f8189d2c610fa135e}{%
+           family={Väänänen-Vainio-Mattila},
+           familyi={V\bibinithyphendelim V\bibinithyphendelim M\bibinitperiod},
+           given={Kaisa},
+           giveni={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{be52be3d98357dcadc4ee571fe0faa61}
+      \strng{fullhash}{95ba84e54769d620d6a8dba56998913e}
+      \strng{fullhashraw}{95ba84e54769d620d6a8dba56998913e}
+      \strng{bibnamehash}{be52be3d98357dcadc4ee571fe0faa61}
+      \strng{authorbibnamehash}{be52be3d98357dcadc4ee571fe0faa61}
+      \strng{authornamehash}{be52be3d98357dcadc4ee571fe0faa61}
+      \strng{authorfullhash}{95ba84e54769d620d6a8dba56998913e}
+      \strng{authorfullhashraw}{95ba84e54769d620d6a8dba56998913e}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{\url{https://www.researchgate.net/publication/221517263_User_experience_evaluation_do_you_know_which_method_to_use}, accessed 21.10.2024}
+      \field{title}{User Experience Evaluation Methods: Current State and Development Needs}
+      \field{year}{2010}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

@@ -261,12 +261,16 @@ Diese Bachelorarbeit wird im Rahmen einer praktischen Zusammenarbeit mit dem \te
 Diese Arbeit verbindet praxisorientierte Softwareentwicklung mit wissenschaftlicher Forschung und trägt dazu bei, die Usability und Effizienz der Anwendung \textit{eDok} zu optimieren.
 
 Durch die direkte Einbindung in die Arbeitsprozesse des LWV Hessen wird nicht nur die Relevanz des Themas unterstrichen, sondern es entsteht auch eine wertvolle Gelegenheit, die entwickelten Konzepte und Technologien in einer realen Umgebung zu testen und anzuwenden. Somit leistet diese Arbeit einen Beitrag zur Verbesserung der digitalen Arbeitsabläufe des LWV Hessen und zur praxisnahen Weiterentwicklung moderner UX-Methoden.
+\subsection{Relevanz der Arbeit}
 
+Angesichts der wachsenden Bedeutung von UX in der Softwareentwicklung leistet diese Arbeit einen wichtigen Beitrag zur Praxis und Forschung. Das vorgestellte Modell ermöglicht es, UX-Daten in Echtzeit und unter realen Nutzungsbedingungen zu erfassen, ohne die Nutzererfahrung zu beeinträchtigen. Dies ist besonders relevant für Organisationen, die ihre Anwendungen kontinuierlich verbessern möchten, um den steigenden Erwartungen der Nutzer gerecht zu werden.
+
+Durch die Anwendung auf die \textit{eDok}-Anwendung des LWV Hessen wird demonstriert, wie das Modell in einer realen Umgebung implementiert werden kann. Die gewonnenen Erkenntnisse können als Grundlage für weitere Anwendungen dienen und dazu beitragen, die UX-Forschung in der Praxis voranzutreiben.
 \subsection{Motivation}
 
 Die rasante technologische Entwicklung und die immer stärkere Integration des Internets in den Alltag haben die Art und Weise, wie Menschen mit digitalen Systemen interagieren, grundlegend verändert. Laut der ARD/ZDF-Onlinestudie \cite{ard} nutzen mittlerweile rund 90 Prozent der deutschsprachigen Bevölkerung ab 14 Jahren regelmäßig das Internet, wobei insbesondere die mediale Internetnutzung in den letzten Jahren signifikant zugenommen hat. Diese Entwicklung stellt neue Anforderungen an die Gestaltung von Nutzererlebnissen und unterstreicht die Bedeutung einer herausragenden UX.
 
-In diesem Kontext wird es immer wichtiger, digitale Inhalte und Dienste so zu gestalten, dass sie den sich wandelnden Ansprüchen der Nutzer gerecht werden. Anwendungen müssen nicht nur funktional sein, sondern auch intuitiv bedienbar und ästhetisch ansprechend gestaltet sein, um im Wettbewerb bestehen zu können. Dies gilt insbesondere für komplexe Webanwendungen wie \textit{eDok}, die von Institutionen wie dem Landeswohlfahrtsverband Hessen (LWV Hessen) genutzt werden.
+In diesem Kontext wird es immer wichtiger, digitale Inhalte und Dienste so zu gestalten, dass sie den sich wandelnden Ansprüchen der Nutzer gerecht werden. Anwendungen müssen nicht nur funktional sein, sondern auch intuitiv bedienbar und ästhetisch ansprechend gestaltet sein, um im Wettbewerb bestehen zu können. Dies gilt insbesondere für komplexe Webanwendungen wie \textit{eDok}, die von Institutionen wie dem LWV Hessen genutzt werden.
 
 Eine besondere Herausforderung besteht darin, innerhalb solcher Anwendungen Bereiche zu identifizieren, die ein verbessertes Design oder zusätzliche Informationen erfordern. Nutzer können unsicher sein, wie sie ihre Ziele innerhalb der Anwendung erreichen können, oder sich von der Informationsmenge überfordert fühlen. Hier setzt das entwickelte Modell an, das die UX automatisiert erfasst und eine fundierte Analyse ermöglicht. So können gezielt Schlüsselaspekte identifiziert werden, die optimiert werden sollten, um die Nutzerzufriedenheit zu steigern.
 
@@ -395,11 +399,7 @@ Aufbauend auf diesen Grundlagen werden im folgenden Kapitel die konkreten Implem
  
 \begin{itemize} \item \textbf{Kapitel 2} bietet einen ausführlichen Überblick über den theoretischen Hintergrund der UX-Messung, einschließlich gängiger Methoden und Techniken zur Datenerfassung und -analyse. \item In \textbf{Kapitel 3} wird das entwickelte Modell detailliert vorgestellt. Es werden die technischen Komponenten, die Datenbankstruktur sowie die Implementierungsdetails beschrieben. \item \textbf{Kapitel 4} widmet sich der Anwendung des Modells auf die \textit{eDok}-Anwendung. Es werden die Ergebnisse der Datenerfassung präsentiert und analysiert. \item In \textbf{Kapitel 5} erfolgt eine kritische Diskussion der Ergebnisse, einschließlich der Vorteile des Modells, identifizierter Schwachstellen und möglichen Verbesserungen. \item \textbf{Kapitel 6} fasst die Arbeit zusammen und gibt einen Ausblick auf zukünftige Forschungs- und Entwicklungsmöglichkeiten. \end{itemize}
 
-\subsection{Relevanz der Arbeit}
 
-Angesichts der wachsenden Bedeutung von UX in der Softwareentwicklung leistet diese Arbeit einen wichtigen Beitrag zur Praxis und Forschung. Das vorgestellte Modell ermöglicht es, UX-Daten in Echtzeit und unter realen Nutzungsbedingungen zu erfassen, ohne die Nutzererfahrung zu beeinträchtigen. Dies ist besonders relevant für Organisationen, die ihre Anwendungen kontinuierlich verbessern möchten, um den steigenden Erwartungen der Nutzer gerecht zu werden.
-
-Durch die Anwendung auf die \textit{eDok}-Anwendung des LWV Hessen wird demonstriert, wie das Modell in einer realen Umgebung implementiert werden kann. Die gewonnenen Erkenntnisse können als Grundlage für weitere Anwendungen dienen und dazu beitragen, die UX-Forschung in der Praxis voranzutreiben.
 \subsection{Datenschutz und DSGVO}
 Im Rahmen der Datenerfassung werden ausschließlich \emph{technische} und \emph{kontextbezogene} Informationen aufgezeichnet, die keine Rückschlüsse auf einzelne Personen zulassen. Die erhobenen Nutzungsdaten sind \emph{anonymisiert} bzw. \emph{pseudonymisiert}. Dazu wird jedem Nutzungsvorgang lediglich eine \texttt{session\_token} zugeordnet, statt personenbezogene Identifikationsmerkmale zu verwenden.
 
