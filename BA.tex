@@ -45,10 +45,10 @@
 \usepackage{caption}
 \usepackage[hypcap=true,labelformat=simple]{subcaption}
 \renewcommand{\thesubfigure}{(\alph{subfigure})}
-
+\usepackage{wrapfig}
 % Tables
 \usepackage{booktabs} 
-
+ 
 \usepackage[backend=biber,style=numeric]{biblatex}
 \addbibresource{literatur.bib}
 
@@ -247,17 +247,18 @@ Im Gegensatz dazu fokussiert das \textbf{nutzerzentrierte Design} auf die Einbin
 
 Obwohl beide Ansätze entscheidend für die Entwicklung qualitativ hochwertiger Produkte sind, liegt der Schwerpunkt dieser Arbeit nicht auf der Gestaltung selbst, sondern darauf, \textbf{wie UX erfasst und gemessen werden kann}. In einer zunehmend digitalisierten Welt, in der Anwendungen immer komplexer werden und die Erwartungen der Nutzer stetig steigen, ist die systematische Messung der UX von entscheidender Bedeutung. Nur durch ein tiefgehendes Verständnis des Nutzerverhaltens und der Nutzerzufriedenheit können Produkte entwickelt werden, die den hohen Ansprüchen gerecht werden.
 \subsection{Kontext}
-\begin{center} 
- \includegraphics[width=0.8\textwidth]{lwv.png}
-  
-\end{center}
+\begin{wrapfigure}{r}{0.4\textwidth} % 'r' for right, width of the figure
+    \includegraphics[width=0.3\textwidth]{lwv.png} % Adjust the width as needed
+\end{wrapfigure}
 Der \textbf{Landeswohlfahrtsverband Hessen} (LWV Hessen) ist eine zentrale Organisation, die als überörtlicher Träger der Eingliederungshilfe tätig ist. Er fördert die soziale Integration und Unterstützung von Menschen mit Behinderungen in Bereichen wie Wohnen, Bildung, Mobilität und Arbeit. Mit der Umsetzung des Bundesteilhabegesetzes sowie Programmen wie dem \textit{Persönlichen Budget} und dem \textit{Budget für Arbeit} ermöglicht der Verband eine selbstbestimmte Lebensführung und gesellschaftliche Teilhabe. Zusätzlich bietet der LWV Hessen spezifische Förderangebote für Kinder und Jugendliche mit geistigen, emotionalen oder körperlichen Einschränkungen, darunter Frühberatungsstellen und Förderschulen. Auch Menschen, die Leistungen des Sozialen Entschädigungsrechts benötigen, finden beim LWV Hessen Unterstützung.
-
+\begin{wrapfigure}{r}{0.3\textwidth} % 'r' for right, width of the figure
+    \includegraphics[width=0.3\textwidth]{anlei.png} % Adjust the width as needed
+\end{wrapfigure}
 Die \textbf{ANLEI-Service GmbH}, eine Tochtergesellschaft des LWV Hessen, ergänzt dessen Tätigkeiten durch IT-Dienstleistungen für die Sozialverwaltung. Sie entwickelt Systeme zur Unterstützung von Antragsbearbeitung, Leistungsgewährung und Abrechnung von Sozialleistungen, insbesondere in den Bereichen Eingliederungshilfe, Sozialhilfe und Kriegsopferfürsorge. Zu den zentralen Anwendungen gehören das \textit{Integrierte Berichtssystem} (IBS) für betriebswirtschaftliche Analysen und \textit{MASS}, das die maschinelle Abrechnung mit Einrichtungen und Trägern erleichtert.
 
 Ein weiterer wichtiger Bestandteil ist \textit{eDok}, ein moderner Service für die Erstellung barrierefreier Dokumente, der das bisherige \textit{Schriftstück-Erstellungssystem} (SE) ablöst, das auf Microsoft Word und Makros basierte. \textit{eDok} integriert \textit{Doxee/Infinica} als Subsystem für die Dokumentbearbeitung und Output-Generierung, was sowohl eine interaktive Bearbeitung der Dokumente als auch eine automatisierte Verarbeitung im Hintergrund ermöglicht. Ziel ist es, eine universelle und generische Schnittstelle für die Anwendungen des LWV Hessen bereitzustellen, die eine einfache, effiziente und performante Erstellung barrierefreier Dokumente sicherstellt und die Daten aus den Fachverfahren nahtlos einbezieht.
 
-Diese Bachelorarbeit wird im Rahmen einer praktischen Zusammenarbeit mit dem \textbf{Landeswohlfahrtsverband Hessen} (LWV Hessen) erstellt. Ziel ist es, ein innovatives System zu entwickeln, das Nutzungsdaten anonymisiert erfasst.
+Diese Bachelorarbeit wird im Rahmen einer praktischen Zusammenarbeit mit dem \textbf{LWV Hessen} erstellt. Ziel ist es, ein innovatives System zu entwickeln, das Nutzungsdaten anonymisiert erfasst.
 Diese Arbeit verbindet praxisorientierte Softwareentwicklung mit wissenschaftlicher Forschung und trägt dazu bei, die Usability und Effizienz der Anwendung \textit{eDok} zu optimieren.
 
 Durch die direkte Einbindung in die Arbeitsprozesse des LWV Hessen wird nicht nur die Relevanz des Themas unterstrichen, sondern es entsteht auch eine wertvolle Gelegenheit, die entwickelten Konzepte und Technologien in einer realen Umgebung zu testen und anzuwenden. Somit leistet diese Arbeit einen Beitrag zur Verbesserung der digitalen Arbeitsabläufe des LWV Hessen und zur praxisnahen Weiterentwicklung moderner UX-Methoden.
@@ -389,15 +390,13 @@ CREATE TABLE usability_session (
 );
 \end{lstlisting}
 
-\subsection{Zusammenfassung}
+ 
 
-Im Rahmen dieses Kapitels wurden die methodischen und technischen Grundlagen erläutert, welche für das Verständnis der späteren Umsetzung essenziell sind. Zentrale Punkte sind die lose gekoppelte Architektur (Angular-Frontend, Spring-Boot-Backend, relationale Datenbank), das klar strukturierte Datenmodell für Nutzungs- und Fehlerevents sowie das damit verbundene methodische Vorgehen bei der Datenerfassung und -auswertung.
+Die methodischen und technischen Grundlagen wurden in dieser Darstellung erläutert, welche für das Verständnis der späteren Umsetzung essenziell sind. Zentrale Punkte sind die lose gekoppelte Architektur (Angular-Frontend, Spring-Boot-Backend, relationale Datenbank), das klar strukturierte Datenmodell für Nutzungs- und Fehlerevents sowie das damit verbundene methodische Vorgehen bei der Datenerfassung und -auswertung.
 
 Aufbauend auf diesen Grundlagen werden im folgenden Kapitel die konkreten Implementierungsdetails, Ablauflogiken und ausgewählte Code-Beispiele vorgestellt, um den Praxiseinsatz des Modells zu veranschaulichen. Längere Code-Auszüge erscheinen im Anhang und werden dort ausführlicher dokumentiert.
 
-
  
-\begin{itemize} \item \textbf{Kapitel 2} bietet einen ausführlichen Überblick über den theoretischen Hintergrund der UX-Messung, einschließlich gängiger Methoden und Techniken zur Datenerfassung und -analyse. \item In \textbf{Kapitel 3} wird das entwickelte Modell detailliert vorgestellt. Es werden die technischen Komponenten, die Datenbankstruktur sowie die Implementierungsdetails beschrieben. \item \textbf{Kapitel 4} widmet sich der Anwendung des Modells auf die \textit{eDok}-Anwendung. Es werden die Ergebnisse der Datenerfassung präsentiert und analysiert. \item In \textbf{Kapitel 5} erfolgt eine kritische Diskussion der Ergebnisse, einschließlich der Vorteile des Modells, identifizierter Schwachstellen und möglichen Verbesserungen. \item \textbf{Kapitel 6} fasst die Arbeit zusammen und gibt einen Ausblick auf zukünftige Forschungs- und Entwicklungsmöglichkeiten. \end{itemize}
 
 
 \subsection{Datenschutz und DSGVO}
@@ -405,18 +404,9 @@ Im Rahmen der Datenerfassung werden ausschließlich \emph{technische} und \emph{
 
 Um die \textbf{DSGVO}-Konformität zu gewährleisten, wird zudem kein Bezug zwischen den erhobenen Daten und Nutzerprofilen hergestellt. Informationen wie IP-Adressen, Klarnamen oder E-Mail-Adressen werden nicht erfasst. Die protokollierten Daten (z.\,B.\ Klick-Ereignisse, Fehlermeldungen, Sitzungszeiten) enthalten ausschließlich Metadaten zum Nutzerverhalten. 
 
-Hinsichtlich der \textbf{Speicherdauer} existiert eine interne Aufbewahrungsrichtlinie, die eine regelmäßige Löschung oder Archivierung älterer Daten vorsieht. Auf diese Weise wird der Datenumfang kontrolliert und eine unbegrenzte Speicherung vermieden. Bei Bedarf kann das Löschkonzept an neue gesetzliche Vorgaben angepasst oder durch \emph{Privacy-by-Design}-Konzepte ergänzt werden.
+Hinsichtlich der \textbf{Speicherdauer} existiert eine interne Aufbewahrungsrichtlinie, die eine regelmäßige Löschung oder Archivierung älterer Daten vorsieht. Auf diese Weise wird der Datenumfang kontrolliert und eine unbegrenzte Speicherung vermieden. Bei Bedarf kann das Löschkonzept an neue gesetzliche Vorgaben angepasst oder durch \emph{Privacy-by-Design}-Konzepte ergänzt wBerden.
 
-\subsection{Performance-Überlegungen}
-Um eine hohe \emph{Performance} zu gewährleisten, werden die erhobenen Daten nicht bei jedem Klick \emph{sofort} synchron an das Backend gesendet, sondern \emph{asynchron} verarbeitet. Konkret bedeutet dies, dass das Frontend eingehende Events zunächst lokal zwischenspeichert und in festgelegten Zeitintervallen (\emph{Batching}) an das Backend übermittelt. Dadurch wird die Anzahl der HTTP-Anfragen reduziert, was eine deutliche Entlastung des Systems zur Folge hat.
 
-Innerhalb des Backends erfolgt die \emph{Persistierung} ebenfalls in asynchronen Prozessen, sodass umfangreiche \texttt{INSERT}- und \texttt{UPDATE}-Operationen nicht blockierend wirken. Diese Architektur stellt sicher, dass die Anwendung auch bei hohem Datenaufkommen performant bleibt und keine spürbaren Verzögerungen im Nutzerfluss auftreten. Bei Bedarf können die Zeitintervalle angepasst werden, um ein Gleichgewicht zwischen Datenaktualität und Systemlast herzustellen.
-
- 
-
-Die systematische Erfassung und Analyse der UX ist unerlässlich, um moderne Softwareanwendungen an die Bedürfnisse und Erwartungen der Nutzer anzupassen. Durch die Entwicklung und Implementierung eines Modells zur UX-Messung in \textit{eDok} wird gezeigt, wie Daten genutzt werden können, um die Nutzererfahrung zu verbessern und die Anwendung effizienter und benutzerfreundlicher zu gestalten. Diese Arbeit leistet somit einen wertvollen Beitrag zur Verbesserung von UX-Methoden und deren Anwendung in der Praxis.
- 
- 
 
 \section{Einführung in das Thema UX}
 
@@ -616,7 +606,7 @@ Die aufbereiteten Daten werden im Admin-Dashboard visualisiert. Hierfür wurden 
 
 Die vorgestellte Methodik ist iterativ angelegt: Anhand der gewonnenen Erkenntnisse lassen sich gezielte Verbesserungsmaßnahmen im UI-Design, in den Navigationsstrukturen oder in der Performance der Anwendung ableiten. Nach erfolgten Anpassungen können erneut Daten erhoben und mit früheren Ergebnissen verglichen werden, um die Effektivität der Verbesserungen zu bewerten und den Optimierungsprozess fortlaufend zu steuern.
 
-\section{Kapitel 3}
+ \section{Umsetzung}
 \subsection{Anforderungen}
 \begin{itemize}
 \item Ein Dashboard zur Darstellung von spezifischen UX- und Usability-Berichten, die durch das Modell erfasst wurden.
@@ -679,6 +669,14 @@ Aus den gesammelten \emph{Klick-} und \emph{Fehlerdaten} lassen sich unter ander
     \item \textbf{Verweildauer pro Seite}, um Arbeitsaufwände und potenzielle UI-Hürden sichtbar zu machen.
 \end{itemize}
 
+\subsection{Performance-Überlegungen}
+Um eine hohe \emph{Performance} zu gewährleisten, werden die erhobenen Daten nicht bei jedem Klick \emph{sofort} synchron an das Backend gesendet, sondern \emph{asynchron} verarbeitet. Konkret bedeutet dies, dass das Frontend eingehende Events zunächst lokal zwischenspeichert und in festgelegten Zeitintervallen (\emph{Batching}) an das Backend übermittelt. Dadurch wird die Anzahl der HTTP-Anfragen reduziert, was eine deutliche Entlastung des Systems zur Folge hat.
+
+Innerhalb des Backends erfolgt die \emph{Persistierung} ebenfalls in asynchronen Prozessen, sodass umfangreiche \texttt{INSERT}- und \texttt{UPDATE}-Operationen nicht blockierend wirken. Diese Architektur stellt sicher, dass die Anwendung auch bei hohem Datenaufkommen performant bleibt und keine spürbaren Verzögerungen im Nutzerfluss auftreten. Bei Bedarf können die Zeitintervalle angepasst werden, um ein Gleichgewicht zwischen Datenaktualität und Systemlast herzustellen.
+
+ 
+
+Die systematische Erfassung und Analyse der UX ist unerlässlich, um moderne Softwareanwendungen an die Bedürfnisse und Erwartungen der Nutzer anzupassen. Durch die Entwicklung und Implementierung eines Modells zur UX-Messung in \textit{eDok} wird gezeigt, wie Daten genutzt werden können, um die Nutzererfahrung zu verbessern und die Anwendung effizienter und benutzerfreundlicher zu gestalten. Diese Arbeit leistet somit einen wertvollen Beitrag zur Verbesserung von UX-Methoden und deren Anwendung in der Praxis.
  
 
 \subsection{Umsetzung -- Backend}
@@ -1530,7 +1528,7 @@ export class ErrorEventService {
 \end{lstlisting}
 
 \noindent
-\textbf{Anmerkungen zur Performance:}
+\textbf{Anmerkungen zur Performance beim Fehler-Logging:}
 \begin{itemize}
   \item \textbf{Fehlermeldungen sind in der Regel seltener als Klick-Ereignisse}: Die sofortige Übertragung an den Server verursacht deshalb wenig Overhead.
   \item \textbf{Batching} könnte optional implementiert werden, wenn sehr viele Fehler gleichzeitig auftreten. Ähnlich wie beim \lstinline|RequestLogService| kann man eine \emph{Warteschlange} anlegen und nur alle x Sekunden \emph{flushen}.
@@ -1541,8 +1539,11 @@ export class ErrorEventService {
 Somit deckt das System sowohl \emph{unbehandelte} Fehler (etwa Laufzeitfehler im UI) als auch \emph{bewusst gemeldete} Ausnahmesituationen ab. Dies verschafft dem Entwicklungsteam einen umfassenden Überblick, welche Probleme in der Anwendung auftreten, in welcher \texttt{Komponente} sie geschehen und wie häufig sie vorkommen.
 
 
- \subsection{Bezug zu den Zielen (Kapitel 1)}
-In \textbf{Kapitel 1} wurde als Hauptziel dieser Arbeit definiert, die \emph{User Experience (UX)} in der Anwendung \textit{eDok} systematisch zu erfassen, zu analysieren und durch konkrete Maßnahmen zu verbessern. Dabei sollten folgende Aspekte besonders berücksichtigt werden:
+ 
+ 
+
+ \subsection{Bezug zu den Zielen}
+Im ersten Teil dieser Arbeit wurde als Hauptziel definiert, die \emph{User Experience (UX)} in der Anwendung \textit{eDok} systematisch zu erfassen, zu analysieren und durch konkrete Maßnahmen zu verbessern. Dabei sollten folgende Aspekte besonders berücksichtigt werden:
 
 \begin{itemize}
     \item \textbf{Kontinuierliche Datenerfassung ohne Mehraufwand für Nutzende:} 
