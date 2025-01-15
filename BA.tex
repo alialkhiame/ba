@@ -293,118 +293,10 @@ Welche spezifischen, anonymisierten Daten sind erforderlich, um ein Modell zu en
 \subsection{Eigenleistung}
 Im Rahmen der vorliegenden Arbeit wurde auf keinerlei nicht-öffentliche Vorarbeiten zurückgegriffen. Sämtliche entwickelte Softwarekomponenten (Angular-Frontend, Java-Spring-Backend sowie die SQL-Datenbankstrukturen) wurden von mir selbst erstellt oder basieren ausschließlich auf frei verfügbaren bzw. quelloffenen Bibliotheken, die unter entsprechend erlaubten Lizenzen stehen ( Angular CLI, Spring Boot, SQLite).
 
-\section{Grundlagen und Methodik}
-In diesem Kapitel werden die methodischen und technischen Grundlagen vorgestellt, welche die Basis für die spätere Umsetzung im Rahmen dieser Arbeit bilden. Dabei wird auf bereits existierende Konzepte und Bibliotheken verwiesen, die im Projekt verwendet wurden. Zudem wird erläutert, wie die Datenbankstruktur und die zugrunde liegende Architektur gewählt wurden, um die Zielsetzungen der Arbeit (Erfassung, Analyse und Visualisierung von Nutzerinteraktionen) zu erfüllen. Auf detaillierte Implementierungsschritte wird hier verzichtet; diese finden sich in den folgenden Kapiteln und im Anhang.
-
-\subsection{Architektur und Softwarekomponenten}
-
-Die gewählte Systemarchitektur besteht aus einem Angular-Frontend und einem Spring-Boot-Backend, das auf einer relationalen Datenbank (z.\,B. SQLite) aufsetzt:
-
-\begin{itemize}
-    \item \textbf{Frontend (Angular)}
-    \begin{itemize}
-        \item Zuständig für die Erfassung der Nutzerinteraktionen (z.\,B. Klicks, Fehlermeldungen) und die Darstellung der Ergebnisse im Admin-Dashboard.
-        \item Setzt u.\,a. auf asynchrone Service-Aufrufe und reaktive Konzepte (RxJS), um Daten in Echtzeit oder in festgelegten Intervallen zu erfassen und an das Backend zu schicken.
-    \end{itemize}
-    \item \textbf{Backend (Spring Boot)}
-    \begin{itemize}
-        \item Stellt REST-Schnittstellen zur Verfügung, die vom Frontend konsumiert werden.
-        \item Übernimmt die Geschäftslogik, indem es eingehende Events (Klicks, Fehlermeldungen usw.) verarbeitet, validiert und in der Datenbank persistiert.
-        \item Aggregiert die Daten (z.\,B. zur Erstellung von Heatmaps oder zur Analyse von Navigationspfaden) und sendet die Ergebnisse zurück ans Frontend.
-    \end{itemize}
-    \item \textbf{Datenhaltung (relationales Modell)}
-    \begin{itemize}
-        \item Datenbanktabellen, in denen Sitzungen (Sessions), Klick-Events, Fehler-Events und Netzwerkabfragen erfasst werden.
-        \item Trennung zwischen dynamischen Nutzungsdaten (z.\,B. Klickereignissen) und statischen Entitäten (z.\,B. Komponenten-Beschreibungen), um eine klare Struktur und Erweiterbarkeit zu gewährleisten.
-    \end{itemize}
-\end{itemize}
-
-Diese Aufteilung ermöglicht eine lose Kopplung zwischen Frontend und Backend sowie eine modulare Erweiterbarkeit der Datenerfassung und Analyse.
-
-\subsection{Datenbankmodell}
-
-Zur Speicherung und Auswertung der erhobenen Interaktionsdaten kommt ein relationales Datenmodell zum Einsatz. Wesentliche Entitäten sind:
-
-\begin{itemize}
-    \item \textbf{Usability Session}: Repräsentiert eine anonyme Sitzung und verknüpft diese mit einer konkreten Komponente (z.\,B. einem Modul der Anwendung). Enthält Start- und Endzeit sowie ein Session-Token als eindeutigen Bezeichner.
-    \item \textbf{Click Event}: Zeichnet jede Klick-Interaktion innerhalb einer Session auf. Wichtige Felder sind das angeklickte UI-Element (\texttt{element\_id}), eine Sequenznummer zur Rekonstruktion der Klickfolge und ein Zeitstempel.
-    \item \textbf{Error Event}: Erfasst Fehler, die während einer Session auftreten (z.\,B. Ausnahmen im Frontend oder gemeldete Fehler über ein Formular). Ermöglicht die Kategorisierung und Zählung von Fehlern, um Problembereiche zu identifizieren.
-    \item \textbf{Network Request}: Speichert Informationen zu einzelnen Netzwerkaufrufen wie Startzeit, Endzeit, HTTP-Methode und ggf. Antwortstatus. Wichtig zur Performance-Analyse und zum Auffinden von Engpässen.
-    \item \textbf{Component}: Enthält Metadaten zu einer (Sub-)Anwendung bzw. UI-Komponente, sodass Sitzungen und Events eindeutig zugeordnet werden können.
-\end{itemize}
-
-Dieses Datenmodell ermöglicht eine gezielte Analyse von Nutzerwegen, Klickhäufigkeiten, Fehlerursachen und Performance-Daten, ohne dabei personenbezogene Daten zu erheben. Durch die Entkopplung zwischen „Sitzungen“ und konkreten Nutzern wird die Privatsphäre gewahrt.
-
-\subsection{Methodisches Vorgehen bei der Datenerfassung}
-
-\begin{itemize}
-    \item \textbf{Event Listener im Frontend}: In Angular-Komponenten werden Klick- und Fehlerevents über globale oder lokale Listener abgefangen. Die Daten (Element-ID, Zeitstempel, Session-Token usw.) werden minimal verarbeitet (z.\,B. Ergänzung eines Sequenzzählers) und anschließend an das Backend gesendet.
-    \item \textbf{Persistierung und Anreicherung im Backend}: Das Spring-Boot-Backend nimmt die Daten entgegen, validiert sie und legt sie in den entsprechenden Tabellen ab (siehe Abschnitt \ref{sec:datenbankmodell}). Zudem können Zeitinformationen (z.\,B. \texttt{time\_since\_previous}) ergänzt oder bestehende Sessions automatisch geschlossen werden, wenn eine Inaktivität vorliegt.
-    \item \textbf{Auswertung}: Um Heatmap-Daten, häufigste Pfade oder Fehlerstatistiken zu erzeugen, werden Aggregationsfunktionen und gruppierte Abfragen verwendet. Die Ergebnisse werden entweder direkt an das Frontend geliefert (z.\,B. für Live-Analysen) oder in periodischen Abständen abgerufen, um Berichte oder Dashboards zu aktualisieren.
-    \item \textbf{Datenschutz}: Nur technische und kontextbezogene Daten werden gespeichert (z.\,B. Session-Token statt Nutzer-ID). Keine Speicherung von Klartext-Personendaten. Konzeption und Implementierung sind darauf ausgelegt, geltende Datenschutzvorgaben einzuhalten.
-\end{itemize}
-
-\subsection{SQL-Datenbankmodell}
-\begin{figure}[htb]
-  \centering
-  \includegraphics[width=0.85\textwidth]{erd-logging.png}
-  \caption{Datenbankmodell für das eDok UX-Logging}
-  \label{fig:erd-logging}
-\end{figure}
-
-\lstset{style=sql}
-\begin{lstlisting}
-CREATE TABLE click_event (
-    id                   BIGINT NOT NULL PRIMARY KEY,
-    element_id           VARCHAR(255),
-    sequence_number      INTEGER NOT NULL,
-    time_since_previous  INTEGER,
-    timestamp            TIMESTAMP,
-    usability_session_id BIGINT NOT NULL
-);
-
-CREATE TABLE component (
-    id          BIGINT NOT NULL PRIMARY KEY,
-    description VARCHAR(255),
-    name        VARCHAR(255)
-);
-
-CREATE TABLE network_request (
-    id                   BIGINT NOT NULL PRIMARY KEY,
-    duration_ms          INTEGER,
-    request_end_time     TIMESTAMP,
-    request_method       VARCHAR(255),
-    request_start_time   TIMESTAMP,
-    request_url          VARCHAR(255),
-    response_payload     CLOB,
-    status_code          INTEGER,
-    usability_session_id BIGINT NOT NULL
-);
-
-CREATE TABLE usability_session (
-    session_id    INTEGER PRIMARY KEY,
-    end_time      TIMESTAMP,
-    session_token VARCHAR(255),
-    start_time    TIMESTAMP,
-    component_id  BIGINT NOT NULL
-);
-\end{lstlisting}
-
- 
-
-Die methodischen und technischen Grundlagen wurden in dieser Darstellung erläutert, welche für das Verständnis der späteren Umsetzung essenziell sind. Zentrale Punkte sind die lose gekoppelte Architektur (Angular-Frontend, Spring-Boot-Backend, relationale Datenbank), das klar strukturierte Datenmodell für Nutzungs- und Fehlerevents sowie das damit verbundene methodische Vorgehen bei der Datenerfassung und -auswertung.
-
-Aufbauend auf diesen Grundlagen werden im folgenden Kapitel die konkreten Implementierungsdetails, Ablauflogiken und ausgewählte Code-Beispiele vorgestellt, um den Praxiseinsatz des Modells zu veranschaulichen. Längere Code-Auszüge erscheinen im Anhang und werden dort ausführlicher dokumentiert.
 
  
 
 
-\subsection{Datenschutz und DSGVO}
-Im Rahmen der Datenerfassung werden ausschließlich \emph{technische} und \emph{kontextbezogene} Informationen aufgezeichnet, die keine Rückschlüsse auf einzelne Personen zulassen. Die erhobenen Nutzungsdaten sind \emph{anonymisiert} bzw. \emph{pseudonymisiert}. Dazu wird jedem Nutzungsvorgang lediglich eine \texttt{session\_token} zugeordnet, statt personenbezogene Identifikationsmerkmale zu verwenden.
-
-Um die \textbf{DSGVO}-Konformität zu gewährleisten, wird zudem kein Bezug zwischen den erhobenen Daten und Nutzerprofilen hergestellt. Informationen wie IP-Adressen, Klarnamen oder E-Mail-Adressen werden nicht erfasst. Die protokollierten Daten (z.\,B.\ Klick-Ereignisse, Fehlermeldungen, Sitzungszeiten) enthalten ausschließlich Metadaten zum Nutzerverhalten. 
-
- 
 
 
 \section{Einführung in das Thema UX}
@@ -504,32 +396,36 @@ Die Ergebnisse aus dem Papier von Hilbert und Redmiles \cite{Hilbert2000} zeigen
 
 Nach Prüfung der Ergebnisse wurde die Entscheidung getroffen, dass qualitative und quantitative Methoden nicht gegeneinander stehen, sondern sich ergänzen. Die Kombination beider Ansätze stellt sicher, dass sowohl die subjektiven als auch die objektiven Aspekte der Usability umfassend berücksichtigt werden können.
 
-\section{Methodik} \label{sec:methodik}
+\section{Grundlagen und Methodik}
+In diesem Kapitel werden die methodischen und technischen Grundlagen vorgestellt, welche die Basis für die spätere Umsetzung im Rahmen dieser Arbeit bilden. Dabei wird auf bereits existierende Konzepte und Bibliotheken verwiesen, die im Projekt verwendet wurden. Zudem wird erläutert, wie die Datenbankstruktur und die zugrunde liegende Architektur gewählt wurden, um die Zielsetzungen der Arbeit (Erfassung, Analyse und Visualisierung von Nutzerinteraktionen) zu erfüllen. Auf detaillierte Implementierungsschritte wird hier verzichtet; diese finden sich in den folgenden Kapiteln und im Anhang.
 
-Die in dieser Arbeit entwickelte Methodik zur Erfassung, Speicherung und Analyse von UX- und Usability-Daten in der Anwendung \textit{eDok} umfasst mehrere aufeinander abgestimmte Schritte. Sie gewährleistet eine datenschutzkonforme, modulare und erweiterbare Infrastruktur, um Nutzungsinteraktionen systematisch zu sammeln, zu aggregieren und visuell darzustellen.
+\subsection{Architektur und Softwarekomponenten}
 
-\subsubsection{Systemarchitektur und Datenerfassung}
+Die gewählte Systemarchitektur besteht aus einem Angular-Frontend und einem Spring-Boot-Backend, das auf einer relationalen Datenbank (z.\,B. SQLite) aufsetzt:
 
-Die Datenerfassung erfolgt clientseitig in der Frontend-Anwendung (Angular), wobei bei Nutzungsinteraktionen, wie etwa Mausklicks, Navigationsaktionen oder Fehlermeldungen, entsprechende Ereignisse (Events) abgefangen und in strukturierter Form an den Backend-Server (Spring Boot) gesendet werden. Diese Vorgehensweise ermöglicht eine kontinuierliche Erfassung von Interaktionsdaten während des Produktiveinsatzes, ohne dass Nutzer zusätzliche Handlungen vornehmen müssen.
+\begin{itemize}
+    \item \textbf{Frontend (Angular)}
+    \begin{itemize}
+        \item Zuständig für die Erfassung der Nutzerinteraktionen (z.\,B. Klicks, Fehlermeldungen) und die Darstellung der Ergebnisse im Admin-Dashboard.
+        \item Setzt u.\,a. auf asynchrone Service-Aufrufe und reaktive Konzepte (RxJS), um Daten in Echtzeit oder in festgelegten Intervallen zu erfassen und an das Backend zu schicken.
+    \end{itemize}
+    \item \textbf{Backend (Spring Boot)}
+    \begin{itemize}
+        \item Stellt REST-Schnittstellen zur Verfügung, die vom Frontend konsumiert werden.
+        \item Übernimmt die Geschäftslogik, indem es eingehende Events (Klicks, Fehlermeldungen usw.) verarbeitet, validiert und in der Datenbank persistiert.
+        \item Aggregiert die Daten (z.\,B. zur Erstellung von Heatmaps oder zur Analyse von Navigationspfaden) und sendet die Ergebnisse zurück ans Frontend.
+    \end{itemize}
+    \item \textbf{Datenhaltung (relationales Modell)}
+    \begin{itemize}
+        \item Datenbanktabellen, in denen Sitzungen (Sessions), Klick-Events, Fehler-Events und Netzwerkabfragen erfasst werden.
+        \item Trennung zwischen dynamischen Nutzungsdaten (z.\,B. Klickereignissen) und statischen Entitäten (z.\,B. Komponenten-Beschreibungen), um eine klare Struktur und Erweiterbarkeit zu gewährleisten.
+    \end{itemize}
+\end{itemize}
 
- 
-\subsubsection{Backend-Logik und REST-Schnittstellen}
+Diese Aufteilung ermöglicht eine lose Kopplung zwischen Frontend und Backend sowie eine modulare Erweiterbarkeit der Datenerfassung und Analyse.
 
-Das Backend stellt REST-Schnittstellen bereit, um Nutzungsdaten entgegenzunehmen, abzufragen und für die Visualisierung aufzubereiten. Bei Eintreffen neuer Datensätze führt die Backend-Logik Validierungs- und Anreicherungsprozesse durch, bevor die Daten in die entsprechende Tabelle geschrieben werden. Zudem bietet das Backend administrativen Nutzern Endpunkte zur Konfiguration des Erfassungsmodus, um etwa die Aufzeichnung auf spezifischen Seiten ein- oder auszuschalten.
 
-\subsubsection{Anonymisierung und Datenschutz}
-
-Um den Schutz der Privatsphäre der Nutzenden sicherzustellen, werden alle erhobenen Daten strikt anonymisiert. Es werden keine personenbezogenen Merkmale gespeichert. Die Datensätze lassen keine Rückschlüsse auf einzelne Individuen zu, sondern konzentrieren sich auf aggregierte Nutzungsmuster, Fehlerhäufigkeiten und Interaktionspfade.
-
-\subsubsection{Visualisierung und Heatmap-Darstellung}
-
-Die aufbereiteten Daten werden im Admin-Dashboard visualisiert. Hierfür wurden unter anderem Heatmaps implementiert, welche die am stärksten genutzten Bereiche der Benutzeroberfläche hervorheben. Durch die Einbettung von Sequenzinformationen (Reihenfolge der Klickereignisse) können Navigationspfade und Nutzungskontexte ermittelt werden. Fehlerereignisse werden gesondert markiert und helfen dabei, potenziell problematische UI-Elemente oder Prozessschritte zu identifizieren.
-
-\subsubsection{Iterative Verbesserung und Anpassung}
-
-Die vorgestellte Methodik ist iterativ angelegt: Anhand der gewonnenen Erkenntnisse lassen sich gezielte Verbesserungsmaßnahmen im UI-Design, in den Navigationsstrukturen oder in der Performance der Anwendung ableiten. Nach erfolgten Anpassungen können erneut Daten erhoben und mit früheren Ergebnissen verglichen werden, um die Effektivität der Verbesserungen zu bewerten und den Optimierungsprozess fortlaufend zu steuern.
-
- \section{Umsetzung}
+  
 \subsection{Anforderungen}
 \begin{itemize}
 \item Ein Dashboard zur Darstellung von spezifischen UX- und Usability-Berichten, die durch das Modell erfasst wurden.
@@ -546,6 +442,28 @@ Die vorgestellte Methodik ist iterativ angelegt: Anhand der gewonnenen Erkenntni
 
 Zur systematischen Bewertung der Usability von eDok wird die Erfassung und Analyse spezifischer Datenarten priorisiert. Im Mittelpunkt steht die Sammlung von Interaktionsdaten, die durch den Einsatz von Heatmaps visualisiert werden. Diese ermöglichen detaillierte Einblicke in Navigationsmuster, identifizieren potenzielle Stolpersteine und decken ineffiziente Seitengestaltungen sowie suboptimale Darstellungen innerhalb der Anwendung auf. Ziel ist es, Schwachstellen in der Nutzerführung zu erkennen und datenbasierte Optimierungen der Benutzeroberfläche zu ermöglichen.
 
+
+\subsection{Systemarchitektur und Datenerfassung}
+
+Die Datenerfassung erfolgt clientseitig in der Frontend-Anwendung (Angular), wobei bei Nutzungsinteraktionen, wie etwa Mausklicks, Navigationsaktionen oder Fehlermeldungen, entsprechende Ereignisse (Events) abgefangen und in strukturierter Form an den Backend-Server (Spring Boot) gesendet werden. Diese Vorgehensweise ermöglicht eine kontinuierliche Erfassung von Interaktionsdaten während des Produktiveinsatzes, ohne dass Nutzer zusätzliche Handlungen vornehmen müssen.
+
+ 
+\subsection{Backend-Logik und REST-Schnittstellen}
+
+Das Backend stellt REST-Schnittstellen bereit, um Nutzungsdaten entgegenzunehmen, abzufragen und für die Visualisierung aufzubereiten. Bei Eintreffen neuer Datensätze führt die Backend-Logik Validierungs- und Anreicherungsprozesse durch, bevor die Daten in die entsprechende Tabelle geschrieben werden. Zudem bietet das Backend administrativen Nutzern Endpunkte zur Konfiguration des Erfassungsmodus, um etwa die Aufzeichnung auf spezifischen Seiten ein- oder auszuschalten.
+
+\subsection{Anonymisierung und Datenschutz}
+
+Um den Schutz der Privatsphäre der Nutzenden sicherzustellen, werden alle erhobenen Daten strikt anonymisiert. Es werden keine personenbezogenen Merkmale gespeichert. Die Datensätze lassen keine Rückschlüsse auf einzelne Individuen zu, sondern konzentrieren sich auf aggregierte Nutzungsmuster, Fehlerhäufigkeiten und Interaktionspfade.
+
+\subsection{Visualisierung und Heatmap-Darstellung}
+
+Die aufbereiteten Daten werden im Admin-Dashboard visualisiert. Hierfür wurden unter anderem Heatmaps implementiert, welche die am stärksten genutzten Bereiche der Benutzeroberfläche hervorheben. Durch die Einbettung von Sequenzinformationen (Reihenfolge der Klickereignisse) können Navigationspfade und Nutzungskontexte ermittelt werden. Fehlerereignisse werden gesondert markiert und helfen dabei, potenziell problematische UI-Elemente oder Prozessschritte zu identifizieren.
+
+\subsection{Iterative Verbesserung und Anpassung}
+
+Die vorgestellte Methodik ist iterativ angelegt: Anhand der gewonnenen Erkenntnisse lassen sich gezielte Verbesserungsmaßnahmen im UI-Design, in den Navigationsstrukturen oder in der Performance der Anwendung ableiten. Nach erfolgten Anpassungen können erneut Daten erhoben und mit früheren Ergebnissen verglichen werden, um die Effektivität der Verbesserungen zu bewerten und den Optimierungsprozess fortlaufend zu steuern.
+ 
 
 \subsection{Implementierung der Heatmap}
 Diese Sektion beschreibt die Gestaltung und Implementierung einer Heatmap zur Nachverfolgung und Visualisierung von Nutzerinteraktionen in der eDok-Anwendung. Die Heatmap dient dazu, häufig genutzte Bereiche, Nutzerverhaltensmuster und fehleranfällige Interaktionen zu identifizieren, indem sie Daten zu Klicks, Fehlern und zeitlichen Metriken erfasst und darstellt.
@@ -574,7 +492,85 @@ Innerhalb des Backends erfolgt die \emph{Persistierung} ebenfalls in asynchronen
  
 
 Die systematische Erfassung und Analyse der UX ist unerlässlich, um moderne Softwareanwendungen an die Bedürfnisse und Erwartungen der Nutzer anzupassen. Durch die Entwicklung und Implementierung eines Modells zur UX-Messung in \textit{eDok} wird gezeigt, wie Daten genutzt werden können, um die Nutzererfahrung zu verbessern und die Anwendung effizienter und benutzerfreundlicher zu gestalten. Diese Arbeit leistet somit einen wertvollen Beitrag zur Verbesserung von UX-Methoden und deren Anwendung in der Praxis.
+
+
+\subsection{Methodisches Vorgehen bei der Datenerfassung}
+
+\begin{itemize}
+    \item \textbf{Event Listener im Frontend}: In Angular-Komponenten werden Klick- und Fehlerevents über globale oder lokale Listener abgefangen. Die Daten (Element-ID, Zeitstempel, Session-Token usw.) werden minimal verarbeitet (z.\,B. Ergänzung eines Sequenzzählers) und anschließend an das Backend gesendet.
+    \item \textbf{Persistierung und Anreicherung im Backend}: Das Spring-Boot-Backend nimmt die Daten entgegen, validiert sie und legt sie in den entsprechenden Tabellen ab (siehe Abschnitt \ref{sec:datenbankmodell}). Zudem können Zeitinformationen (z.\,B. \texttt{time\_since\_previous}) ergänzt oder bestehende Sessions automatisch geschlossen werden, wenn eine Inaktivität vorliegt.
+    \item \textbf{Auswertung}: Um Heatmap-Daten, häufigste Pfade oder Fehlerstatistiken zu erzeugen, werden Aggregationsfunktionen und gruppierte Abfragen verwendet. Die Ergebnisse werden entweder direkt an das Frontend geliefert (z.\,B. für Live-Analysen) oder in periodischen Abständen abgerufen, um Berichte oder Dashboards zu aktualisieren.
+    \item \textbf{Datenschutz}: Nur technische und kontextbezogene Daten werden gespeichert (z.\,B. Session-Token statt Nutzer-ID). Keine Speicherung von Klartext-Personendaten. Konzeption und Implementierung sind darauf ausgelegt, geltende Datenschutzvorgaben einzuhalten.
+\end{itemize}
+\subsection{Datenschutz und DSGVO}
+Im Rahmen der Datenerfassung werden ausschließlich \emph{technische} und \emph{kontextbezogene} Informationen aufgezeichnet, die keine Rückschlüsse auf einzelne Personen zulassen. Die erhobenen Nutzungsdaten sind \emph{anonymisiert} bzw. \emph{pseudonymisiert}. Dazu wird jedem Nutzungsvorgang lediglich eine \texttt{session\_token} zugeordnet, statt personenbezogene Identifikationsmerkmale zu verwenden.
+
+Um die \textbf{DSGVO}-Konformität zu gewährleisten, wird zudem kein Bezug zwischen den erhobenen Daten und Nutzerprofilen hergestellt. Informationen wie IP-Adressen, Klarnamen oder E-Mail-Adressen werden nicht erfasst. Die protokollierten Daten (z.\,B.\ Klick-Ereignisse, Fehlermeldungen, Sitzungszeiten) enthalten ausschließlich Metadaten zum Nutzerverhalten. 
+
+\subsection{Datenbankmodell}
+
+Zur Speicherung und Auswertung der erhobenen Interaktionsdaten kommt ein relationales Datenmodell zum Einsatz. Wesentliche Entitäten sind:
+
+\begin{itemize}
+    \item \textbf{Usability Session}: Repräsentiert eine anonyme Sitzung und verknüpft diese mit einer konkreten Komponente (z.\,B. einem Modul der Anwendung). Enthält Start- und Endzeit sowie ein Session-Token als eindeutigen Bezeichner.
+    \item \textbf{Click Event}: Zeichnet jede Klick-Interaktion innerhalb einer Session auf. Wichtige Felder sind das angeklickte UI-Element (\texttt{element\_id}), eine Sequenznummer zur Rekonstruktion der Klickfolge und ein Zeitstempel.
+    \item \textbf{Error Event}: Erfasst Fehler, die während einer Session auftreten (z.\,B. Ausnahmen im Frontend oder gemeldete Fehler über ein Formular). Ermöglicht die Kategorisierung und Zählung von Fehlern, um Problembereiche zu identifizieren.
+    \item \textbf{Network Request}: Speichert Informationen zu einzelnen Netzwerkaufrufen wie Startzeit, Endzeit, HTTP-Methode und ggf. Antwortstatus. Wichtig zur Performance-Analyse und zum Auffinden von Engpässen.
+    \item \textbf{Component}: Enthält Metadaten zu einer (Sub-)Anwendung bzw. UI-Komponente, sodass Sitzungen und Events eindeutig zugeordnet werden können.
+\end{itemize}
+
+Dieses Datenmodell ermöglicht eine gezielte Analyse von Nutzerwegen, Klickhäufigkeiten, Fehlerursachen und Performance-Daten, ohne dabei personenbezogene Daten zu erheben. Durch die Entkopplung zwischen „Sitzungen“ und konkreten Nutzern wird die Privatsphäre gewahrt.
+\begin{figure}[htb]
+  \centering
+  \includegraphics[width=0.85\textwidth]{erd-logging.png}
+  \caption{Datenbankmodell für das eDok UX-Logging}
+  \label{fig:erd-logging}
+\end{figure}
+
+\lstset{style=sql}
+\begin{lstlisting}
+CREATE TABLE click_event (
+    id                   BIGINT NOT NULL PRIMARY KEY,
+    element_id           VARCHAR(255),
+    sequence_number      INTEGER NOT NULL,
+    time_since_previous  INTEGER,
+    timestamp            TIMESTAMP,
+    usability_session_id BIGINT NOT NULL
+);
+
+CREATE TABLE component (
+    id          BIGINT NOT NULL PRIMARY KEY,
+    description VARCHAR(255),
+    name        VARCHAR(255)
+);
+
+CREATE TABLE network_request (
+    id                   BIGINT NOT NULL PRIMARY KEY,
+    duration_ms          INTEGER,
+    request_end_time     TIMESTAMP,
+    request_method       VARCHAR(255),
+    request_start_time   TIMESTAMP,
+    request_url          VARCHAR(255),
+    response_payload     CLOB,
+    status_code          INTEGER,
+    usability_session_id BIGINT NOT NULL
+);
+
+CREATE TABLE usability_session (
+    session_id    INTEGER PRIMARY KEY,
+    end_time      TIMESTAMP,
+    session_token VARCHAR(255),
+    start_time    TIMESTAMP,
+    component_id  BIGINT NOT NULL
+);
+\end{lstlisting}
+
  
+
+Die methodischen und technischen Grundlagen wurden in dieser Darstellung erläutert, welche für das Verständnis der späteren Umsetzung essenziell sind. Zentrale Punkte sind die lose gekoppelte Architektur (Angular-Frontend, Spring-Boot-Backend, relationale Datenbank), das klar strukturierte Datenmodell für Nutzungs- und Fehlerevents sowie das damit verbundene methodische Vorgehen bei der Datenerfassung und -auswertung.
+
+Aufbauend auf diesen Grundlagen werden im folgenden Kapitel die konkreten Implementierungsdetails, Ablauflogiken und ausgewählte Code-Beispiele vorgestellt, um den Praxiseinsatz des Modells zu veranschaulichen. Längere Code-Auszüge erscheinen im Anhang und werden dort ausführlicher dokumentiert. 
+
 
 \subsection{Umsetzung -- Backend}
 \label{sec:umsetzung_backend}
@@ -1525,6 +1521,6 @@ Dennoch bietet das Modell eine solide Grundlage, um die \textbf{Nutzerinteraktio
 
 \printbibliography
  
-
+\input{Erklaerung.tex}
 \end{document}
 
