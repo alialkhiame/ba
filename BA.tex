@@ -271,6 +271,16 @@ Diese Bachelorarbeit wird im Rahmen einer praktischen Zusammenarbeit mit dem \te
 Diese Arbeit verbindet praxisorientierte Softwareentwicklung mit wissenschaftlicher Forschung und trägt dazu bei, die Usability und Effizienz der Anwendung \textit{eDok} zu optimieren.
 
 Durch die direkte Einbindung in die Arbeitsprozesse des LWV Hessen wird nicht nur die Relevanz des Themas unterstrichen, sondern es entsteht auch eine wertvolle Gelegenheit, die entwickelten Konzepte und Technologien in einer realen Umgebung zu testen und anzuwenden. Somit leistet diese Arbeit einen Beitrag zur Verbesserung der digitalen Arbeitsabläufe des LWV Hessen und zur praxisnahen Weiterentwicklung moderner UX-Methoden.
+ 
+\subsubsection*{Aktuelle UI-Designpraktiken und Herausforderungen bei eDok}
+
+Die Gestaltung von UI-Komponenten und -Dialogen bei eDok wird hauptsächlich den Programmierer*innen überlassen. Im Team herrscht die Auffassung, dass die Gestaltung der Dialoge, das CSS und ähnliche Elemente der Kreativität der Entwickler*innen überlassen bleiben sollte, solange die funktionalen Anforderungen der jeweiligen Aufgabe erfüllt sind und die Barrierefreiheit gewährleistet ist. Diese Herangehensweise genügt in der Regel, um die Tests der Qualitätssicherung (QS) und der Produktverantwortlichen zu bestehen.
+
+Trotz dieser Freiheit gibt es bestimmte Designrichtlinien, die die Entwickler*innen befolgen müssen, um eine konsistente Benutzeroberfläche zu gewährleisten. Beispielsweise sind wichtige Elemente wie der „\textit{Submit}“-Button standardmäßig in Blau gehalten, um eine einheitliche visuelle Sprache innerhalb der Anwendung zu fördern. Diese Vorgaben helfen dabei, ein kohärentes Erscheinungsbild zu bewahren und die Benutzerfreundlichkeit zu erhöhen, indem vertraute Designelemente genutzt werden.
+
+Jedoch gibt es außerhalb dieser festgelegten Richtlinien kaum einen weiteren Einfluss von Nutzer*innen auf die Gestaltung der Software. In der Literatur wird jedoch darauf hingewiesen, dass ein solcher Ansatz nicht empfehlenswert ist, da wichtige Aspekte der UX und Usability unberücksichtigt bleiben können. Die Stakeholder, die auch die Nutzer*innen und Produktverantwortlichen in anderen Verbänden darstellen, welche die Software verwenden, haben ebenfalls wenig Einfluss auf die Gestaltung. Ihr Feedback beschränkt sich oft auf seltene Beschwerden über Unübersichtlichkeit oder spezifische Anwendungsprobleme. Diese seltenen Rückmeldungen fließen meist nicht systematisch in den Designprozess ein.
+
+Dieser Kontext zeigt die Herausforderungen und Lücken in der aktuellen Arbeitsweise auf und verdeutlicht die Notwendigkeit eines systematischen Ansatzes zur Einbindung der Nutzerperspektive in den Entwicklungsprozess. Die vorliegende Arbeit zielt darauf ab, diese Lücke zu schließen, indem sie ein Modell entwickelt, das die User Experience systematisch erfasst und in die Gestaltung der Software integriert.
 \subsection{Relevanz der Arbeit}
 
 Angesichts der wachsenden Bedeutung von UX in der Softwareentwicklung leistet diese Arbeit einen wichtigen Beitrag zur Praxis und Forschung. Das vorgestellte Modell ermöglicht es, UX-Daten in Echtzeit und unter realen Nutzungsbedingungen zu erfassen, ohne die Nutzererfahrung zu beeinträchtigen. Dies ist besonders relevant für Organisationen, die ihre Anwendungen kontinuierlich verbessern möchten, um den steigenden Erwartungen der Nutzer gerecht zu werden.
@@ -300,17 +310,11 @@ Ein weiterer Aspekt ist die Möglichkeit für Entwickler und Produktverantwortli
 
 Welche spezifischen, anonymisierten Daten sind erforderlich, um ein Modell zu entwickeln und zu implementieren, das die User Experience präzise und systematisch erfasst, dynamische Veränderungen über Zeiträume hinweg analysiert, Verantwortliche bei fundierten Entscheidungen zur Optimierung der Anwendung unterstützt und dabei auftretende Herausforderungen bewältigt?
 \subsection{Eigenleistung}
-Im Rahmen der vorliegenden Arbeit wurde auf keinerlei nicht-öffentliche Vorarbeiten zurückgegriffen. Sämtliche entwickelte Softwarekomponenten (Angular-Frontend, Java-Spring-Backend sowie die SQL-Datenbankstrukturen) wurden von mir selbst erstellt oder basieren ausschließlich auf frei verfügbaren bzw. quelloffenen Bibliotheken, die unter entsprechend erlaubten Lizenzen stehen ( Angular CLI, Spring Boot, SQLite).
-
-
- 
-
-
-
+Im Rahmen der vorliegenden Arbeit wurde auf keinerlei nicht-öffentliche Vorarbeiten zurückgegriffen. Sämtliche entwickelte Softwarekomponenten (Angular-Frontend, Java-Spring-Backend sowie die SQL-Datenbankstrukturen) wurden von mir selbst erstellt oder basieren ausschließlich auf frei verfügbaren bzw. quelloffenen Bibliotheken.
 
 \section{Einführung in das Thema UX}
 
-Die \textbf{User Experience} (UX) ist ein Teilbereich der HCI, der in den frühen 1990er Jahren an Bedeutung gewann \cite{glanznig}. Mit dem Aufkommen neuer Technologien und der zunehmenden Verbreitung digitaler Produkte rückte der Fokus verstärkt auf die Benutzererfahrung und deren Qualität. UX konzentriert sich auf die Interaktion zwischen Mensch und System und zielt darauf ab, Produkte und Anwendungen so zu gestalten, dass sie nicht nur funktional sind, sondern auch emotional ansprechend und benutzerfreundlich.
+\textbf{User Experience} (UX) ist ein Teilbereich der HCI, der in den frühen 1990er Jahren an Bedeutung gewann \cite{glanznig}. Mit dem Aufkommen neuer Technologien und der zunehmenden Verbreitung digitaler Produkte rückte der Fokus verstärkt auf die Benutzererfahrung und deren Qualität. UX konzentriert sich auf die Interaktion zwischen Mensch und System und zielt darauf ab, Produkte und Anwendungen so zu gestalten, dass sie nicht nur funktional sind, sondern auch emotional ansprechend und benutzerfreundlich.
 
 \subsection{Herausforderungen und Offenheit der UX-Definition}
 
