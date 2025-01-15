@@ -512,20 +512,7 @@ Die in dieser Arbeit entwickelte Methodik zur Erfassung, Speicherung und Analyse
 
 Die Datenerfassung erfolgt clientseitig in der Frontend-Anwendung (Angular), wobei bei Nutzungsinteraktionen, wie etwa Mausklicks, Navigationsaktionen oder Fehlermeldungen, entsprechende Ereignisse (Events) abgefangen und in strukturierter Form an den Backend-Server (Spring Boot) gesendet werden. Diese Vorgehensweise ermöglicht eine kontinuierliche Erfassung von Interaktionsdaten während des Produktiveinsatzes, ohne dass Nutzer zusätzliche Handlungen vornehmen müssen.
 
-\subsubsection{Datenpersistenz und Datenbankmodell}
-
-Für die Speicherung der erfassten Daten wird eine relationale Datenbank eingesetzt, in der die zentralen Entitäten und ihre Beziehungen abgebildet sind. Hierfür kommen die Tabellen \texttt{click\_event}, \texttt{component}, \texttt{error\_event}, \texttt{network\_request}, \texttt{ui\_element} sowie \texttt{usability\_session} zum Einsatz. Dabei bilden diese Tabellen folgende Kernaspekte der Datenerfassung ab:
-
-\begin{itemize}
-    \item \texttt{usability\_session}: Enthält Sitzungsinformationen, wie etwa Start- und Endzeitpunkte sowie einen eindeutigen Session-Token. Diese Tabelle dient als Ankerpunkt für die Zuordnung sämtlicher Interaktionsdaten.
-    \item \texttt{click\_event}: Erfasst sämtliche Klickinteraktionen, inklusive Zeitstempel, betroffenen \texttt{ui\_element}-Referenzen und Sequenznummern, um Reihenfolgen nachvollziehbar zu machen.
-    \item \texttt{error\_event}: Dokumentiert aufgetretene Fehlerzustände, deren Art, Häufigkeit und Position. Diese Daten ermöglichen es, gezielt fehleranfällige Bereiche der Anwendung zu identifizieren.
-    \item \texttt{network\_request}: Speichert Informationen zu Netzwerkaufrufen (Ladezeiten und Fehlermeldungen), um mögliche Performance-Engpässe und technische Probleme sichtbar zu machen.
-    \item \texttt{component} und \texttt{ui\_element}: Beschreiben statische Strukturen der Anwendung, indem sie Komponenten und deren zugehörige UI-Elemente referenzieren. Diese Aufteilung ermöglicht eine flexible Identifikation der Interaktionspunkte.
-\end{itemize}
-
-Die in den Tabellen erfassten Daten können durch Filterung, Aggregation und Zeitreihenanalysen zu aussagekräftigen Metriken verdichtet werden. Diese Datenmodellierung gewährleistet eine klare Trennung von dynamischen Nutzungsdaten und statischen UI-Strukturen, wodurch sowohl technische als auch inhaltliche Veränderungen im Frontend flexibel abbildbar bleiben.
-
+ 
 \subsubsection{Backend-Logik und REST-Schnittstellen}
 
 Das Backend stellt REST-Schnittstellen bereit, um Nutzungsdaten entgegenzunehmen, abzufragen und für die Visualisierung aufzubereiten. Bei Eintreffen neuer Datensätze führt die Backend-Logik Validierungs- und Anreicherungsprozesse durch, bevor die Daten in die entsprechende Tabelle geschrieben werden. Zudem bietet das Backend administrativen Nutzern Endpunkte zur Konfiguration des Erfassungsmodus, um etwa die Aufzeichnung auf spezifischen Seiten ein- oder auszuschalten.
