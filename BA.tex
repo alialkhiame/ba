@@ -35,6 +35,9 @@
 \usepackage[T1]{fontenc}
 \usepackage{listings}
 \usepackage{xcolor}
+ 
+
+
 % Layout corrections (Schusterjungen)
 \clubpenalty = 10000 
 % Layout corrections (Hurenkinder) 
@@ -215,11 +218,20 @@
 
 Diese Arbeit befasst sich mit der Entwicklung und Implementierung eines Modells zur umfassenden Erfassung und Bewertung der User Experience (UX), exemplarisch angewendet auf die Anwendung eDok des Landeswohlfahrtsverbands Hessen (LWV Hessen). Ziel des Modells ist es, einen detaillierten Überblick über die UX innerhalb der Anwendung zu schaffen, indem während der produktiven Nutzung anonymisierte Daten gesammelt werden.
 
+Um die Studienziele zu erreichen, wird zudem eine eingehende Recherche durchgeführt, um zu ermitteln, welche Daten für dieses Vorhaben relevant sind. Dabei wird untersucht, wie die einschlägige Literatur und bestehende Arbeiten die Messung und Definition von User Experience in vergleichbaren Produkten – wie beispielsweise eDok – diskutieren. Ein besonderes Augenmerk liegt hierbei auf der Frage, ob sich langfristige, automatisierte Lösungen realisieren lassen, die ohne direkte Interaktionen zwischen Entwickler*innen und Nutzer*innen auskommen, und wie umfassend sich die UX in einem solchen Setting messen lässt.
+
 Die gesammelten Daten sind bewusst nicht benutzerorientiert, um Datenschutzrichtlinien einzuhalten und die Privatsphäre der Nutzer zu schützen. Das Modell präsentiert diese aggregierten Daten in einem Dashboard, das ausschließlich für Nutzer mit Administratorrechten zugänglich ist. Dieses Dashboard bietet anpassbare Grafiken und Visualisierungen, die durch Filter und weitere Kriterien modifiziert werden können. Dadurch erhalten Administratoren nicht nur Einblicke in die aktuelle UX, sondern können auch Trends und Entwicklungen über einen bestimmten Zeitraum analysieren.
 
 Ein wesentlicher Aspekt des Modells ist die Möglichkeit für Projektverantwortliche, die Datenerfassung auf bestimmten Seiten der Anwendung gezielt an- oder auszuschalten. Dies stellt sicher, dass nur relevante Bereiche beobachtet werden, ohne die Performance auf anderen Seiten zu beeinträchtigen. Das Modell ermöglicht es, die Verweildauer der Nutzer auf spezifischen Seiten zu überwachen, häufig durchlaufene Navigationsmuster zu identifizieren und die Häufigkeit bestimmter Fehler zu erfassen, die von den Nutzern gemacht werden.
 
 Die gewonnenen Erkenntnisse unterstützen die Projektverantwortlichen dabei, problematische Stellen innerhalb der Anwendung zu identifizieren und gezielte Maßnahmen zur Verbesserung der Usability zu ergreifen. Darüber hinaus ermöglicht das Modell eine nachträgliche Überprüfung der implementierten Änderungen, um deren Effektivität zu bewerten und weitere Optimierungen vorzunehmen. Durch diesen iterativen Prozess trägt das Modell wesentlich zur Steigerung der Benutzerzufriedenheit und Effizienz der Anwendung bei.
+ 
+
+ 
+
+ 
+ 
+
 
 %--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
 % Prevent the Inhaltsverzeichnis from appearing in the Inhaltsverzeichnis
@@ -407,6 +419,11 @@ Insgesamt unterstreicht die Studie die Bedeutung von Web Usage Mining als effekt
 Diese Arbeit befasste sich mit der Sammlung und Darstellung von Daten, es wurden jedoch keine Data-Mining-Techniken angewendet. Es ist jedoch üblich, solche Methoden auf die gesammelten Daten anzuwenden, was zu interessanteren Erkenntnissen führen kann, wie in der Studie erwähnt.\\
  In dieser Arbeit wurden stattdessen statistische Operationen durchgeführt, um einige Kennzahlen wie die Fehlerquote zu veranschaulichen.
 
+
+
+ 
+
+
 \subsubsection{Vergleich von Nutzerinterviews, Fragebögen und der Sammlung quantitativer Daten}
 
 In der Usability-Forschung gibt es verschiedene Methoden, um Nutzererfahrungen und -probleme zu evaluieren. Zu den häufig eingesetzten Ansätzen gehören qualitative Methoden wie Interviews und Fragebögen, die direkte Rückmeldungen der Nutzer einholen, und quantitative Ansätze wie das Logging und die Analyse von Nutzungsdaten. Nach eingehender Analyse und Berücksichtigung der Ergebnisse aus dem Papier \textit{Extracting Usability Information from User Interface Events} von Hilbert und Redmiles \cite{Hilbert2000} wurde entschieden, dass eine Kombination dieser Methoden die umfassendsten Erkenntnisse liefert.
@@ -414,7 +431,19 @@ In der Usability-Forschung gibt es verschiedene Methoden, um Nutzererfahrungen u
 Nutzerinterviews und Fragebögen bieten eine direkte Möglichkeit, subjektive Rückmeldungen zu sammeln. Zu den Vorteilen dieser Ansätze zählen insbesondere die tiefgehenden, qualitativen Einblicke, die es ermöglichen, Meinungen, Zufriedenheit und Emotionen der Nutzenden genauer zu erfassen. Darüber hinaus ist eine hohe Flexibilität gegeben, da während der Interaktion gezielte Fragen gestellt werden können, um spezifische Probleme zu beleuchten. Ein weiterer Vorteil besteht im unmittelbaren, direkten Feedback, weil die Nutzenden ihre Wahrnehmung von Schwächen oder Verbesserungsvorschläge direkt äußern können. Demgegenüber stehen jedoch einige Nachteile. Da Ergebnisse stark von individuellen Meinungen und Wahrnehmungen abhängen, ist ein gewisses Maß an Subjektivität unvermeidlich. Zudem erfordern solche Methoden oft einen hohen Zeit- und Ressourcenaufwand und sind damit nur bedingt skalierbar, wenn größere Stichproben untersucht werden sollen. In der Folge bleibt die Erfassung des tatsächlichen Nutzerverhaltens begrenzt und liefert nur einen eingeschränkten Einblick in mögliche Interaktionsmuster.
 
 Der Ansatz von Hilbert und Redmiles \cite{Hilbert2000} beschreibt hingegen die Vorteile der Erfassung von Nutzungsdaten, zum Beispiel Mausbewegungen, Klicks oder Navigationspfade, über automatisiertes Logging. Durch dieses objektive Verfahren werden reale Nutzerinteraktionen abgebildet, sodass subjektive Verzerrungen weitgehend ausgeschlossen werden können. Die Daten können kontinuierlich und ohne großen Mehraufwand gesammelt werden, was sich positiv auf die Skalierbarkeit auswirkt und umfangreiche Analysen ermöglicht. Dabei lassen sich dank systematischer Auswertungen häufige Fehler und ineffiziente Workflows oder Abläufe erkennen. Einschränkungen zeigen sich allerdings, da durch reines Logging keine qualitativen Informationen – etwa zu Emotionen oder Zufriedenheit – direkt erhoben werden. Außerdem ist eine spezialisierte Expertise für die oft komplexe Analyse dieser Daten erforderlich, und eine unzureichende Erfassung kann zu verfälschten Ergebnissen führen.
+\subsubsection{Konsequenzen einer eingeschränkten Beobachtung der User Experience in eDok} \label{subsubsec:konsequenzen_eingeschraenkte_ux}
+In dieser Arbeit wurde der Fokus bewusst auf die automatisierte Erfassung und Analyse von Nutzungsdaten gelegt, um vorwiegend funktionale Aspekte (Usability und Effizienz) bewerten zu können. Dieser Ansatz berücksichtigt jedoch hedoniche Aspekte, wie \emph{Ästhetik}, \emph{Freude} oder \emph{emotionale Bindung} zum Produkt, nur unzureichend. Folglich besteht die Gefahr, dass jene Komponenten, die nach Hassenzahl \cite{Hassenzahl2010} den \enquote{SELF}-Charakter eines Produktes ausmachen, vernachlässigt werden.
+\begin{figure}[htb]
+  \centering
+  \includegraphics[width=0.85\textwidth]{arc.png}
+  \caption{Hassenzahl modell}
+  \label{fig:erd-logging}
+\end{figure}
+Hassenzahl \cite{Hassenzahl2010} unterscheidet Produkte nach ihrer primären Charakterisierung in \emph{ACT-Produkte} und \emph{SELF-Produkte}. Ein ACT-Produkt (\enquote{stark pragmatisch / schwach hedonic}) wird in erster Linie zur Erreichung konkreter Verhaltensziele entwickelt. Diese Ziele können sich jedoch im Laufe der Zeit oder bei Veränderung der Lebensumstände schnell ändern, wodurch die Bindung des Nutzers an das Produkt abnehmen kann. Im Gegensatz dazu zeichnen sich SELF-Produkte (\enquote{schwach pragmatisch / stark hedonic}) durch ihre enge Verknüpfung mit dem Selbstbild des Nutzers aus (durch Ideale, Erinnerungen oder Beziehungen). Die Wertschätzung für SELF-Produkte ist daher meist beständiger, da sich das Selbstbild der Nutzenden weniger häufig ändert als ihre Verhaltensziele.
 
+Durch das in dieser Arbeit gewählte Vorgehen, primär funktionale Aspekte zu betrachten und hedoniche Kriterien nur am Rande zu erfassen, besteht das Risiko, ein Produkt zu entwickeln, das auf lange Sicht weniger attraktiv bleibt. Es kann zwar kurzfristig nützlich und effizient sein, jedoch fehlen potenzielle Anknüpfungspunkte für eine stärkere emotionale Bindung oder für eine tiefergehende Identifikation der Nutzenden mit dem Produkt. Eine rein pragmatische Bewertung liefert somit nur einen Teil der User Experience: Die \enquote{gefühlte} Qualität, die oft über langfristige Produktloyalität und Zufriedenheit entscheidet, wird kaum in Betracht gezogen.
+
+Daraus lässt sich folgern, dass ein rein auf Usability-Daten basierendes Vorgehen zu einem Produkt führen kann, das vornehmlich als ACT-Produkt wahrgenommen wird. Um jedoch das volle Potenzial einer positiven, nachhaltigen User Experience zu entfalten, sollten langfristig auch hedoniche Aspekte einbezogen werden. Nur so kann ein Design entstehen, das nicht allein auf Effizienz abzielt, sondern auch die Bedürfnisse und Werte der Nutzenden berücksichtigt und dadurch eine stabile Wertschätzung hervorruft.
 \subsection{Erkenntnisse und Schlussfolgerung}
 Die Ergebnisse aus dem Papier von Hilbert und Redmiles \cite{Hilbert2000} zeigen, dass die Kombination von qualitativen und quantitativen Ansätzen essenziell ist, um umfassende Usability-Einsichten zu gewinnen. Während Interviews und Fragebögen subjektive Erlebnisse und Zufriedenheit der Nutzer erfassen, bietet die Analyse quantitativer Daten objektive und skalierbare Einblicke in tatsächliches Nutzerverhalten. Das Event-Logging ermöglichte es, systematische Probleme zu identifizieren, die bei traditionellen Methoden übersehen wurden, wie ineffiziente Navigationspfade oder wiederkehrende Fehler.
 
