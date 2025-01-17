@@ -200,9 +200,9 @@
       {Ali Alkhiami}          % Vor- und Nachname des Autors
       {844620}
       {Fachbereich AI}  % Name des FBs
-      {05.mm.yyyy}        % Tag der Abgabe
+      {\today}        % Tag der Abgabe
       {Prof. Dr. Alexander Gepperth}     % Name des Erstgutachters
-      {Prof. Dr. Dr. YYY}    % Name des Zweitgutachters
+      {Herr Zinn Christian}    % Name des Zweitgutachters
 
   \clearpage
 
@@ -210,7 +210,7 @@
     \setcounter{page}{1}
 %--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
  
-
+\addtocontents{toc}{\protect\setcounter{tocdepth}{-1}} % Temporarily suppress TOC depth
 \subsection{Abstract}
 
 Diese Arbeit befasst sich mit der Entwicklung und Implementierung eines Modells zur umfassenden Erfassung und Bewertung der User Experience (UX), exemplarisch angewendet auf die Anwendung eDok des Landeswohlfahrtsverbands Hessen (LWV Hessen). Ziel des Modells ist es, einen detaillierten Überblick über die UX innerhalb der Anwendung zu schaffen, indem während der produktiven Nutzung anonymisierte Daten gesammelt werden.
@@ -222,11 +222,15 @@ Ein wesentlicher Aspekt des Modells ist die Möglichkeit für Projektverantwortl
 Die gewonnenen Erkenntnisse unterstützen die Projektverantwortlichen dabei, problematische Stellen innerhalb der Anwendung zu identifizieren und gezielte Maßnahmen zur Verbesserung der Usability zu ergreifen. Darüber hinaus ermöglicht das Modell eine nachträgliche Überprüfung der implementierten Änderungen, um deren Effektivität zu bewerten und weitere Optimierungen vorzunehmen. Durch diesen iterativen Prozess trägt das Modell wesentlich zur Steigerung der Benutzerzufriedenheit und Effizienz der Anwendung bei.
 
 %--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
+% Prevent the Inhaltsverzeichnis from appearing in the Inhaltsverzeichnis
+\renewcommand{\contentsname}{Inhaltsverzeichnis}
+
 \tableofcontents
+\addtocontents{toc}{\protect\setcounter{tocdepth}{4 }} % Restore TOC depth (adjust as needed)
+
 %--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%
  
- 
-\addcontentsline{toc}{subsection}{Abkürzungsverzeichnis} % Fügt das Abkürzungsverzeichnis zum Inhaltsverzeichnis hinzu
+  
 \begin{acronym}[hyperlinks]
 \acro{UX}{User Experience}
 \acro{LWV}{Landeswohlfahrtsverband}
@@ -280,6 +284,11 @@ Trotz dieser Freiheit gibt es bestimmte Designrichtlinien, die die Entwickler*in
 
 Jedoch gibt es außerhalb dieser festgelegten Richtlinien kaum einen weiteren Einfluss von Nutzer*innen auf die Gestaltung der Software. In der Literatur wird jedoch darauf hingewiesen, dass ein solcher Ansatz nicht empfehlenswert ist, da wichtige Aspekte der UX und Usability unberücksichtigt bleiben können. Die Stakeholder, die auch die Nutzer*innen und Produktverantwortlichen in anderen Verbänden darstellen, welche die Software verwenden, haben ebenfalls wenig Einfluss auf die Gestaltung. Ihr Feedback beschränkt sich oft auf seltene Beschwerden über Unübersichtlichkeit oder spezifische Anwendungsprobleme. Diese seltenen Rückmeldungen fließen meist nicht systematisch in den Designprozess ein.
 
+Hassenzahl betont  in seiner Arbeit \textit{The Thing and I: Understanding the Relationship Between User and Product}, dass Produkte nicht mehr lediglich als Ansammlungen \textbf{funktionaler}     Eigenschaften und Vorteile betrachtet werden sollten. Vielmehr stehen die durch Produkte vermittelten Erlebnisse im Fokus. Dabei betont er, dass Kunden Produkte bevorzugen, „die ihre Sinne bezaubern, ihr Herz berühren und ihren Geist anregen“. Dieses Verständnis basiert auf der Annahme, dass funktionale Eigenschaften, Nutzen und Produktqualität von den Kunden als gegeben betrachtet werden\cite{Hassenzahlthething}\footnote{Eigene Übersetzung aus dem englischen Original}.
+
+Er betont zudem, dass ein von Entwickler*innen bewusst auf Klarheit und Verständlichkeit ausgelegtes Design keine Gewähr dafür bietet, dass es von Nutzer*innen ebenfalls als klar und verständlich wahrgenommen wird.
+
+
 Dieser Kontext zeigt die Herausforderungen und Lücken in der aktuellen Arbeitsweise auf und verdeutlicht die Notwendigkeit eines systematischen Ansatzes zur Einbindung der Nutzerperspektive in den Entwicklungsprozess. Die vorliegende Arbeit zielt darauf ab, diese Lücke zu schließen, indem sie ein Modell entwickelt, das die User Experience systematisch erfasst und in die Gestaltung der Software integriert.
 \subsection{Relevanz der Arbeit}
 
@@ -315,10 +324,10 @@ Im Rahmen der vorliegenden Arbeit wurde auf keinerlei nicht-öffentliche Vorarbe
 \section{Einführung in das Thema UX}
 
 \textbf{User Experience} (UX) ist ein Teilbereich der HCI, der in den frühen 1990er Jahren an Bedeutung gewann \cite{glanznig}. Mit dem Aufkommen neuer Technologien und der zunehmenden Verbreitung digitaler Produkte rückte der Fokus verstärkt auf die Benutzererfahrung und deren Qualität. UX konzentriert sich auf die Interaktion zwischen Mensch und System und zielt darauf ab, Produkte und Anwendungen so zu gestalten, dass sie nicht nur funktional sind, sondern auch emotional ansprechend und benutzerfreundlich.
-
+Es gibt jedoch keine einheitliche Defintion für UX, da UX wurde von verschiedene Bereiche untersucht und gemessen.
 \subsection{Herausforderungen und Offenheit der UX-Definition}
 
-Glanznig behauptet in seiner Arbeit, dass die Offenheit der UX-Definition  es erlaubt, das Thema aus verschiedenen Perspektiven zu betrachten und unterschiedliche Meinungen einzubeziehen, was zu einem umfassenderen und tieferen Verständnis des UX-Konzepts führt und die Entwicklung der Disziplin fördert. Gleichzeitig erschweren jedoch verschiedene fachliche Hintergründe und Vokabularien den Fortschritt \cite{glanznig}.
+Glanznig erläutert in seiner Arbeit, dass die Offenheit der UX-Definition  es erlaubt, das Thema aus verschiedenen Perspektiven zu betrachten und unterschiedliche Meinungen einzubeziehen, was zu einem umfassenderen und tieferen Verständnis des UX-Konzepts führt und die Entwicklung der Disziplin fördert. Gleichzeitig erschweren jedoch verschiedene fachliche Hintergründe und Vokabularien den Fortschritt \cite{glanznig}.
 
 Hassenzahl und Tractinsky thematisierten in ihrer Arbeit \textit{User Experience – A Research Agenda} die Komplexität der UX und erklärten: „User Experience ist ein interessantes Phänomen: Es wurde von der HCI-Community schnell angenommen, aber oft kritisiert, da es vage und schwer fassbar ist. Der Begriff umfasst verschiedene Bedeutungen, von klassischer Usability bis hin zu Schönheit, hedonischen, affektiven und erfahrungsbasierten Aspekten der Technologienutzung“ \cite{research}.
 
@@ -356,6 +365,8 @@ Ein wesentlicher Aspekt ist die Unterstützung von Fehlertoleranz, sodass auch b
 Durch die kontinuierliche Evaluation der Usability über systematisch gesammelte Daten können Schwachstellen identifiziert und gezielt Optimierungen vorgenommen werden. Ergänzende Nutzerbefragungen können zusätzliche Einblicke bieten, sind jedoch nicht direkt in das System integriert und dienen daher eher unterstützenden Zwecken.
 
 Insgesamt zielt \textit{eDok} darauf ab, eine nutzerfreundliche Anwendung zu bieten, die den Arbeitsablauf bei der Dokumentenerstellung optimiert. Diese Arbeit strebt an, bestimmte Merkmale der Usability zu messen, zu speichern und zu bewerten, um ein umfassendes Bild der Nutzererfahrung zu erhalten.
+Ein zentraler Aspekt der Usability-Optimierung besteht darin, die Anzahl der Interaktionen (z. B. Klicks) zu analysieren, die Nutzer benötigen, um ein definiertes Ziel während eines produktiven Arbeitsablaufs zu erreichen. Ziel ist es, diese Anzahl zu minimieren, ohne dabei das Risiko von fachlichen oder technischen Fehlern zu erhöhen, da diese die Effizienz und Effektivität der Nutzung negativ beeinflussen könnten.
+
 
 \subsection{Erweiterte Ziele der UX- und Usability-Bewertung in eDok}
 
@@ -409,7 +420,7 @@ Die Ergebnisse aus dem Papier von Hilbert und Redmiles \cite{Hilbert2000} zeigen
 
 Nach Prüfung der Ergebnisse wurde die Entscheidung getroffen, dass qualitative und quantitative Methoden nicht gegeneinander stehen, sondern sich ergänzen. Die Kombination beider Ansätze stellt sicher, dass sowohl die subjektiven als auch die objektiven Aspekte der Usability umfassend berücksichtigt werden können.
 
-\section{Grundlagen und Methodik}
+\section{Methodik}
 In diesem Kapitel werden die methodischen und technischen Grundlagen vorgestellt, welche die Basis für die spätere Umsetzung im Rahmen dieser Arbeit bilden. Dabei wird auf bereits existierende Konzepte und Bibliotheken verwiesen, die im Projekt verwendet wurden. Zudem wird erläutert, wie die Datenbankstruktur und die zugrunde liegende Architektur gewählt wurden, um die Zielsetzungen der Arbeit (Erfassung, Analyse und Visualisierung von Nutzerinteraktionen) zu erfüllen. Auf detaillierte Implementierungsschritte wird hier verzichtet; diese finden sich in den folgenden Kapiteln und im Anhang.
 
 \subsection{Architektur und Softwarekomponenten}
