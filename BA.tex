@@ -335,8 +335,12 @@ Im Rahmen der vorliegenden Arbeit wurde auf keinerlei nicht-öffentliche Vorarbe
 
 \section{Einführung in das Thema UX}
 
-\textbf{User Experience} (UX) ist ein Teilbereich der HCI, der in den frühen 1990er Jahren an Bedeutung gewann \cite{glanznig}. Mit dem Aufkommen neuer Technologien und der zunehmenden Verbreitung digitaler Produkte rückte der Fokus verstärkt auf die Benutzererfahrung und deren Qualität. UX konzentriert sich auf die Interaktion zwischen Mensch und System und zielt darauf ab, Produkte und Anwendungen so zu gestalten, dass sie nicht nur funktional sind, sondern auch emotional ansprechend und benutzerfreundlich.
-Es gibt jedoch keine einheitliche Defintion für UX, da UX wurde von verschiedene Bereiche untersucht und gemessen.
+\textbf{User Experience} (UX) ist ein Teilbereich der HCI, der in den frühen 1990er Jahren an Bedeutung gewann \cite{glanznig}. 
+
+ UX konzentriert sich auf die Interaktion zwischen Mensch und System und zielt darauf ab, Produkte und Anwendungen so zu gestalten, dass sie nicht nur funktional sind, sondern auch emotional ansprechend und benutzerfreundlich.
+
+es existieren Unterschiede in der Auffassung dessen, was \ac{UX} genau ist und wie man sie bewertet. In der akademischen Forschung werden zwar zahlreiche Modelle und konzeptionelle Frameworks entwickelt, die UX definieren und messen sollen, doch eine einheitliche, allgemein akzeptierte Definition ist bis heute nicht vorhanden \cite{quelle3}. Immerhin herrscht Konsens darüber, dass \ac{UX} mehr als reine Usability oder Nützlichkeit eines Produkts umfasst, denn UX betrifft auch das subjektive Erleben, das vom Kontext, dem inneren Zustand der Nutzenden und ihren Erwartungen an das Produkt beeinflusst wird \cite{quelle4}.
+
 \subsection{Herausforderungen und Offenheit der UX-Definition}
 
 Glanznig erläutert in seiner Arbeit, dass die Offenheit der UX-Definition  es erlaubt, das Thema aus verschiedenen Perspektiven zu betrachten und unterschiedliche Meinungen einzubeziehen, was zu einem umfassenderen und tieferen Verständnis des UX-Konzepts führt und die Entwicklung der Disziplin fördert. Gleichzeitig erschweren jedoch verschiedene fachliche Hintergründe und Vokabularien den Fortschritt \cite{glanznig}.
@@ -354,7 +358,7 @@ Die Nielsen Norman Group definiert UX als die Gesamtheit aller Aspekte der Inter
 
 Die ISO 9241-210:2019 beschreibt UX als „sämtliche Wahrnehmungen und Reaktionen von Nutzern, die durch die tatsächliche oder erwartete Nutzung eines Systems, Produkts oder einer Dienstleistung hervorgerufen werden“ \cite{ISO}.
 
-\subsection{Zusammenfassung der UX-Definitionen}
+ 
 
 Ungeachtet der unterschiedlichen Definitionen ist klar, dass UX sowohl funktionale als auch emotionale Dimensionen der Nutzererfahrung umfasst. Faktoren wie Usability, ästhetische Wahrnehmung, inhaltliche Relevanz und das Vertrauen der Nutzer sind entscheidend dafür, wie effektiv und zufriedenstellend eine Anwendung wahrgenommen wird und tragen wesentlich zur Gestaltung positiver Nutzererlebnisse bei \cite{toolbox}.
 
@@ -364,10 +368,19 @@ In dem Papier \textit{Towards Practical User Experience Evaluation Methods} \cit
 
 Usability bezieht sich auf die funktionalen Aspekte eines Produkts und beschreibt, wie effektiv und effizient sich das Produkt nutzen lässt. Viele Experten sehen Usability als Teil der UX \cite{GOISTAI}. Während sich Usability auf die Fähigkeit des Nutzers konzentriert, ein System erfolgreich zu nutzen, umfasst UX auch die gesamte Nutzererfahrung und die dabei entstehenden Emotionen.
 
-Die Nielsen Norman Group definiert Usability als ein Qualitätsmerkmal, das bewertet, wie einfach und angenehm eine Benutzeroberfläche zu nutzen ist. Sie umfasst fünf Hauptkomponenten:
-
-\begin{itemize} \item \textbf{Erlernbarkeit}: Wie leicht können Benutzer grundlegende Aufgaben beim ersten Mal ausführen? \item \textbf{Effizienz}: Wie schnell können Benutzer Aufgaben ausführen, nachdem sie die Schnittstelle gelernt haben? \item \textbf{Merkfähigkeit}: Wie einfach können Benutzer ihre Fähigkeiten wiederherstellen, wenn sie das Design nach einer Pause erneut verwenden? \item \textbf{Fehlerrate}: Wie viele Fehler machen Benutzer, wie schwerwiegend sind diese und wie leicht können sie sich von ihnen erholen? \item \textbf{Zufriedenheit}: Wie angenehm ist die Nutzung der Benutzeroberfläche? \end{itemize}
+Die Nielsen Norman Group beschreibt Usability als ein Qualitätsmerkmal, das bestimmt, wie leicht und angenehm eine Benutzeroberfläche zu verwenden ist. Nach dieser Definition beinhaltet Usability fünf zentrale Aspekte. Erstens wird die \textbf{Erlernbarkeit} durch den Aufwand bestimmt, den Erstnutzende benötigen, um wesentliche Aufgaben erfolgreich auszuführen. Zweitens bezieht sich die \textbf{Effizienz} auf die Geschwindigkeit, mit der erfahrene Nutzende typische Anwendungsabläufe absolvieren. Drittens umfasst die \textbf{Merkfähigkeit} die Fähigkeit der Nutzenden, gelernte Bedienkonzepte nach längeren Pausen ohne erneute Schulung wieder aufzurufen. Viertens wird unter \textbf{Fehlerrate} die Häufigkeit und Schwere von Fehlern verstanden, inklusive der Frage, wie leicht sich Nutzende von diesen Fehlern erholen können. Schließlich beschreibt die \textbf{Zufriedenheit} das subjektive Empfinden von Komfort und Freude an der Nutzung der entsprechenden Benutzungsschnittstelle.
 Die Nielsen Norman Group erläutert den Unterschied zwischen Usability Testing und Usability Evaluation klar und prägnant. Beim Usability Testing beobachten Usability-Experten die Nutzer, um potenzielle Usability-Probleme zu identifizieren. Im Gegensatz dazu geht die Usability Evaluation einen Schritt weiter: Sie kombiniert das Testing mit direktem Nutzerfeedback und einer Überprüfung des Systemdesigns.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{gap.png}
+    \caption{Die Lücke zwischen Theorie und Praxis nach Hassenzahl}
+    \label{fig:gap}
+\end{figure}
+\textbf{Herausforderungen in der Praxis.} In vielen Entwicklungsprozessen überwiegen nach wie vor klassische \ac{UEM} (Usability Evaluation Methods), die stark auf Effizienz, Effektivität und Fehlerraten abzielen. Diese Methoden genügen jedoch oftmals nicht, um umfassende Aspekte der Nutzererfahrung zu erfassen, wie zum Beispiel die emotionalen, ästhetischen und hedonischen Komponenten. Dadurch entsteht eine Lücke zwischen dem, was in der Forschung als „umfassendes UX-Verständnis“ gefordert wird, und dem, was in der industriellen Realität tatsächlich umgesetzt wird \cite{quelle5}.
+ 
+ 
+ 
+
 \subsection{Usability in eDok}
 
 Im Kontext von \textit{eDok} liegt der Schwerpunkt auf der effizienten und fehlerarmen Erstellung und Bearbeitung von Dokumenten. Für optimale Usability ist es entscheidend, dass Nutzer die Funktionen der Anwendung intuitiv verstehen und nutzen können. Klare Benutzerführung, schnelle Ladezeiten sowie eine übersichtliche und reduzierte Benutzeroberfläche sind dabei zentral.
@@ -379,6 +392,23 @@ Durch die kontinuierliche Evaluation der Usability über systematisch gesammelte
 Insgesamt zielt \textit{eDok} darauf ab, eine nutzerfreundliche Anwendung zu bieten, die den Arbeitsablauf bei der Dokumentenerstellung optimiert. Diese Arbeit strebt an, bestimmte Merkmale der Usability zu messen, zu speichern und zu bewerten, um ein umfassendes Bild der Nutzererfahrung zu erhalten.
 Ein zentraler Aspekt der Usability-Optimierung besteht darin, die Anzahl der Interaktionen (z. B. Klicks) zu analysieren, die Nutzer benötigen, um ein definiertes Ziel während eines produktiven Arbeitsablaufs zu erreichen. Ziel ist es, diese Anzahl zu minimieren, ohne dabei das Risiko von fachlichen oder technischen Fehlern zu erhöhen, da diese die Effizienz und Effektivität der Nutzung negativ beeinflussen könnten.
 
+ 
+
+
+
+
+
+\textbf{Folgen der Kluft.} Weil viele Unternehmen ihre Entwicklungsprozesse nach wie vor an traditioneller Usability ausrichten und emotionale sowie kontextspezifische Faktoren der UX vernachlässigen, besteht das Risiko, wichtige Innovationschancen zu verpassen. Produkte werden zwar nutzbar, liefern aber nicht unbedingt jenes angenehme, durchgängige Erlebnis, das gerade in wettbewerbsintensiven Märkten zum entscheidenden Alleinstellungsmerkmal werden kann \cite{quelle2}.
+
+\textbf{Ansätze zur Schließung der Lücke.} Um die Kluft zwischen Forschung und Praxis zu überbrücken, braucht es praxisnahe Evaluationsmethoden, die über reine Effizienz- und Effektivitätsmessungen hinausgehen. Hierzu werden unterschiedliche Wege vorgeschlagen:
+
+\begin{itemize}
+    \item \textbf{Adaption klassischer Usability-Methoden:} Bestehende Methoden wie Usability-Tests oder Heuristische Evaluation können um UX-relevante Faktoren erweitert werden (z.\,B. durch das gezielte Einbeziehen emotionaler Reaktionen) \cite{quelle5}.
+    \item \textbf{Workshops und Austauschformate:} Formate wie der \textit{UXEM}-Workshop im Rahmen der CHI 2008 \cite{quelle5} haben gezeigt, dass ein intensiver Austausch zwischen Forschenden und Industriepraktikern notwendig ist, um Begriffe zu klären und anwendungsnahe UX-Evaluationsmethoden zu entwickeln.
+    \item \textbf{Langzeitbeobachtungen unter Realbedingungen:} Statt rein laborbasierter Tests werden zunehmend Studien gefordert, die das Nutzerverhalten über längere Zeiträume hinweg in der echten Nutzungssituation abbilden, um das dynamische Wesen der UX zu erfassen \cite{quelle2, quelle3}.
+\end{itemize}
+
+Zusammenfassend zeigt sich, dass UX zwar längst auch in der Industrie als wichtiger Erfolgsfaktor anerkannt ist, aber die praktischen Evaluationsmethoden noch nicht systematisch genug an den umfassenden Erkenntnissen der Forschung ausgerichtet werden. Eine stärkere Verzahnung beider Bereiche und die Entwicklung gemeinsamer Methoden, die sowohl subjektive als auch objektive Aspekte der UX abbilden, sind daher essenziell, um Produkte zu schaffen, welche die Erwartungen und Bedürfnisse der Nutzer*innen wirklich erfüllen \cite{quelle4, quelle5}.
 
 \subsection{Erweiterte Ziele der UX- und Usability-Bewertung in eDok}
 
