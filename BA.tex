@@ -289,7 +289,7 @@ Hassenzahl betont  in seiner Arbeit \textit{The Thing and I: Understanding the R
 Er betont zudem, dass ein von Entwickler*innen bewusst auf Klarheit und Verständlichkeit ausgelegtes Design keine Gewähr dafür bietet, dass es von Nutzer*innen ebenfalls als klar und verständlich wahrgenommen wird.
 
 
-Dieser Kontext zeigt die Herausforderungen und Lücken in der aktuellen Arbeitsweise auf und verdeutlicht die Notwendigkeit eines systematischen Ansatzes zur Einbindung der Nutzerperspektive in den Entwicklungsprozess. Die vorliegende Arbeit zielt darauf ab, diese Lücke zu schließen, indem sie ein Modell entwickelt, das die User Experience systematisch erfasst und in die Gestaltung der Software integriert.
+Dieser Kontext zeigt die Herausforderungen und Lücken in der aktuellen Arbeitsweise auf und verdeutlicht die Notwendigkeit eines systematischen Ansatzes zur Einbindung der Nutzerperspektive in den Entwicklungsprozess. Die vorliegende Arbeit zielt darauf ab, diese Lücke zu schließen, indem sie ein Modell entwickelt, das die \ac{UX} systematisch erfasst und in die Gestaltung der Software integriert.
 \subsection{Relevanz der Arbeit}
 
 Angesichts der wachsenden Bedeutung von UX in der Softwareentwicklung leistet diese Arbeit einen wichtigen Beitrag zur Praxis und Forschung. Das vorgestellte Modell ermöglicht es, UX-Daten in Echtzeit und unter realen Nutzungsbedingungen zu erfassen, ohne die Nutzererfahrung zu beeinträchtigen. Dies ist besonders relevant für Organisationen, die ihre Anwendungen kontinuierlich verbessern möchten, um den steigenden Erwartungen der Nutzer gerecht zu werden.
@@ -317,13 +317,13 @@ Ein weiterer Aspekt ist die Möglichkeit für Entwickler und Produktverantwortli
 
 \subsection{Fragestellung}
 
-Welche spezifischen, anonymisierten Daten sind erforderlich, um ein Modell zu entwickeln und zu implementieren, das die User Experience präzise und systematisch erfasst, dynamische Veränderungen über Zeiträume hinweg analysiert, Verantwortliche bei fundierten Entscheidungen zur Optimierung der Anwendung unterstützt und dabei auftretende Herausforderungen bewältigt?
+Welche spezifischen, anonymisierten Daten sind erforderlich, um ein Modell zu entwickeln und zu implementieren, das die \ac{UX} präzise und systematisch erfasst, dynamische Veränderungen über Zeiträume hinweg analysiert, Verantwortliche bei fundierten Entscheidungen zur Optimierung der Anwendung unterstützt und dabei auftretende Herausforderungen bewältigt?
 \subsection{Eigenleistung}
 Im Rahmen der vorliegenden Arbeit wurde auf keinerlei nicht-öffentliche Vorarbeiten zurückgegriffen. Sämtliche entwickelte Softwarekomponenten (Angular-Frontend, Java-Spring-Backend sowie die SQL-Datenbankstrukturen) wurden von mir selbst erstellt oder basieren ausschließlich auf frei verfügbaren bzw. quelloffenen Bibliotheken.
 
 \section{Einführung in das Thema UX}
 
-\textbf{User Experience} (UX) ist ein Teilbereich der HCI, der in den frühen 1990er Jahren an Bedeutung gewann \cite{glanznig}. 
+\ac{UX} ist ein Teilbereich der HCI, der in den frühen 1990er Jahren an Bedeutung gewann \cite{glanznig}. 
 
  UX konzentriert sich auf die Interaktion zwischen Mensch und System und zielt darauf ab, Produkte und Anwendungen so zu gestalten, dass sie nicht nur funktional sind, sondern auch emotional ansprechend und benutzerfreundlich.
 
@@ -351,6 +351,8 @@ Die ISO 9241-210:2019 beschreibt UX als „sämtliche Wahrnehmungen und Reaktion
 Ungeachtet der unterschiedlichen Definitionen ist klar, dass UX sowohl funktionale als auch emotionale Dimensionen der Nutzererfahrung umfasst. Faktoren wie Usability, ästhetische Wahrnehmung, inhaltliche Relevanz und das Vertrauen der Nutzer sind entscheidend dafür, wie effektiv und zufriedenstellend eine Anwendung wahrgenommen wird und tragen wesentlich zur Gestaltung positiver Nutzererlebnisse bei \cite{toolbox}.
 
 In dem Papier \textit{Towards Practical User Experience Evaluation Methods} \cite{evaluationmethods} wird darauf hingewiesen, dass die UX-Forschung eine Vielzahl von Modellen und Frameworks entwickelt hat. Diese Modelle adressieren die zentralen Herausforderungen der UX, wie ihre subjektive, kontextabhängige und dynamische Natur sowie die Balance zwischen pragmatischen und hedonischen Aspekten des Nutzererlebnisses. Gleichzeitig wird betont, dass UX zunehmend in der Industrie übernommen wird, die Produktentwicklung jedoch noch immer stark auf traditionellen Usability-Methoden basiert. Die Arbeit unterstreicht die Notwendigkeit praxisnaher UX-Bewertungsmethoden für die Produktentwicklung in der Industrie.
+
+In dieser Arbeit wird \ac{UX} als das Zusammenspiel von Interaktionen, Emotionen und Erwartungen definiert, die Nutzer*innen vor, während und nach der Verwendung einer Anwendung erleben. Dabei lassen sich zwei zentrale Dimensionen unterscheiden: Zum einen die Usability-Aspekte, die sich auf Effizienz, Effektivität und Zufriedenheit fokussieren, und zum anderen die hedonischen Aspekte (wie Ästhetik oder visuelle Anmutung), welche die emotionale und ästhetische Qualität der Anwendung in den Vordergrund stellen.
 
 \subsection{Usability und ihre Bedeutung}
 
@@ -449,7 +451,7 @@ In der Usability-Forschung gibt es verschiedene Methoden, um Nutzererfahrungen u
 Nutzerinterviews und Fragebögen bieten eine direkte Möglichkeit, subjektive Rückmeldungen zu sammeln. Zu den Vorteilen dieser Ansätze zählen insbesondere die tiefgehenden, qualitativen Einblicke, die es ermöglichen, Meinungen, Zufriedenheit und Emotionen der Nutzenden genauer zu erfassen. Darüber hinaus ist eine hohe Flexibilität gegeben, da während der Interaktion gezielte Fragen gestellt werden können, um spezifische Probleme zu beleuchten. Ein weiterer Vorteil besteht im unmittelbaren, direkten Feedback, weil die Nutzenden ihre Wahrnehmung von Schwächen oder Verbesserungsvorschläge direkt äußern können. Demgegenüber stehen jedoch einige Nachteile. Da Ergebnisse stark von individuellen Meinungen und Wahrnehmungen abhängen, ist ein gewisses Maß an Subjektivität unvermeidlich. Zudem erfordern solche Methoden oft einen hohen Zeit- und Ressourcenaufwand und sind damit nur bedingt skalierbar, wenn größere Stichproben untersucht werden sollen. In der Folge bleibt die Erfassung des tatsächlichen Nutzerverhaltens begrenzt und liefert nur einen eingeschränkten Einblick in mögliche Interaktionsmuster.
 
 Der Ansatz von Hilbert und Redmiles \cite{Hilbert2000} beschreibt hingegen die Vorteile der Erfassung von Nutzungsdaten, zum Beispiel Mausbewegungen, Klicks oder Navigationspfade, über automatisiertes Logging. Durch dieses objektive Verfahren werden reale Nutzerinteraktionen abgebildet, sodass subjektive Verzerrungen weitgehend ausgeschlossen werden können. Die Daten können kontinuierlich und ohne großen Mehraufwand gesammelt werden, was sich positiv auf die Skalierbarkeit auswirkt und umfangreiche Analysen ermöglicht. Dabei lassen sich dank systematischer Auswertungen häufige Fehler und ineffiziente Workflows oder Abläufe erkennen. Einschränkungen zeigen sich allerdings, da durch reines Logging keine qualitativen Informationen – etwa zu Emotionen oder Zufriedenheit – direkt erhoben werden. Außerdem ist eine spezialisierte Expertise für die oft komplexe Analyse dieser Daten erforderlich, und eine unzureichende Erfassung kann zu verfälschten Ergebnissen führen.
-\subsubsection{Konsequenzen einer eingeschränkten Beobachtung der User Experience in eDok} \label{subsubsec:konsequenzen_eingeschraenkte_ux}
+\subsubsection{Konsequenzen einer eingeschränkten Beobachtung der \ac{UX} in eDok} \label{subsubsec:konsequenzen_eingeschraenkte_ux}
 In dieser Arbeit wurde der Fokus bewusst auf die automatisierte Erfassung und Analyse von Nutzungsdaten gelegt, um vorwiegend funktionale Aspekte (Usability und Effizienz) bewerten zu können. Dieser Ansatz berücksichtigt jedoch hedoniche Aspekte, wie \emph{Ästhetik}, \emph{Freude} oder \emph{emotionale Bindung} zum Produkt, nur unzureichend. Folglich besteht die Gefahr, dass jene Komponenten, die nach Hassenzahl \cite{Hassenzahl2010} den \enquote{SELF}-Charakter eines Produktes ausmachen, vernachlässigt werden.
 \begin{figure}[htb]
   \centering
@@ -459,9 +461,9 @@ In dieser Arbeit wurde der Fokus bewusst auf die automatisierte Erfassung und An
 \end{figure}
 Hassenzahl \cite{Hassenzahl2010} unterscheidet Produkte nach ihrer primären Charakterisierung in \emph{ACT-Produkte} und \emph{SELF-Produkte}. Ein ACT-Produkt (\enquote{stark pragmatisch / schwach hedonic}) wird in erster Linie zur Erreichung konkreter Verhaltensziele entwickelt. Diese Ziele können sich jedoch im Laufe der Zeit oder bei Veränderung der Lebensumstände schnell ändern, wodurch die Bindung des Nutzers an das Produkt abnehmen kann. Im Gegensatz dazu zeichnen sich SELF-Produkte (\enquote{schwach pragmatisch / stark hedonic}) durch ihre enge Verknüpfung mit dem Selbstbild des Nutzers aus (durch Ideale, Erinnerungen oder Beziehungen). Die Wertschätzung für SELF-Produkte ist daher meist beständiger, da sich das Selbstbild der Nutzenden weniger häufig ändert als ihre Verhaltensziele.
 
-Durch das in dieser Arbeit gewählte Vorgehen, primär funktionale Aspekte zu betrachten und hedoniche Kriterien nur am Rande zu erfassen, besteht das Risiko, ein Produkt zu entwickeln, das auf lange Sicht weniger attraktiv bleibt. Es kann zwar kurzfristig nützlich und effizient sein, jedoch fehlen potenzielle Anknüpfungspunkte für eine stärkere emotionale Bindung oder für eine tiefergehende Identifikation der Nutzenden mit dem Produkt. Eine rein pragmatische Bewertung liefert somit nur einen Teil der User Experience: Die \enquote{gefühlte} Qualität, die oft über langfristige Produktloyalität und Zufriedenheit entscheidet, wird kaum in Betracht gezogen.
+Durch das in dieser Arbeit gewählte Vorgehen, primär funktionale Aspekte zu betrachten und hedoniche Kriterien nur am Rande zu erfassen, besteht das Risiko, ein Produkt zu entwickeln, das auf lange Sicht weniger attraktiv bleibt. Es kann zwar kurzfristig nützlich und effizient sein, jedoch fehlen potenzielle Anknüpfungspunkte für eine stärkere emotionale Bindung oder für eine tiefergehende Identifikation der Nutzenden mit dem Produkt. Eine rein pragmatische Bewertung liefert somit nur einen Teil der \ac{UX}: Die \enquote{gefühlte} Qualität, die oft über langfristige Produktloyalität und Zufriedenheit entscheidet, wird kaum in Betracht gezogen.
 
-Daraus lässt sich folgern, dass ein rein auf Usability-Daten basierendes Vorgehen zu einem Produkt führen kann, das vornehmlich als ACT-Produkt wahrgenommen wird. Um jedoch das volle Potenzial einer positiven, nachhaltigen User Experience zu entfalten, sollten langfristig auch hedoniche Aspekte einbezogen werden. Nur so kann ein Design entstehen, das nicht allein auf Effizienz abzielt, sondern auch die Bedürfnisse und Werte der Nutzenden berücksichtigt und dadurch eine stabile Wertschätzung hervorruft.
+Daraus lässt sich folgern, dass ein rein auf Usability-Daten basierendes Vorgehen zu einem Produkt führen kann, das vornehmlich als ACT-Produkt wahrgenommen wird. Um jedoch das volle Potenzial einer positiven, nachhaltigen \ac{UX} zu entfalten, sollten langfristig auch hedoniche Aspekte einbezogen werden. Nur so kann ein Design entstehen, das nicht allein auf Effizienz abzielt, sondern auch die Bedürfnisse und Werte der Nutzenden berücksichtigt und dadurch eine stabile Wertschätzung hervorruft.
 \subsection{Erkenntnisse und Schlussfolgerung}
 Die Ergebnisse aus dem Papier von Hilbert und Redmiles \cite{Hilbert2000} zeigen, dass die Kombination von qualitativen und quantitativen Ansätzen essenziell ist, um umfassende Usability-Einsichten zu gewinnen. Während Interviews und Fragebögen subjektive Erlebnisse und Zufriedenheit der Nutzer erfassen, bietet die Analyse quantitativer Daten objektive und skalierbare Einblicke in tatsächliches Nutzerverhalten. Das Event-Logging ermöglichte es, systematische Probleme zu identifizieren, die bei traditionellen Methoden übersehen wurden, wie ineffiziente Navigationspfade oder wiederkehrende Fehler.
 
@@ -1507,7 +1509,7 @@ Somit deckt das System sowohl \emph{unbehandelte} Fehler (etwa Laufzeitfehler im
  
 
  \subsection{Bezug zu den Zielen}
-Im ersten Teil dieser Arbeit wurde als Hauptziel definiert, die \emph{User Experience (UX)} in der Anwendung \textit{eDok} systematisch zu erfassen, zu analysieren und durch konkrete Maßnahmen zu verbessern. Dabei sollten folgende Aspekte besonders berücksichtigt werden:
+Im ersten Teil dieser Arbeit wurde als Hauptziel definiert, die \ac{UX} in der Anwendung \textit{eDok} systematisch zu erfassen, zu analysieren und durch konkrete Maßnahmen zu verbessern. Dabei sollten folgende Aspekte besonders berücksichtigt werden:
 
 \begin{itemize}
     \item \textbf{Kontinuierliche Datenerfassung ohne Mehraufwand für Nutzende:} 
@@ -1542,7 +1544,7 @@ Trotz der erfolgreichen Implementierung bleiben bestimmte Bereiche \emph{unberü
     \item \textbf{Keine subjektiven UX-Daten:} Da keinerlei Umfragen, Interviews oder Beobachtungen einbezogen wurden, fehlen tiefergehende Einblicke in Emotionen, Motivation und Zufriedenheit der Nutzenden.
 \end{itemize}
 
-Ungeachtet dieser Einschränkungen bildet das entwickelte Modell eine solide Grundlage, um die \emph{Usability} von \textit{eDok} kontinuierlich zu überwachen und gezielt zu verbessern. Zukünftige Arbeiten könnten um qualitative Methoden oder weiterführende Analysetechniken ergänzt werden, um ein noch umfassenderes Bild der \emph{User Experience} zu gewinnen.
+Ungeachtet dieser Einschränkungen bildet das entwickelte Modell eine solide Grundlage, um die \emph{Usability} von \textit{eDok} kontinuierlich zu überwachen und gezielt zu verbessern. Zukünftige Arbeiten könnten um qualitative Methoden oder weiterführende Analysetechniken ergänzt werden, um ein noch umfassenderes Bild der \ac{UX} zu gewinnen.
 \section{Diskussion}
 \label{sec:diskussion}
 
